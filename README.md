@@ -164,5 +164,3 @@ npx live-server
 MIT License — bebas digunakan untuk keperluan edukasi.
 
 ---
-
-*Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo*
