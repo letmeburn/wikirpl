@@ -1,7 +1,7 @@
 # 📚 WikiRPL — Panduan Lengkap Rekayasa Perangkat Lunak
 
 > Proyek Wikipedia jurusan RPL (Rekayasa Perangkat Lunak) — dari pemula hingga ahli.
-## https://wikirpl.page.gd/index.html
+## https://wikirpl.page.gd/
 
 ## 🎯 Tentang Proyek
 
