@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percabangan & Perulangan - WikiRPL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .article-detail{padding:2rem 0;min-height:100vh}.article-container{max-width:900px;margin:0 auto;padding:0 1.5rem}.article-header{margin-bottom:2rem}.breadcrumb{display:flex;gap:.5rem;margin-bottom:1.5rem;color:var(--text-secondary-light);font-size:.9rem}.breadcrumb a{color:var(--accent);text-decoration:none}.article-title{font-size:2.5rem;margin-bottom:1rem;line-height:1.2}.article-meta-info{display:flex;gap:1.5rem;flex-wrap:wrap;color:var(--text-secondary-light);margin-bottom:1.5rem}.article-badges{display:flex;gap:.5rem;margin-bottom:1.5rem}.article-content{background-color:var(--bg-secondary-light);padding:3rem;border-radius:12px;border:1px solid var(--border-light);line-height:1.8}.article-content h2{font-size:1.8rem;margin-top:2rem;margin-bottom:1rem;color:var(--accent)}.article-content h3{font-size:1.4rem;margin-top:1.5rem;margin-bottom:.75rem}.article-content p{margin-bottom:1rem}.article-content ul,.article-content ol{margin-left:2rem;margin-bottom:1rem}.article-content li{margin-bottom:.5rem}.code-block{background-color:#1e1e1e;color:#d4d4d4;padding:1.5rem;border-radius:8px;margin:1.5rem 0;position:relative;font-family:'Fira Code',monospace;overflow-x:auto}.copy-btn{position:absolute;top:.5rem;right:.5rem;background-color:var(--accent);color:white;border:none;padding:.5rem 1rem;border-radius:4px;cursor:pointer;font-size:.85rem}.copy-btn:hover{opacity:.8}.info-box{background-color:var(--bg-light);border-left:4px solid var(--accent);padding:1rem 1.5rem;margin:1.5rem 0;border-radius:4px}.toc{background-color:var(--bg-light);padding:1.5rem;border-radius:8px;margin-bottom:2rem;border:1px solid var(--border-light)}.toc h3{margin-bottom:1rem;font-size:1.2rem}.toc ul{list-style:none}.toc li{margin-bottom:.5rem}.toc a{color:var(--text-light);text-decoration:none;transition:color .3s}.toc a:hover{color:var(--accent)}.article-navigation{display:flex;justify-content:space-between;margin-top:3rem;gap:1rem}.nav-article{flex:1;background-color:var(--bg-secondary-light);padding:1.5rem;border-radius:8px;border:2px solid var(--border-light);text-decoration:none;color:var(--text-light);transition:all .3s}.nav-article:hover{border-color:var(--accent);transform:translateY(-2px)}.nav-label{font-size:.85rem;color:var(--text-secondary-light);margin-bottom:.5rem}.nav-title{font-weight:600}@media (max-width:768px){.article-title{font-size:2rem}.article-content{padding:1.5rem}.article-navigation{flex-direction:column}}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo"><i class="fas fa-book-open"></i> WikiRPL</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../roadmap/index.html">Roadmap</a></li>
+                <li><a href="../artikel/index.html">Artikel</a></li>
+                <li><a href="../kuis/index.html">Kuis</a></li>
+                <li><a href="../profil/index.html">Kontributor</a></li>
+                <li><button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button></li>
+            </ul>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="article-detail">
+        <div class="article-container">
+            <div class="breadcrumb">
+                <a href="../../index.html">Beranda</a><span>/</span>
+                <a href="index.html">Artikel</a><span>/</span>
+                <span>Percabangan & Perulangan</span>
+            </div>
+
+            <div class="article-header">
+                <h1 class="article-title">Percabangan dan Perulangan dalam Pemrograman</h1>
+                <div class="article-badges">
+                    <span class="badge badge-category">Dasar Pemrograman</span>
+                    <span class="badge badge-level">Pemula</span>
+                </div>
+                <div class="article-meta-info">
+                    <span><i class="far fa-clock"></i> 12 menit baca</span>
+                    <span><i class="far fa-eye"></i> 2.890 views</span>
+                    <span><i class="far fa-calendar"></i> 9 Februari 2024</span>
+                </div>
+            </div>
+
+            <div class="toc">
+                <h3>📑 Daftar Isi</h3>
+                <ul>
+                    <li><a href="#percabangan">1. Percabangan (Conditional)</a></li>
+                    <li><a href="#perulangan">2. Perulangan (Loop)</a></li>
+                    <li><a href="#control">3. Control Statements</a></li>
+                    <li><a href="#nested">4. Nested Loops</a></li>
+                    <li><a href="#kesimpulan">5. Kesimpulan</a></li>
+                </ul>
+            </div>
+
+            <div class="article-content">
+                <h2 id="percabangan">🔀 Percabangan (Conditional Statements)</h2>
+                <p><strong>Percabangan</strong> memungkinkan program membuat keputusan berdasarkan kondisi tertentu. Program akan menjalankan kode yang berbeda tergantung apakah kondisi true atau false.</p>
+
+                <h3>1. If Statement</h3>
+                <p>Menjalankan kode jika kondisi true.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>let age = 18;
+
+if (age >= 18) {
+    console.log("Anda sudah dewasa");
+}
+
+// Output: "Anda sudah dewasa"</code></pre>
+                </div>
+
+                <h3>2. If-Else Statement</h3>
+                <p>Menjalankan kode berbeda untuk kondisi true dan false.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>let age = 15;
+
+if (age >= 18) {
+    console.log("Anda sudah dewasa");
+} else {
+    console.log("Anda masih anak-anak");
+}
+
+// Output: "Anda masih anak-anak"</code></pre>
+                </div>
+
+                <h3>3. If-Else If-Else Statement</h3>
+                <p>Multiple conditions.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>let score = 85;
+
+if (score >= 90) {
+    console.log("Grade: A");
+} else if (score >= 80) {
+    console.log("Grade: B");
+} else if (score >= 70) {
+    console.log("Grade: C");
+} else if (score >= 60) {
+    console.log("Grade: D");
+} else {
+    console.log("Grade: E");
+}
+
+// Output: "Grade: B"</code></pre>
+                </div>
+
+                <h3>4. Switch Statement</h3>
+                <p>Alternatif untuk multiple if-else, lebih clean untuk banyak kondisi.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>let day = 3;
+let dayName;
+
+switch (day) {
+    case 1:
+        dayName = "Senin";
+        break;
+    case 2:
+        dayName = "Selasa";
+        break;
+    case 3:
+        dayName = "Rabu";
+        break;
+    case 4:
+        dayName = "Kamis";
+        break;
+    case 5:
+        dayName = "Jumat";
+        break;
+    case 6:
+        dayName = "Sabtu";
+        break;
+    case 7:
+        dayName = "Minggu";
+        break;
+    default:
+        dayName = "Invalid day";
+}
+
+console.log(dayName); // "Rabu"</code></pre>
+                </div>
+
+                <h3>5. Ternary Operator</h3>
+                <p>Shorthand untuk if-else sederhana.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>let age = 20;
+
+// Ternary: condition ? valueIfTrue : valueIfFalse
+let status = age >= 18 ? "Dewasa" : "Anak-anak";
+console.log(status); // "Dewasa"
+
+// Equivalent to:
+let status;
+if (age >= 18) {
+    status = "Dewasa";
+} else {
+    status = "Anak-anak";
+}</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Tips Percabangan:</strong><br>
+                    - Gunakan switch untuk banyak kondisi dengan nilai spesifik<br>
+                    - Gunakan ternary untuk kondisi sederhana<br>
+                    - Jangan lupa break dalam switch (kecuali intentional fall-through)<br>
+                    - Pertimbangkan readability saat memilih struktur
+                </div>
+
+                <h2 id="perulangan">🔄 Perulangan (Loops)</h2>
+                <p><strong>Perulangan</strong> memungkinkan kita menjalankan kode berulang kali tanpa menulis kode yang sama berkali-kali.</p>
+
+                <h3>1. For Loop</h3>
+                <p>Digunakan ketika jumlah iterasi sudah diketahui.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// Syntax: for (initialization; condition; increment)
+for (let i = 0; i < 5; i++) {
+    console.log(`Iterasi ke-${i}`);
+}
+
+// Output:
+// Iterasi ke-0
+// Iterasi ke-1
+// Iterasi ke-2
+// Iterasi ke-3
+// Iterasi ke-4
+
+// Loop array
+let fruits = ["apple", "banana", "orange"];
+for (let i = 0; i < fruits.length; i++) {
+    console.log(fruits[i]);
+}</code></pre>
+                </div>
+
+                <h3>2. While Loop</h3>
+                <p>Digunakan ketika jumlah iterasi tidak diketahui, loop berjalan selama kondisi true.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>let count = 0;
+
+while (count < 5) {
+    console.log(`Count: ${count}`);
+    count++;
+}
+
+// Output:
+// Count: 0
+// Count: 1
+// Count: 2
+// Count: 3
+// Count: 4
+
+// Contoh: Input validation
+let password = "";
+while (password.length < 8) {
+    password = prompt("Enter password (min 8 characters):");
+}</code></pre>
+                </div>
+
+                <h3>3. Do-While Loop</h3>
+                <p>Mirip while, tapi kondisi dicek setelah eksekusi (minimal 1x eksekusi).</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>let count = 0;
+
+do {
+    console.log(`Count: ${count}`);
+    count++;
+} while (count < 5);
+
+// Perbedaan dengan while:
+let x = 10;
+
+// While: tidak akan dieksekusi
+while (x < 5) {
+    console.log(x); // Tidak print
+}
+
+// Do-While: dieksekusi minimal 1x
+do {
+    console.log(x); // Print 10
+} while (x < 5);</code></pre>
+                </div>
+
+                <h3>4. For...of Loop</h3>
+                <p>Iterate over iterable objects (array, string, dll).</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// Array
+let fruits = ["apple", "banana", "orange"];
+for (let fruit of fruits) {
+    console.log(fruit);
+}
+
+// String
+let text = "Hello";
+for (let char of text) {
+    console.log(char); // H, e, l, l, o
+}</code></pre>
+                </div>
+
+                <h3>5. For...in Loop</h3>
+                <p>Iterate over object properties.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>let person = {
+    name: "John",
+    age: 25,
+    city: "Jakarta"
+};
+
+for (let key in person) {
+    console.log(`${key}: ${person[key]}`);
+}
+
+// Output:
+// name: John
+// age: 25
+// city: Jakarta</code></pre>
+                </div>
+
+                <h3>6. Array Methods (forEach, map, filter)</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>let numbers = [1, 2, 3, 4, 5];
+
+// forEach: iterate tanpa return
+numbers.forEach(num => {
+    console.log(num * 2);
+});
+
+// map: transform array, return new array
+let doubled = numbers.map(num => num * 2);
+console.log(doubled); // [2, 4, 6, 8, 10]
+
+// filter: filter elements, return new array
+let evens = numbers.filter(num => num % 2 === 0);
+console.log(evens); // [2, 4]</code></pre>
+                </div>
+
+                <h2 id="control">⚡ Control Statements</h2>
+
+                <h3>1. Break</h3>
+                <p>Menghentikan loop sepenuhnya.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>for (let i = 0; i < 10; i++) {
+    if (i === 5) {
+        break; // Stop loop ketika i = 5
+    }
+    console.log(i);
+}
+// Output: 0, 1, 2, 3, 4
+
+// Contoh: Cari element dalam array
+let numbers = [1, 3, 5, 7, 9];
+let target = 5;
+let found = false;
+
+for (let num of numbers) {
+    if (num === target) {
+        found = true;
+        break; // Stop setelah ketemu
+    }
+}
+console.log(found); // true</code></pre>
+                </div>
+
+                <h3>2. Continue</h3>
+                <p>Skip iterasi saat ini, lanjut ke iterasi berikutnya.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>for (let i = 0; i < 10; i++) {
+    if (i % 2 === 0) {
+        continue; // Skip even numbers
+    }
+    console.log(i);
+}
+// Output: 1, 3, 5, 7, 9
+
+// Contoh: Skip invalid data
+let scores = [85, -1, 90, 0, 75, -5, 88];
+let validScores = [];
+
+for (let score of scores) {
+    if (score < 0) {
+        continue; // Skip negative scores
+    }
+    validScores.push(score);
+}
+console.log(validScores); // [85, 90, 0, 75, 88]</code></pre>
+                </div>
+
+                <h2 id="nested">🔁 Nested Loops</h2>
+                <p>Loop di dalam loop.</p>
+
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// Contoh 1: Multiplication table
+for (let i = 1; i <= 5; i++) {
+    for (let j = 1; j <= 5; j++) {
+        console.log(`${i} x ${j} = ${i * j}`);
+    }
+}
+
+// Contoh 2: Matrix
+let matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+        console.log(`matrix[${i}][${j}] = ${matrix[i][j]}`);
+    }
+}
+
+// Contoh 3: Pattern
+for (let i = 1; i <= 5; i++) {
+    let row = "";
+    for (let j = 1; j <= i; j++) {
+        row += "* ";
+    }
+    console.log(row);
+}
+// Output:
+// *
+// * *
+// * * *
+// * * * *
+// * * * * *</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Tips Perulangan:</strong><br>
+                    - Gunakan for ketika jumlah iterasi diketahui<br>
+                    - Gunakan while ketika kondisi berhenti tidak pasti<br>
+                    - Hati-hati dengan infinite loop (kondisi selalu true)<br>
+                    - Gunakan break dan continue dengan bijak<br>
+                    - Pertimbangkan performa untuk nested loops dengan data besar
+                </div>
+
+                <h2>🎯 Contoh Praktis</h2>
+
+                <h3>FizzBuzz</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// Print 1-100, tapi:
+// - "Fizz" untuk kelipatan 3
+// - "Buzz" untuk kelipatan 5
+// - "FizzBuzz" untuk kelipatan 3 dan 5
+
+for (let i = 1; i <= 100; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+        console.log("FizzBuzz");
+    } else if (i % 3 === 0) {
+        console.log("Fizz");
+    } else if (i % 5 === 0) {
+        console.log("Buzz");
+    } else {
+        console.log(i);
+    }
+}</code></pre>
+                </div>
+
+                <h3>Sum of Array</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>let numbers = [10, 20, 30, 40, 50];
+let sum = 0;
+
+for (let num of numbers) {
+    sum += num;
+}
+
+console.log(`Total: ${sum}`); // 150</code></pre>
+                </div>
+
+                <h2 id="kesimpulan">✨ Kesimpulan</h2>
+                <p>Percabangan dan perulangan adalah control structures fundamental dalam pemrograman. Percabangan memungkinkan program membuat keputusan, sementara perulangan memungkinkan eksekusi kode berulang. Kuasai konsep ini karena hampir setiap program menggunakan keduanya. Praktikkan dengan berbagai problem solving untuk meningkatkan pemahaman!</p>
+            </div>
+
+            <div class="article-navigation">
+                <a href="tipe-data-variabel.html" class="nav-article">
+                    <div class="nav-label">← Sebelumnya</div>
+                    <div class="nav-title">Tipe Data & Variabel</div>
+                </a>
+                <a href="agile-waterfall.html" class="nav-article" style="text-align:right">
+                    <div class="nav-label">Selanjutnya →</div>
+                    <div class="nav-title">Agile vs Waterfall</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk mahasiswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="../../index.html">Beranda</a></li>
+                        <li><a href="../roadmap/index.html">Roadmap</a></li>
+                        <li><a href="index.html">Artikel</a></li>
+                        <li><a href="../kuis/index.html">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>function copyCode(button){const code=button.nextElementSibling.textContent;navigator.clipboard.writeText(code).then(()=>{button.textContent='Copied!';setTimeout(()=>{button.textContent='Copy'},2000)})}</script>
+</body>
+</html>

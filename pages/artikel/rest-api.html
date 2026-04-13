@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membuat REST API - WikiRPL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>.article-detail{padding:2rem 0;min-height:100vh}.article-container{max-width:900px;margin:0 auto;padding:0 1.5rem}.article-header{margin-bottom:2rem}.breadcrumb{display:flex;gap:.5rem;margin-bottom:1.5rem;color:var(--text-secondary-light);font-size:.9rem}.breadcrumb a{color:var(--accent);text-decoration:none}.article-title{font-size:2.5rem;margin-bottom:1rem;line-height:1.2}.article-meta-info{display:flex;gap:1.5rem;flex-wrap:wrap;color:var(--text-secondary-light);margin-bottom:1.5rem}.article-badges{display:flex;gap:.5rem;margin-bottom:1.5rem}.article-content{background-color:var(--bg-secondary-light);padding:3rem;border-radius:12px;border:1px solid var(--border-light);line-height:1.8}.article-content h2{font-size:1.8rem;margin-top:2rem;margin-bottom:1rem;color:var(--accent)}.article-content h3{font-size:1.4rem;margin-top:1.5rem;margin-bottom:.75rem}.article-content p{margin-bottom:1rem}.article-content ul,.article-content ol{margin-left:2rem;margin-bottom:1rem}.article-content li{margin-bottom:.5rem}.code-block{background-color:#1e1e1e;color:#d4d4d4;padding:1.5rem;border-radius:8px;margin:1.5rem 0;position:relative;font-family:'Fira Code',monospace;overflow-x:auto}.copy-btn{position:absolute;top:.5rem;right:.5rem;background-color:var(--accent);color:white;border:none;padding:.5rem 1rem;border-radius:4px;cursor:pointer;font-size:.85rem}.info-box{background-color:var(--bg-light);border-left:4px solid var(--accent);padding:1rem 1.5rem;margin:1.5rem 0;border-radius:4px}.toc{background-color:var(--bg-light);padding:1.5rem;border-radius:8px;margin-bottom:2rem;border:1px solid var(--border-light)}.toc h3{margin-bottom:1rem}.toc ul{list-style:none}.toc li{margin-bottom:.5rem}.toc a{color:var(--text-light);text-decoration:none}.article-navigation{display:flex;justify-content:space-between;margin-top:3rem;gap:1rem}.nav-article{flex:1;background-color:var(--bg-secondary-light);padding:1.5rem;border-radius:8px;border:2px solid var(--border-light);text-decoration:none;color:var(--text-light);transition:all .3s}.nav-label{font-size:.85rem;color:var(--text-secondary-light);margin-bottom:.5rem}.nav-title{font-weight:600}</style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo"><i class="fas fa-book-open"></i> WikiRPL</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../roadmap/index.html">Roadmap</a></li>
+                <li><a href="../artikel/index.html">Artikel</a></li>
+                <li><a href="../kuis/index.html">Kuis</a></li>
+                <li><a href="../profil/index.html">Kontributor</a></li>
+                <li><button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button></li>
+            </ul>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="article-detail">
+        <div class="article-container">
+            <div class="breadcrumb">
+                <a href="../../index.html">Beranda</a><span>/</span>
+                <a href="index.html">Artikel</a><span>/</span>
+                <span>Membuat REST API</span>
+            </div>
+
+            <div class="article-header">
+                <h1 class="article-title">Membuat REST API dengan Node.js & Express</h1>
+                <div class="article-badges">
+                    <span class="badge badge-category">Web Dev</span>
+                    <span class="badge badge-level">Menengah</span>
+                </div>
+                <div class="article-meta-info">
+                    <span><i class="far fa-clock"></i> 20 menit baca</span>
+                    <span><i class="far fa-eye"></i> 1.8k views</span>
+                </div>
+            </div>
+
+            <div class="toc">
+                <h3>📑 Daftar Isi</h3>
+                <ul>
+                    <li><a href="#pengertian">1. Apa itu REST API?</a></li>
+                    <li><a href="#setup">2. Setup Project</a></li>
+                    <li><a href="#crud">3. Membuat CRUD Endpoints</a></li>
+                    <li><a href="#testing">4. Testing API</a></li>
+                </ul>
+            </div>
+
+            <div class="article-content">
+                <h2 id="pengertian">🎯 Apa itu REST API?</h2>
+                <p><strong>REST (Representational State Transfer)</strong> adalah arsitektur untuk membuat web services. REST API menggunakan HTTP methods untuk operasi CRUD:</p>
+                <ul>
+                    <li><strong>GET</strong> - Mengambil data</li>
+                    <li><strong>POST</strong> - Membuat data baru</li>
+                    <li><strong>PUT/PATCH</strong> - Mengupdate data</li>
+                    <li><strong>DELETE</strong> - Menghapus data</li>
+                </ul>
+
+                <h2 id="setup">⚙️ Setup Project</h2>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code># Buat folder project
+mkdir my-api
+cd my-api
+
+# Inisialisasi npm
+npm init -y
+
+# Install dependencies
+npm install express
+npm install --save-dev nodemon</code></pre>
+                </div>
+
+                <h3>Struktur Project</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>my-api/
+├── server.js
+├── routes/
+│   └── users.js
+├── controllers/
+│   └── userController.js
+└── package.json</code></pre>
+                </div>
+
+                <h2 id="crud">💻 Membuat CRUD Endpoints</h2>
+                
+                <h3>1. Setup Server (server.js)</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>const express = require('express');
+const app = express();
+const PORT = 3000;
+
+// Middleware
+app.use(express.json());
+
+// Routes
+app.use('/api/users', require('./routes/users'));
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});</code></pre>
+                </div>
+
+                <h3>2. User Routes (routes/users.js)</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>const express = require('express');
+const router = express.Router();
+
+// Dummy data
+let users = [
+    { id: 1, name: 'John Doe', email: 'john@example.com' },
+    { id: 2, name: 'Jane Smith', email: 'jane@example.com' }
+];
+
+// GET all users
+router.get('/', (req, res) => {
+    res.json(users);
+});
+
+// GET user by ID
+router.get('/:id', (req, res) => {
+    const user = users.find(u => u.id === parseInt(req.params.id));
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    res.json(user);
+});
+
+// POST create user
+router.post('/', (req, res) => {
+    const newUser = {
+        id: users.length + 1,
+        name: req.body.name,
+        email: req.body.email
+    };
+    users.push(newUser);
+    res.status(201).json(newUser);
+});
+
+// PUT update user
+router.put('/:id', (req, res) => {
+    const user = users.find(u => u.id === parseInt(req.params.id));
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    
+    user.name = req.body.name;
+    user.email = req.body.email;
+    res.json(user);
+});
+
+// DELETE user
+router.delete('/:id', (req, res) => {
+    const index = users.findIndex(u => u.id === parseInt(req.params.id));
+    if (index === -1) return res.status(404).json({ message: 'User not found' });
+    
+    users.splice(index, 1);
+    res.json({ message: 'User deleted' });
+});
+
+module.exports = router;</code></pre>
+                </div>
+
+                <h2 id="testing">🧪 Testing API</h2>
+                <p>Gunakan Postman atau curl untuk testing:</p>
+                
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code># GET all users
+curl http://localhost:3000/api/users
+
+# GET user by ID
+curl http://localhost:3000/api/users/1
+
+# POST create user
+curl -X POST http://localhost:3000/api/users \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Bob","email":"bob@example.com"}'
+
+# PUT update user
+curl -X PUT http://localhost:3000/api/users/1 \
+  -H "Content-Type: application/json" \
+  -d '{"name":"John Updated","email":"john.new@example.com"}'
+
+# DELETE user
+curl -X DELETE http://localhost:3000/api/users/1</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>🎯 Best Practices REST API:</strong><br>
+                    ✅ Gunakan HTTP methods yang tepat<br>
+                    ✅ Gunakan status code yang sesuai (200, 201, 404, 500)<br>
+                    ✅ Versioning API (v1, v2)<br>
+                    ✅ Validasi input<br>
+                    ✅ Handle error dengan baik<br>
+                    ✅ Gunakan HTTPS di production<br>
+                    ✅ Implementasi authentication & authorization
+                </div>
+
+                <h3>Menambahkan Validation</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// POST dengan validation
+router.post('/', (req, res) => {
+    const { name, email } = req.body;
+    
+    // Validation
+    if (!name || !email) {
+        return res.status(400).json({ 
+            message: 'Name and email are required' 
+        });
+    }
+    
+    if (!email.includes('@')) {
+        return res.status(400).json({ 
+            message: 'Invalid email format' 
+        });
+    }
+    
+    const newUser = {
+        id: users.length + 1,
+        name,
+        email
+    };
+    users.push(newUser);
+    res.status(201).json(newUser);
+});</code></pre>
+                </div>
+
+                <p><strong>Kesimpulan:</strong> REST API adalah fondasi backend development modern. Dengan Node.js dan Express, kamu bisa membuat API yang powerful dan scalable. Langkah selanjutnya: integrasikan dengan database (MongoDB/MySQL) dan tambahkan authentication!</p>
+            </div>
+
+            <div class="article-navigation">
+                <a href="git-github.html" class="nav-article">
+                    <div class="nav-label">← Sebelumnya</div>
+                    <div class="nav-title">Git & GitHub Workflow</div>
+                </a>
+                <a href="index.html" class="nav-article" style="text-align:right">
+                    <div class="nav-label">Kembali →</div>
+                    <div class="nav-title">Daftar Artikel</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk mahasiswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="../../index.html">Beranda</a></li>
+                        <li><a href="../roadmap/index.html">Roadmap</a></li>
+                        <li><a href="index.html">Artikel</a></li>
+                        <li><a href="../kuis/index.html">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>function copyCode(button){const code=button.nextElementSibling.textContent;navigator.clipboard.writeText(code).then(()=>{button.textContent='Copied!';setTimeout(()=>{button.textContent='Copy'},2000)})}</script>
+</body>
+</html>

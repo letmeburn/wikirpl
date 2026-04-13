@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritma & Flowchart - WikiRPL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .article-detail{padding:2rem 0;min-height:100vh}.article-container{max-width:900px;margin:0 auto;padding:0 1.5rem}.article-header{margin-bottom:2rem}.breadcrumb{display:flex;gap:.5rem;margin-bottom:1.5rem;color:var(--text-secondary-light);font-size:.9rem}.breadcrumb a{color:var(--accent);text-decoration:none}.article-title{font-size:2.5rem;margin-bottom:1rem;line-height:1.2}.article-meta-info{display:flex;gap:1.5rem;flex-wrap:wrap;color:var(--text-secondary-light);margin-bottom:1.5rem}.article-badges{display:flex;gap:.5rem;margin-bottom:1.5rem}.article-content{background-color:var(--bg-secondary-light);padding:3rem;border-radius:12px;border:1px solid var(--border-light);line-height:1.8}.article-content h2{font-size:1.8rem;margin-top:2rem;margin-bottom:1rem;color:var(--accent)}.article-content h3{font-size:1.4rem;margin-top:1.5rem;margin-bottom:.75rem}.article-content p{margin-bottom:1rem}.article-content ul,.article-content ol{margin-left:2rem;margin-bottom:1rem}.article-content li{margin-bottom:.5rem}.code-block{background-color:#1e1e1e;color:#d4d4d4;padding:1.5rem;border-radius:8px;margin:1.5rem 0;position:relative;font-family:'Fira Code',monospace;overflow-x:auto}.copy-btn{position:absolute;top:.5rem;right:.5rem;background-color:var(--accent);color:white;border:none;padding:.5rem 1rem;border-radius:4px;cursor:pointer;font-size:.85rem}.copy-btn:hover{opacity:.8}.info-box{background-color:var(--bg-light);border-left:4px solid var(--accent);padding:1rem 1.5rem;margin:1.5rem 0;border-radius:4px}.toc{background-color:var(--bg-light);padding:1.5rem;border-radius:8px;margin-bottom:2rem;border:1px solid var(--border-light)}.toc h3{margin-bottom:1rem;font-size:1.2rem}.toc ul{list-style:none}.toc li{margin-bottom:.5rem}.toc a{color:var(--text-light);text-decoration:none;transition:color .3s}.toc a:hover{color:var(--accent)}.article-navigation{display:flex;justify-content:space-between;margin-top:3rem;gap:1rem}.nav-article{flex:1;background-color:var(--bg-secondary-light);padding:1.5rem;border-radius:8px;border:2px solid var(--border-light);text-decoration:none;color:var(--text-light);transition:all .3s}.nav-article:hover{border-color:var(--accent);transform:translateY(-2px)}.nav-label{font-size:.85rem;color:var(--text-secondary-light);margin-bottom:.5rem}.nav-title{font-weight:600}@media (max-width:768px){.article-title{font-size:2rem}.article-content{padding:1.5rem}.article-navigation{flex-direction:column}}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo"><i class="fas fa-book-open"></i> WikiRPL</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../roadmap/index.html">Roadmap</a></li>
+                <li><a href="../artikel/index.html">Artikel</a></li>
+                <li><a href="../kuis/index.html">Kuis</a></li>
+                <li><a href="../profil/index.html">Kontributor</a></li>
+                <li><button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button></li>
+            </ul>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="article-detail">
+        <div class="article-container">
+            <div class="breadcrumb">
+                <a href="../../index.html">Beranda</a><span>/</span>
+                <a href="index.html">Artikel</a><span>/</span>
+                <span>Algoritma & Flowchart</span>
+            </div>
+
+            <div class="article-header">
+                <h1 class="article-title">Memahami Algoritma dan Flowchart</h1>
+                <div class="article-badges">
+                    <span class="badge badge-category">Dasar Pemrograman</span>
+                    <span class="badge badge-level">Pemula</span>
+                </div>
+                <div class="article-meta-info">
+                    <span><i class="far fa-clock"></i> 11 menit baca</span>
+                    <span><i class="far fa-eye"></i> 2.340 views</span>
+                    <span><i class="far fa-calendar"></i> 5 Februari 2024</span>
+                </div>
+            </div>
+
+            <div class="toc">
+                <h3>📑 Daftar Isi</h3>
+                <ul>
+                    <li><a href="#algoritma">1. Apa itu Algoritma?</a></li>
+                    <li><a href="#flowchart">2. Apa itu Flowchart?</a></li>
+                    <li><a href="#simbol">3. Simbol Flowchart</a></li>
+                    <li><a href="#contoh">4. Contoh Praktis</a></li>
+                    <li><a href="#kesimpulan">5. Kesimpulan</a></li>
+                </ul>
+            </div>
+
+            <div class="article-content">
+                <h2 id="algoritma">🎯 Apa itu Algoritma?</h2>
+                <p><strong>Algoritma</strong> adalah urutan langkah-langkah logis untuk menyelesaikan suatu masalah. Algoritma adalah fondasi dari pemrograman - sebelum menulis kode, kita harus merancang algoritma terlebih dahulu.</p>
+
+                <h3>Karakteristik Algoritma yang Baik</h3>
+                <ul>
+                    <li><strong>Input:</strong> Memiliki 0 atau lebih input</li>
+                    <li><strong>Output:</strong> Menghasilkan minimal 1 output</li>
+                    <li><strong>Definiteness:</strong> Setiap langkah jelas dan tidak ambigu</li>
+                    <li><strong>Finiteness:</strong> Harus berhenti setelah sejumlah langkah</li>
+                    <li><strong>Effectiveness:</strong> Setiap langkah harus bisa dikerjakan</li>
+                </ul>
+
+                <h3>Contoh Algoritma Sederhana</h3>
+                <p><strong>Algoritma Membuat Kopi:</strong></p>
+                <ol>
+                    <li>Siapkan cangkir</li>
+                    <li>Masukkan kopi bubuk ke cangkir</li>
+                    <li>Panaskan air hingga mendidih</li>
+                    <li>Tuang air panas ke cangkir</li>
+                    <li>Aduk hingga rata</li>
+                    <li>Kopi siap disajikan</li>
+                </ol>
+
+                <h3>Cara Menulis Algoritma</h3>
+                <p>Ada 3 cara umum menulis algoritma:</p>
+
+                <h4>1. Deskriptif (Natural Language)</h4>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>Algoritma Mencari Bilangan Terbesar dari 3 Bilangan:
+1. Mulai
+2. Input bilangan A, B, C
+3. Jika A > B dan A > C, maka A adalah terbesar
+4. Jika B > A dan B > C, maka B adalah terbesar
+5. Jika tidak, maka C adalah terbesar
+6. Tampilkan bilangan terbesar
+7. Selesai</code></pre>
+                </div>
+
+                <h4>2. Pseudocode</h4>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>ALGORITHM FindMax
+INPUT: a, b, c
+OUTPUT: max
+
+BEGIN
+    IF a > b AND a > c THEN
+        max = a
+    ELSE IF b > a AND b > c THEN
+        max = b
+    ELSE
+        max = c
+    END IF
+    
+    PRINT max
+END</code></pre>
+                </div>
+
+                <h4>3. Flowchart</h4>
+                <p>Representasi visual menggunakan simbol-simbol standar.</p>
+
+                <h2 id="flowchart">📊 Apa itu Flowchart?</h2>
+                <p><strong>Flowchart</strong> adalah diagram yang merepresentasikan algoritma atau proses menggunakan simbol-simbol standar. Flowchart memudahkan pemahaman alur logika program.</p>
+
+                <h3>Keuntungan Flowchart</h3>
+                <ul>
+                    <li>Mudah dipahami secara visual</li>
+                    <li>Membantu identifikasi error dalam logika</li>
+                    <li>Dokumentasi yang baik</li>
+                    <li>Memudahkan komunikasi antar developer</li>
+                    <li>Membantu dalam debugging</li>
+                </ul>
+
+                <h2 id="simbol">🔷 Simbol Flowchart</h2>
+
+                <h3>Simbol Dasar</h3>
+                <ul>
+                    <li><strong>Oval/Terminator:</strong> Start/End</li>
+                    <li><strong>Parallelogram:</strong> Input/Output</li>
+                    <li><strong>Rectangle:</strong> Process/Instruction</li>
+                    <li><strong>Diamond:</strong> Decision/Condition</li>
+                    <li><strong>Arrow:</strong> Flow direction</li>
+                    <li><strong>Circle:</strong> Connector (untuk flowchart yang panjang)</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>💡 Tips Membuat Flowchart:</strong><br>
+                    - Mulai dari atas ke bawah atau kiri ke kanan<br>
+                    - Gunakan simbol yang konsisten<br>
+                    - Beri label yang jelas pada setiap decision<br>
+                    - Hindari flowchart yang terlalu kompleks<br>
+                    - Gunakan connector untuk flowchart panjang
+                </div>
+
+                <h2 id="contoh">💡 Contoh Praktis</h2>
+
+                <h3>Contoh 1: Menentukan Bilangan Genap/Ganjil</h3>
+                
+                <h4>Algoritma:</h4>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>1. Mulai
+2. Input bilangan n
+3. Hitung sisa bagi n dengan 2
+4. Jika sisa bagi = 0, maka n adalah genap
+5. Jika tidak, maka n adalah ganjil
+6. Tampilkan hasil
+7. Selesai</code></pre>
+                </div>
+
+                <h4>Pseudocode:</h4>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>ALGORITHM CheckEvenOdd
+INPUT: n
+OUTPUT: result
+
+BEGIN
+    IF n MOD 2 = 0 THEN
+        result = "Genap"
+    ELSE
+        result = "Ganjil"
+    END IF
+    
+    PRINT result
+END</code></pre>
+                </div>
+
+                <h4>Implementasi (JavaScript):</h4>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>function checkEvenOdd(n) {
+    if (n % 2 === 0) {
+        return "Genap";
+    } else {
+        return "Ganjil";
+    }
+}
+
+console.log(checkEvenOdd(10)); // "Genap"
+console.log(checkEvenOdd(7));  // "Ganjil"</code></pre>
+                </div>
+
+                <h3>Contoh 2: Menghitung Faktorial</h3>
+
+                <h4>Algoritma:</h4>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>1. Mulai
+2. Input bilangan n
+3. Set faktorial = 1
+4. Set i = 1
+5. Selama i <= n, lakukan:
+   - faktorial = faktorial * i
+   - i = i + 1
+6. Tampilkan faktorial
+7. Selesai</code></pre>
+                </div>
+
+                <h4>Pseudocode:</h4>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>ALGORITHM Factorial
+INPUT: n
+OUTPUT: result
+
+BEGIN
+    result = 1
+    FOR i = 1 TO n DO
+        result = result * i
+    END FOR
+    
+    PRINT result
+END</code></pre>
+                </div>
+
+                <h4>Implementasi (JavaScript):</h4>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>function factorial(n) {
+    let result = 1;
+    for (let i = 1; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+
+console.log(factorial(5)); // 120
+console.log(factorial(3)); // 6</code></pre>
+                </div>
+
+                <h3>Contoh 3: Mencari Nilai Maksimum dalam Array</h3>
+
+                <h4>Algoritma:</h4>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>1. Mulai
+2. Input array angka
+3. Set max = angka[0]
+4. Untuk setiap angka dalam array:
+   - Jika angka > max, maka max = angka
+5. Tampilkan max
+6. Selesai</code></pre>
+                </div>
+
+                <h4>Implementasi:</h4>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>function findMax(arr) {
+    let max = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+const numbers = [5, 2, 9, 1, 7];
+console.log(findMax(numbers)); // 9</code></pre>
+                </div>
+
+                <h3>Flowchart Description</h3>
+                <p>Untuk flowchart visual, Anda bisa menggunakan tools seperti:</p>
+                <ul>
+                    <li><strong>Draw.io (diagrams.net)</strong> - Free, web-based</li>
+                    <li><strong>Lucidchart</strong> - Professional tool</li>
+                    <li><strong>Microsoft Visio</strong> - Desktop application</li>
+                    <li><strong>Flowgorithm</strong> - Khusus untuk algoritma programming</li>
+                </ul>
+
+                <h2 id="kesimpulan">✨ Kesimpulan</h2>
+                <p>Algoritma dan flowchart adalah fondasi penting dalam pemrograman. Sebelum menulis kode, selalu rancang algoritma terlebih dahulu untuk memastikan logika program benar. Flowchart membantu visualisasi algoritma dan memudahkan komunikasi dengan tim. Latih kemampuan membuat algoritma dengan menyelesaikan berbagai problem solving!</p>
+            </div>
+
+            <div class="article-navigation">
+                <a href="design-patterns.html" class="nav-article">
+                    <div class="nav-label">← Sebelumnya</div>
+                    <div class="nav-title">Design Patterns</div>
+                </a>
+                <a href="tipe-data-variabel.html" class="nav-article" style="text-align:right">
+                    <div class="nav-label">Selanjutnya →</div>
+                    <div class="nav-title">Tipe Data & Variabel</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk mahasiswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="../../index.html">Beranda</a></li>
+                        <li><a href="../roadmap/index.html">Roadmap</a></li>
+                        <li><a href="index.html">Artikel</a></li>
+                        <li><a href="../kuis/index.html">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>function copyCode(button){const code=button.nextElementSibling.textContent;navigator.clipboard.writeText(code).then(()=>{button.textContent='Copied!';setTimeout(()=>{button.textContent='Copy'},2000)})}</script>
+</body>
+</html>

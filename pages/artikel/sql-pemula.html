@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL untuk Pemula - WikiRPL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>.article-detail{padding:2rem 0;min-height:100vh}.article-container{max-width:900px;margin:0 auto;padding:0 1.5rem}.article-header{margin-bottom:2rem}.breadcrumb{display:flex;gap:.5rem;margin-bottom:1.5rem;color:var(--text-secondary-light);font-size:.9rem}.breadcrumb a{color:var(--accent);text-decoration:none}.article-title{font-size:2.5rem;margin-bottom:1rem;line-height:1.2}.article-meta-info{display:flex;gap:1.5rem;flex-wrap:wrap;color:var(--text-secondary-light);margin-bottom:1.5rem}.article-badges{display:flex;gap:.5rem;margin-bottom:1.5rem}.article-content{background-color:var(--bg-secondary-light);padding:3rem;border-radius:12px;border:1px solid var(--border-light);line-height:1.8}.article-content h2{font-size:1.8rem;margin-top:2rem;margin-bottom:1rem;color:var(--accent)}.article-content h3{font-size:1.4rem;margin-top:1.5rem;margin-bottom:.75rem}.article-content p{margin-bottom:1rem}.article-content ul{margin-left:2rem;margin-bottom:1rem}.article-content li{margin-bottom:.5rem}.code-block{background-color:#1e1e1e;color:#d4d4d4;padding:1.5rem;border-radius:8px;margin:1.5rem 0;position:relative;font-family:'Fira Code',monospace;overflow-x:auto}.copy-btn{position:absolute;top:.5rem;right:.5rem;background-color:var(--accent);color:white;border:none;padding:.5rem 1rem;border-radius:4px;cursor:pointer;font-size:.85rem}.info-box{background-color:var(--bg-light);border-left:4px solid var(--accent);padding:1rem 1.5rem;margin:1.5rem 0;border-radius:4px}.toc{background-color:var(--bg-light);padding:1.5rem;border-radius:8px;margin-bottom:2rem;border:1px solid var(--border-light)}.toc h3{margin-bottom:1rem}.toc ul{list-style:none}.toc li{margin-bottom:.5rem}.toc a{color:var(--text-light);text-decoration:none}.article-navigation{display:flex;justify-content:space-between;margin-top:3rem;gap:1rem}.nav-article{flex:1;background-color:var(--bg-secondary-light);padding:1.5rem;border-radius:8px;border:2px solid var(--border-light);text-decoration:none;color:var(--text-light);transition:all .3s}.nav-label{font-size:.85rem;color:var(--text-secondary-light);margin-bottom:.5rem}.nav-title{font-weight:600}</style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo"><i class="fas fa-book-open"></i> WikiRPL</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../roadmap/index.html">Roadmap</a></li>
+                <li><a href="../artikel/index.html">Artikel</a></li>
+                <li><a href="../kuis/index.html">Kuis</a></li>
+                <li><a href="../profil/index.html">Kontributor</a></li>
+                <li><button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button></li>
+            </ul>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="article-detail">
+        <div class="article-container">
+            <div class="breadcrumb">
+                <a href="../../index.html">Beranda</a><span>/</span>
+                <a href="index.html">Artikel</a><span>/</span>
+                <span>SQL untuk Pemula</span>
+            </div>
+
+            <div class="article-header">
+                <h1 class="article-title">SQL untuk Pemula</h1>
+                <div class="article-badges">
+                    <span class="badge badge-category">Database</span>
+                    <span class="badge badge-level">Pemula</span>
+                </div>
+                <div class="article-meta-info">
+                    <span><i class="far fa-clock"></i> 10 menit baca</span>
+                    <span><i class="far fa-eye"></i> 2.1k views</span>
+                </div>
+            </div>
+
+            <div class="toc">
+                <h3>📑 Daftar Isi</h3>
+                <ul>
+                    <li><a href="#pengertian">1. Apa itu SQL?</a></li>
+                    <li><a href="#select">2. SELECT - Mengambil Data</a></li>
+                    <li><a href="#insert">3. INSERT - Menambah Data</a></li>
+                    <li><a href="#update">4. UPDATE - Mengubah Data</a></li>
+                    <li><a href="#delete">5. DELETE - Menghapus Data</a></li>
+                    <li><a href="#join">6. JOIN - Menggabungkan Tabel</a></li>
+                </ul>
+            </div>
+
+            <div class="article-content">
+                <h2 id="pengertian">🎯 Apa itu SQL?</h2>
+                <p><strong>SQL (Structured Query Language)</strong> adalah bahasa standar untuk mengelola dan memanipulasi database relasional. Dengan SQL, kamu bisa membuat, membaca, mengupdate, dan menghapus data (CRUD operations).</p>
+
+                <h2 id="select">📖 SELECT - Mengambil Data</h2>
+                <p>Perintah SELECT digunakan untuk mengambil data dari database.</p>
+                
+                <h3>SELECT Semua Kolom</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- Mengambil semua data dari tabel users
+SELECT * FROM users;</code></pre>
+                </div>
+
+                <h3>SELECT Kolom Tertentu</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- Mengambil nama dan email saja
+SELECT name, email FROM users;</code></pre>
+                </div>
+
+                <h3>WHERE - Filtering Data</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- Mengambil user dengan id = 1
+SELECT * FROM users WHERE id = 1;
+
+-- Mengambil user dengan umur > 18
+SELECT * FROM users WHERE age > 18;
+
+-- Menggunakan AND
+SELECT * FROM users WHERE age > 18 AND city = 'Jakarta';</code></pre>
+                </div>
+
+                <h3>ORDER BY - Mengurutkan Data</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- Urutkan berdasarkan nama (A-Z)
+SELECT * FROM users ORDER BY name ASC;
+
+-- Urutkan berdasarkan umur (terbesar ke terkecil)
+SELECT * FROM users ORDER BY age DESC;</code></pre>
+                </div>
+
+                <h3>LIMIT - Membatasi Hasil</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- Ambil 10 user pertama
+SELECT * FROM users LIMIT 10;
+
+-- Ambil 5 user dengan umur tertua
+SELECT * FROM users ORDER BY age DESC LIMIT 5;</code></pre>
+                </div>
+
+                <h2 id="insert">➕ INSERT - Menambah Data</h2>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- Menambah satu user
+INSERT INTO users (name, email, age) 
+VALUES ('John Doe', 'john@example.com', 25);
+
+-- Menambah multiple users
+INSERT INTO users (name, email, age) VALUES
+('Jane Smith', 'jane@example.com', 23),
+('Bob Johnson', 'bob@example.com', 30);</code></pre>
+                </div>
+
+                <h2 id="update">✏️ UPDATE - Mengubah Data</h2>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- Update email user dengan id = 1
+UPDATE users 
+SET email = 'newemail@example.com' 
+WHERE id = 1;
+
+-- Update multiple kolom
+UPDATE users 
+SET name = 'John Smith', age = 26 
+WHERE id = 1;</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>⚠️ Peringatan:</strong> Selalu gunakan WHERE clause saat UPDATE atau DELETE! Jika tidak, semua data akan terubah/terhapus.
+                </div>
+
+                <h2 id="delete">🗑️ DELETE - Menghapus Data</h2>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- Hapus user dengan id = 1
+DELETE FROM users WHERE id = 1;
+
+-- Hapus semua user dengan umur < 18
+DELETE FROM users WHERE age < 18;</code></pre>
+                </div>
+
+                <h2 id="join">🔗 JOIN - Menggabungkan Tabel</h2>
+                <p>JOIN digunakan untuk menggabungkan data dari dua atau lebih tabel berdasarkan relasi.</p>
+
+                <h3>INNER JOIN</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- Menggabungkan tabel users dan orders
+SELECT users.name, orders.product, orders.price
+FROM users
+INNER JOIN orders ON users.id = orders.user_id;</code></pre>
+                </div>
+
+                <h3>LEFT JOIN</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- Ambil semua users, termasuk yang belum punya order
+SELECT users.name, orders.product
+FROM users
+LEFT JOIN orders ON users.id = orders.user_id;</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Tips Belajar SQL:</strong><br>
+                    1. Praktik di SQLite atau MySQL<br>
+                    2. Gunakan platform online seperti SQLBolt atau W3Schools<br>
+                    3. Buat database sendiri untuk latihan<br>
+                    4. Pelajari konsep normalisasi database<br>
+                    5. Pahami perbedaan INNER JOIN, LEFT JOIN, RIGHT JOIN
+                </div>
+
+                <h3>Aggregate Functions</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- Hitung jumlah users
+SELECT COUNT(*) FROM users;
+
+-- Rata-rata umur
+SELECT AVG(age) FROM users;
+
+-- Umur tertua dan termuda
+SELECT MAX(age), MIN(age) FROM users;
+
+-- Total harga orders
+SELECT SUM(price) FROM orders;</code></pre>
+                </div>
+
+                <h3>GROUP BY</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- Hitung jumlah user per kota
+SELECT city, COUNT(*) as total
+FROM users
+GROUP BY city;
+
+-- Total pembelian per user
+SELECT user_id, SUM(price) as total_spent
+FROM orders
+GROUP BY user_id
+ORDER BY total_spent DESC;</code></pre>
+                </div>
+
+                <p><strong>Kesimpulan:</strong> SQL adalah skill fundamental untuk backend developer. Kuasai CRUD operations dan JOIN untuk mengelola database dengan efektif. Praktik adalah kunci!</p>
+            </div>
+
+            <div class="article-navigation">
+                <a href="oop.html" class="nav-article">
+                    <div class="nav-label">← Sebelumnya</div>
+                    <div class="nav-title">Object Oriented Programming</div>
+                </a>
+                <a href="git-github.html" class="nav-article" style="text-align:right">
+                    <div class="nav-label">Selanjutnya →</div>
+                    <div class="nav-title">Git & GitHub Workflow</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk mahasiswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="../../index.html">Beranda</a></li>
+                        <li><a href="../roadmap/index.html">Roadmap</a></li>
+                        <li><a href="index.html">Artikel</a></li>
+                        <li><a href="../kuis/index.html">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>function copyCode(button){const code=button.nextElementSibling.textContent;navigator.clipboard.writeText(code).then(()=>{button.textContent='Copied!';setTimeout(()=>{button.textContent='Copy'},2000)})}</script>
+</body>
+</html>

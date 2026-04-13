@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript ES6 - WikiRPL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .article-detail{padding:2rem 0;min-height:100vh}.article-container{max-width:900px;margin:0 auto;padding:0 1.5rem}.article-header{margin-bottom:2rem}.breadcrumb{display:flex;gap:.5rem;margin-bottom:1.5rem;color:var(--text-secondary-light);font-size:.9rem}.breadcrumb a{color:var(--accent);text-decoration:none}.article-title{font-size:2.5rem;margin-bottom:1rem;line-height:1.2}.article-meta-info{display:flex;gap:1.5rem;flex-wrap:wrap;color:var(--text-secondary-light);margin-bottom:1.5rem}.article-badges{display:flex;gap:.5rem;margin-bottom:1.5rem}.article-content{background-color:var(--bg-secondary-light);padding:3rem;border-radius:12px;border:1px solid var(--border-light);line-height:1.8}.article-content h2{font-size:1.8rem;margin-top:2rem;margin-bottom:1rem;color:var(--accent)}.article-content h3{font-size:1.4rem;margin-top:1.5rem;margin-bottom:.75rem}.article-content p{margin-bottom:1rem}.article-content ul,.article-content ol{margin-left:2rem;margin-bottom:1rem}.article-content li{margin-bottom:.5rem}.code-block{background-color:#1e1e1e;color:#d4d4d4;padding:1.5rem;border-radius:8px;margin:1.5rem 0;position:relative;font-family:'Fira Code',monospace;overflow-x:auto}.copy-btn{position:absolute;top:.5rem;right:.5rem;background-color:var(--accent);color:white;border:none;padding:.5rem 1rem;border-radius:4px;cursor:pointer;font-size:.85rem}.copy-btn:hover{opacity:.8}.info-box{background-color:var(--bg-light);border-left:4px solid var(--accent);padding:1rem 1.5rem;margin:1.5rem 0;border-radius:4px}.toc{background-color:var(--bg-light);padding:1.5rem;border-radius:8px;margin-bottom:2rem;border:1px solid var(--border-light)}.toc h3{margin-bottom:1rem;font-size:1.2rem}.toc ul{list-style:none}.toc li{margin-bottom:.5rem}.toc a{color:var(--text-light);text-decoration:none;transition:color .3s}.toc a:hover{color:var(--accent)}.article-navigation{display:flex;justify-content:space-between;margin-top:3rem;gap:1rem}.nav-article{flex:1;background-color:var(--bg-secondary-light);padding:1.5rem;border-radius:8px;border:2px solid var(--border-light);text-decoration:none;color:var(--text-light);transition:all .3s}.nav-article:hover{border-color:var(--accent);transform:translateY(-2px)}.nav-label{font-size:.85rem;color:var(--text-secondary-light);margin-bottom:.5rem}.nav-title{font-weight:600}@media (max-width:768px){.article-title{font-size:2rem}.article-content{padding:1.5rem}.article-navigation{flex-direction:column}}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo"><i class="fas fa-book-open"></i> WikiRPL</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../roadmap/index.html">Roadmap</a></li>
+                <li><a href="../artikel/index.html">Artikel</a></li>
+                <li><a href="../kuis/index.html">Kuis</a></li>
+                <li><a href="../profil/index.html">Kontributor</a></li>
+                <li><button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button></li>
+            </ul>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="article-detail">
+        <div class="article-container">
+            <div class="breadcrumb">
+                <a href="../../index.html">Beranda</a><span>/</span>
+                <a href="index.html">Artikel</a><span>/</span>
+                <span>JavaScript ES6</span>
+            </div>
+
+            <div class="article-header">
+                <h1 class="article-title">Fitur-Fitur Modern JavaScript ES6+</h1>
+                <div class="article-badges">
+                    <span class="badge badge-category">Pemrograman</span>
+                    <span class="badge badge-level">Menengah</span>
+                </div>
+                <div class="article-meta-info">
+                    <span><i class="far fa-clock"></i> 12 menit baca</span>
+                    <span><i class="far fa-eye"></i> 1.580 views</span>
+                    <span><i class="far fa-calendar"></i> 22 Januari 2024</span>
+                </div>
+            </div>
+
+            <div class="toc">
+                <h3>📑 Daftar Isi</h3>
+                <ul>
+                    <li><a href="#intro">1. Pengenalan ES6</a></li>
+                    <li><a href="#variables">2. Let & Const</a></li>
+                    <li><a href="#arrow">3. Arrow Functions</a></li>
+                    <li><a href="#destructuring">4. Destructuring</a></li>
+                    <li><a href="#spread">5. Spread & Rest Operator</a></li>
+                    <li><a href="#template">6. Template Literals</a></li>
+                    <li><a href="#kesimpulan">7. Kesimpulan</a></li>
+                </ul>
+            </div>
+
+            <div class="article-content">
+                <h2 id="intro">🎯 Pengenalan ES6</h2>
+                <p><strong>ECMAScript 6 (ES6)</strong> atau ES2015 adalah update besar JavaScript yang membawa banyak fitur modern. ES6 membuat kode JavaScript lebih clean, readable, dan powerful.</p>
+
+                <h2 id="variables">📦 Let & Const</h2>
+                <p>ES6 memperkenalkan <code>let</code> dan <code>const</code> sebagai alternatif <code>var</code> dengan block scope.</p>
+
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// var: function scope
+var x = 10;
+if (true) {
+    var x = 20;
+}
+console.log(x); // 20
+
+// let: block scope
+let y = 10;
+if (true) {
+    let y = 20;
+    console.log(y); // 20
+}
+console.log(y); // 10
+
+// const: tidak bisa reassign
+const PI = 3.14;
+// PI = 3.15; // Error!
+
+// tapi object/array bisa dimutasi
+const user = { name: "John" };
+user.name = "Jane"; // OK
+user.age = 25; // OK</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Best Practice:</strong><br>
+                    Gunakan <code>const</code> by default. Gunakan <code>let</code> hanya jika nilai akan berubah. Hindari <code>var</code>.
+                </div>
+
+                <h2 id="arrow">🏹 Arrow Functions</h2>
+                <p>Syntax lebih ringkas untuk menulis function dan memiliki lexical <code>this</code>.</p>
+
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// Traditional function
+function add(a, b) {
+    return a + b;
+}
+
+// Arrow function
+const add = (a, b) => a + b;
+
+// Dengan satu parameter, kurung bisa dihilangkan
+const square = x => x * x;
+
+// Dengan multiple statements
+const greet = name => {
+    const message = `Hello, ${name}!`;
+    return message;
+};
+
+// Lexical this
+const person = {
+    name: "John",
+    hobbies: ["coding", "gaming"],
+    showHobbies() {
+        this.hobbies.forEach(hobby => {
+            console.log(`${this.name} likes ${hobby}`);
+            // 'this' refers to person object
+        });
+    }
+};</code></pre>
+                </div>
+
+                <h2 id="destructuring">📤 Destructuring</h2>
+                <p>Extract values dari array atau object dengan syntax yang clean.</p>
+
+                <h3>Array Destructuring</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// Traditional
+const colors = ["red", "green", "blue"];
+const first = colors[0];
+const second = colors[1];
+
+// Destructuring
+const [first, second, third] = colors;
+
+// Skip elements
+const [, , third] = colors;
+
+// Default values
+const [a, b, c = "yellow"] = ["red", "green"];
+console.log(c); // "yellow"
+
+// Swap variables
+let x = 1, y = 2;
+[x, y] = [y, x];</code></pre>
+                </div>
+
+                <h3>Object Destructuring</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>const user = {
+    name: "John",
+    age: 25,
+    email: "john@example.com"
+};
+
+// Traditional
+const name = user.name;
+const age = user.age;
+
+// Destructuring
+const { name, age, email } = user;
+
+// Rename variables
+const { name: userName, age: userAge } = user;
+
+// Default values
+const { name, country = "Indonesia" } = user;
+
+// Nested destructuring
+const person = {
+    name: "John",
+    address: {
+        city: "Jakarta",
+        country: "Indonesia"
+    }
+};
+const { address: { city, country } } = person;</code></pre>
+                </div>
+
+                <h2 id="spread">🌟 Spread & Rest Operator</h2>
+                
+                <h3>Spread Operator (...)</h3>
+                <p>Expand array atau object.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// Array
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const combined = [...arr1, ...arr2]; // [1,2,3,4,5,6]
+
+// Copy array
+const original = [1, 2, 3];
+const copy = [...original];
+
+// Object
+const user = { name: "John", age: 25 };
+const updatedUser = { ...user, age: 26, city: "Jakarta" };
+
+// Function arguments
+const numbers = [1, 2, 3];
+Math.max(...numbers); // 3</code></pre>
+                </div>
+
+                <h3>Rest Operator (...)</h3>
+                <p>Collect multiple elements menjadi array.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// Function parameters
+function sum(...numbers) {
+    return numbers.reduce((total, num) => total + num, 0);
+}
+sum(1, 2, 3, 4); // 10
+
+// Array destructuring
+const [first, second, ...rest] = [1, 2, 3, 4, 5];
+console.log(rest); // [3, 4, 5]
+
+// Object destructuring
+const { name, ...otherProps } = { 
+    name: "John", 
+    age: 25, 
+    city: "Jakarta" 
+};
+console.log(otherProps); // { age: 25, city: "Jakarta" }</code></pre>
+                </div>
+
+                <h2 id="template">📝 Template Literals</h2>
+                <p>String dengan embedded expressions dan multi-line support.</p>
+
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// Traditional
+const name = "John";
+const greeting = "Hello, " + name + "!";
+
+// Template literals
+const greeting = `Hello, ${name}!`;
+
+// Expressions
+const a = 5, b = 10;
+console.log(`Sum: ${a + b}`); // "Sum: 15"
+
+// Multi-line strings
+const html = `
+    <div>
+        <h1>${name}</h1>
+        <p>Welcome to our site!</p>
+    </div>
+`;
+
+// Tagged templates
+function highlight(strings, ...values) {
+    return strings.reduce((result, str, i) => {
+        return `${result}${str}<strong>${values[i] || ''}</strong>`;
+    }, '');
+}
+const user = "John";
+const message = highlight`Hello ${user}, you have ${5} messages`;
+// "Hello <strong>John</strong>, you have <strong>5</strong> messages"</code></pre>
+                </div>
+
+                <h2>🎁 Fitur ES6 Lainnya</h2>
+
+                <h3>Default Parameters</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>function greet(name = "Guest") {
+    return `Hello, ${name}!`;
+}
+greet(); // "Hello, Guest!"
+greet("John"); // "Hello, John!"</code></pre>
+                </div>
+
+                <h3>Enhanced Object Literals</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>const name = "John";
+const age = 25;
+
+// Shorthand property
+const user = { name, age };
+
+// Method shorthand
+const obj = {
+    greet() {
+        return "Hello!";
+    }
+};
+
+// Computed property names
+const key = "email";
+const user = {
+    [key]: "john@example.com"
+};</code></pre>
+                </div>
+
+                <h2 id="kesimpulan">✨ Kesimpulan</h2>
+                <p>ES6 membawa banyak fitur yang membuat JavaScript lebih modern dan developer-friendly. Fitur-fitur seperti arrow functions, destructuring, spread operator, dan template literals sudah menjadi standar dalam development JavaScript modern. Pelajari dan gunakan fitur-fitur ini untuk menulis kode yang lebih clean dan maintainable!</p>
+            </div>
+
+            <div class="article-navigation">
+                <a href="vscode-tips.html" class="nav-article">
+                    <div class="nav-label">← Sebelumnya</div>
+                    <div class="nav-title">Tips & Trik VS Code</div>
+                </a>
+                <a href="html5-semantik.html" class="nav-article" style="text-align:right">
+                    <div class="nav-label">Selanjutnya →</div>
+                    <div class="nav-title">HTML5 Semantik</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk mahasiswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="../../index.html">Beranda</a></li>
+                        <li><a href="../roadmap/index.html">Roadmap</a></li>
+                        <li><a href="index.html">Artikel</a></li>
+                        <li><a href="../kuis/index.html">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>function copyCode(button){const code=button.nextElementSibling.textContent;navigator.clipboard.writeText(code).then(()=>{button.textContent='Copied!';setTimeout(()=>{button.textContent='Copy'},2000)})}</script>
+</body>
+</html>

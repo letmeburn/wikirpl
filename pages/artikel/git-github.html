@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git & GitHub Workflow - WikiRPL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>.article-detail{padding:2rem 0;min-height:100vh}.article-container{max-width:900px;margin:0 auto;padding:0 1.5rem}.article-header{margin-bottom:2rem}.breadcrumb{display:flex;gap:.5rem;margin-bottom:1.5rem;color:var(--text-secondary-light);font-size:.9rem}.breadcrumb a{color:var(--accent);text-decoration:none}.article-title{font-size:2.5rem;margin-bottom:1rem;line-height:1.2}.article-meta-info{display:flex;gap:1.5rem;flex-wrap:wrap;color:var(--text-secondary-light);margin-bottom:1.5rem}.article-badges{display:flex;gap:.5rem;margin-bottom:1.5rem}.article-content{background-color:var(--bg-secondary-light);padding:3rem;border-radius:12px;border:1px solid var(--border-light);line-height:1.8}.article-content h2{font-size:1.8rem;margin-top:2rem;margin-bottom:1rem;color:var(--accent)}.article-content h3{font-size:1.4rem;margin-top:1.5rem;margin-bottom:.75rem}.article-content p{margin-bottom:1rem}.article-content ul,.article-content ol{margin-left:2rem;margin-bottom:1rem}.article-content li{margin-bottom:.5rem}.code-block{background-color:#1e1e1e;color:#d4d4d4;padding:1.5rem;border-radius:8px;margin:1.5rem 0;position:relative;font-family:'Fira Code',monospace;overflow-x:auto}.copy-btn{position:absolute;top:.5rem;right:.5rem;background-color:var(--accent);color:white;border:none;padding:.5rem 1rem;border-radius:4px;cursor:pointer;font-size:.85rem}.info-box{background-color:var(--bg-light);border-left:4px solid var(--accent);padding:1rem 1.5rem;margin:1.5rem 0;border-radius:4px}.toc{background-color:var(--bg-light);padding:1.5rem;border-radius:8px;margin-bottom:2rem;border:1px solid var(--border-light)}.toc h3{margin-bottom:1rem}.toc ul{list-style:none}.toc li{margin-bottom:.5rem}.toc a{color:var(--text-light);text-decoration:none}.article-navigation{display:flex;justify-content:space-between;margin-top:3rem;gap:1rem}.nav-article{flex:1;background-color:var(--bg-secondary-light);padding:1.5rem;border-radius:8px;border:2px solid var(--border-light);text-decoration:none;color:var(--text-light);transition:all .3s}.nav-label{font-size:.85rem;color:var(--text-secondary-light);margin-bottom:.5rem}.nav-title{font-weight:600}</style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo"><i class="fas fa-book-open"></i> WikiRPL</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../roadmap/index.html">Roadmap</a></li>
+                <li><a href="../artikel/index.html">Artikel</a></li>
+                <li><a href="../kuis/index.html">Kuis</a></li>
+                <li><a href="../profil/index.html">Kontributor</a></li>
+                <li><button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button></li>
+            </ul>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="article-detail">
+        <div class="article-container">
+            <div class="breadcrumb">
+                <a href="../../index.html">Beranda</a><span>/</span>
+                <a href="index.html">Artikel</a><span>/</span>
+                <span>Git & GitHub Workflow</span>
+            </div>
+
+            <div class="article-header">
+                <h1 class="article-title">Git & GitHub Workflow</h1>
+                <div class="article-badges">
+                    <span class="badge badge-category">Tools</span>
+                    <span class="badge badge-level">Pemula</span>
+                </div>
+                <div class="article-meta-info">
+                    <span><i class="far fa-clock"></i> 15 menit baca</span>
+                    <span><i class="far fa-eye"></i> 3.2k views</span>
+                </div>
+            </div>
+
+            <div class="toc">
+                <h3>📑 Daftar Isi</h3>
+                <ul>
+                    <li><a href="#pengertian">1. Apa itu Git?</a></li>
+                    <li><a href="#install">2. Instalasi Git</a></li>
+                    <li><a href="#basic">3. Perintah Dasar Git</a></li>
+                    <li><a href="#github">4. GitHub Workflow</a></li>
+                </ul>
+            </div>
+
+            <div class="article-content">
+                <h2 id="pengertian">🎯 Apa itu Git?</h2>
+                <p><strong>Git</strong> adalah version control system yang memungkinkan kamu melacak perubahan kode, berkolaborasi dengan tim, dan mengelola berbagai versi project.</p>
+
+                <h2 id="install">⚙️ Instalasi Git</h2>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code># Cek apakah Git sudah terinstall
+git --version
+
+# Konfigurasi user
+git config --global user.name "Nama Kamu"
+git config --global user.email "email@example.com"</code></pre>
+                </div>
+
+                <h2 id="basic">📚 Perintah Dasar Git</h2>
+                
+                <h3>1. Inisialisasi Repository</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code># Membuat repository baru
+git init
+
+# Clone repository yang sudah ada
+git clone https://github.com/username/repo.git</code></pre>
+                </div>
+
+                <h3>2. Staging & Commit</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code># Cek status file
+git status
+
+# Tambahkan file ke staging area
+git add filename.txt
+git add .  # Tambahkan semua file
+
+# Commit perubahan
+git commit -m "Pesan commit yang jelas"
+
+# Lihat history commit
+git log
+git log --oneline  # Format ringkas</code></pre>
+                </div>
+
+                <h3>3. Branching</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code># Lihat semua branch
+git branch
+
+# Buat branch baru
+git branch feature-login
+
+# Pindah ke branch
+git checkout feature-login
+
+# Buat dan pindah ke branch baru (shortcut)
+git checkout -b feature-register
+
+# Merge branch
+git checkout main
+git merge feature-login
+
+# Hapus branch
+git branch -d feature-login</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Best Practice Branching:</strong><br>
+                    - main/master: Production code<br>
+                    - develop: Development code<br>
+                    - feature/*: Fitur baru<br>
+                    - bugfix/*: Perbaikan bug<br>
+                    - hotfix/*: Perbaikan urgent di production
+                </div>
+
+                <h2 id="github">🐙 GitHub Workflow</h2>
+                
+                <h3>Push ke GitHub</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code># Tambahkan remote repository
+git remote add origin https://github.com/username/repo.git
+
+# Push ke GitHub
+git push origin main
+
+# Push branch baru
+git push -u origin feature-login</code></pre>
+                </div>
+
+                <h3>Pull & Fetch</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code># Ambil perubahan terbaru
+git pull origin main
+
+# Fetch tanpa merge
+git fetch origin</code></pre>
+                </div>
+
+                <h3>Pull Request Workflow</h3>
+                <ol>
+                    <li>Fork repository</li>
+                    <li>Clone fork ke local</li>
+                    <li>Buat branch baru untuk fitur</li>
+                    <li>Commit perubahan</li>
+                    <li>Push ke fork</li>
+                    <li>Buat Pull Request di GitHub</li>
+                    <li>Tunggu review dan merge</li>
+                </ol>
+
+                <h3>Mengatasi Conflict</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code># Saat terjadi conflict
+# 1. Buka file yang conflict
+# 2. Edit dan pilih versi yang benar
+# 3. Hapus marker conflict (<<<<, ====, >>>>)
+# 4. Add dan commit
+
+git add .
+git commit -m "Resolve conflict"</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>🎯 Tips Git:</strong><br>
+                    ✅ Commit sering dengan pesan yang jelas<br>
+                    ✅ Pull sebelum push untuk menghindari conflict<br>
+                    ✅ Gunakan .gitignore untuk file yang tidak perlu di-track<br>
+                    ✅ Jangan commit file sensitive (password, API key)<br>
+                    ✅ Review code sebelum merge
+                </div>
+
+                <h3>Perintah Berguna Lainnya</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code># Undo perubahan
+git checkout -- filename.txt  # Undo file yang belum di-stage
+git reset HEAD filename.txt   # Unstage file
+git reset --hard HEAD~1       # Undo commit terakhir (HATI-HATI!)
+
+# Stash (simpan perubahan sementara)
+git stash
+git stash pop
+
+# Lihat perbedaan
+git diff
+git diff --staged</code></pre>
+                </div>
+
+                <p><strong>Kesimpulan:</strong> Git adalah tool wajib untuk developer modern. Kuasai basic commands dan workflow untuk kolaborasi yang efektif. Practice makes perfect!</p>
+            </div>
+
+            <div class="article-navigation">
+                <a href="sql-pemula.html" class="nav-article">
+                    <div class="nav-label">← Sebelumnya</div>
+                    <div class="nav-title">SQL untuk Pemula</div>
+                </a>
+                <a href="rest-api.html" class="nav-article" style="text-align:right">
+                    <div class="nav-label">Selanjutnya →</div>
+                    <div class="nav-title">Membuat REST API</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk mahasiswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="../../index.html">Beranda</a></li>
+                        <li><a href="../roadmap/index.html">Roadmap</a></li>
+                        <li><a href="index.html">Artikel</a></li>
+                        <li><a href="../kuis/index.html">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>function copyCode(button){const code=button.nextElementSibling.textContent;navigator.clipboard.writeText(code).then(()=>{button.textContent='Copied!';setTimeout(()=>{button.textContent='Copy'},2000)})}</script>
+</body>
+</html>

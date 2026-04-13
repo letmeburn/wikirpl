@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memahami SDLC - WikiRPL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .article-detail{padding:2rem 0;min-height:100vh}.article-container{max-width:900px;margin:0 auto;padding:0 1.5rem}.article-header{margin-bottom:2rem}.breadcrumb{display:flex;gap:.5rem;margin-bottom:1.5rem;color:var(--text-secondary-light);font-size:.9rem}.breadcrumb a{color:var(--accent);text-decoration:none}.article-title{font-size:2.5rem;margin-bottom:1rem;line-height:1.2}.article-meta-info{display:flex;gap:1.5rem;flex-wrap:wrap;color:var(--text-secondary-light);margin-bottom:1.5rem}.article-badges{display:flex;gap:.5rem;margin-bottom:1.5rem}.article-content{background-color:var(--bg-secondary-light);padding:3rem;border-radius:12px;border:1px solid var(--border-light);line-height:1.8}.article-content h2{font-size:1.8rem;margin-top:2rem;margin-bottom:1rem;color:var(--accent)}.article-content h3{font-size:1.4rem;margin-top:1.5rem;margin-bottom:.75rem}.article-content p{margin-bottom:1rem}.article-content ul,.article-content ol{margin-left:2rem;margin-bottom:1rem}.article-content li{margin-bottom:.5rem}.code-block{background-color:#1e1e1e;color:#d4d4d4;padding:1.5rem;border-radius:8px;margin:1.5rem 0;position:relative;font-family:'Fira Code',monospace;overflow-x:auto}.copy-btn{position:absolute;top:.5rem;right:.5rem;background-color:var(--accent);color:white;border:none;padding:.5rem 1rem;border-radius:4px;cursor:pointer;font-size:.85rem}.copy-btn:hover{opacity:.8}.info-box{background-color:var(--bg-light);border-left:4px solid var(--accent);padding:1rem 1.5rem;margin:1.5rem 0;border-radius:4px}.toc{background-color:var(--bg-light);padding:1.5rem;border-radius:8px;margin-bottom:2rem;border:1px solid var(--border-light)}.toc h3{margin-bottom:1rem;font-size:1.2rem}.toc ul{list-style:none}.toc li{margin-bottom:.5rem}.toc a{color:var(--text-light);text-decoration:none;transition:color .3s}.toc a:hover{color:var(--accent)}.article-navigation{display:flex;justify-content:space-between;margin-top:3rem;gap:1rem}.nav-article{flex:1;background-color:var(--bg-secondary-light);padding:1.5rem;border-radius:8px;border:2px solid var(--border-light);text-decoration:none;color:var(--text-light);transition:all .3s}.nav-article:hover{border-color:var(--accent);transform:translateY(-2px)}.nav-label{font-size:.85rem;color:var(--text-secondary-light);margin-bottom:.5rem}.nav-title{font-weight:600}@media (max-width:768px){.article-title{font-size:2rem}.article-content{padding:1.5rem}.article-navigation{flex-direction:column}}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo"><i class="fas fa-book-open"></i> WikiRPL</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../roadmap/index.html">Roadmap</a></li>
+                <li><a href="../artikel/index.html">Artikel</a></li>
+                <li><a href="../kuis/index.html">Kuis</a></li>
+                <li><a href="../profil/index.html">Kontributor</a></li>
+                <li><button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button></li>
+            </ul>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="article-detail">
+        <div class="article-container">
+            <div class="breadcrumb">
+                <a href="../../index.html">Beranda</a><span>/</span>
+                <a href="index.html">Artikel</a><span>/</span>
+                <span>Memahami SDLC</span>
+            </div>
+
+            <div class="article-header">
+                <h1 class="article-title">Memahami SDLC (Software Development Life Cycle)</h1>
+                <div class="article-badges">
+                    <span class="badge badge-category">Metodologi</span>
+                    <span class="badge badge-level">Pemula</span>
+                </div>
+                <div class="article-meta-info">
+                    <span><i class="far fa-clock"></i> 8 menit baca</span>
+                    <span><i class="far fa-eye"></i> 980 views</span>
+                    <span><i class="far fa-calendar"></i> 18 Januari 2024</span>
+                </div>
+            </div>
+
+            <div class="toc">
+                <h3>📑 Daftar Isi</h3>
+                <ul>
+                    <li><a href="#pengertian">1. Apa itu SDLC?</a></li>
+                    <li><a href="#fase">2. Fase-fase SDLC</a></li>
+                    <li><a href="#model">3. Model SDLC</a></li>
+                    <li><a href="#kesimpulan">4. Kesimpulan</a></li>
+                </ul>
+            </div>
+
+            <div class="article-content">
+                <h2 id="pengertian">🎯 Apa itu SDLC?</h2>
+                <p><strong>Software Development Life Cycle (SDLC)</strong> adalah proses sistematis untuk mengembangkan software berkualitas tinggi. SDLC mendefinisikan tahapan-tahapan yang harus dilalui dari awal hingga akhir pengembangan software.</p>
+
+                <h2 id="fase">📋 Fase-fase SDLC</h2>
+                
+                <h3>1. Planning (Perencanaan)</h3>
+                <p>Menentukan tujuan, scope, dan feasibility proyek. Tim menganalisis apakah proyek layak dikerjakan dari segi teknis, ekonomi, dan operasional.</p>
+                <ul>
+                    <li>Identifikasi masalah yang akan diselesaikan</li>
+                    <li>Estimasi biaya dan waktu</li>
+                    <li>Analisis risiko</li>
+                    <li>Pembentukan tim proyek</li>
+                </ul>
+
+                <h3>2. Requirements Analysis (Analisis Kebutuhan)</h3>
+                <p>Mengumpulkan dan mendokumentasikan kebutuhan sistem dari stakeholder.</p>
+                <ul>
+                    <li>Wawancara dengan user</li>
+                    <li>Membuat dokumen SRS (Software Requirements Specification)</li>
+                    <li>Mendefinisikan functional dan non-functional requirements</li>
+                </ul>
+
+                <h3>3. Design (Perancangan)</h3>
+                <p>Merancang arsitektur sistem, database, dan user interface berdasarkan requirements.</p>
+                <ul>
+                    <li>High-level design (arsitektur sistem)</li>
+                    <li>Low-level design (detail modul)</li>
+                    <li>Database design</li>
+                    <li>UI/UX design</li>
+                </ul>
+
+                <h3>4. Implementation (Implementasi)</h3>
+                <p>Fase coding dimana developer menulis kode program sesuai design.</p>
+
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// Contoh implementasi sederhana
+class User {
+    constructor(name, email) {
+        this.name = name;
+        this.email = email;
+    }
+    
+    getInfo() {
+        return `${this.name} (${this.email})`;
+    }
+}</code></pre>
+                </div>
+
+                <h3>5. Testing (Pengujian)</h3>
+                <p>Menguji software untuk menemukan dan memperbaiki bug.</p>
+                <ul>
+                    <li>Unit Testing</li>
+                    <li>Integration Testing</li>
+                    <li>System Testing</li>
+                    <li>User Acceptance Testing (UAT)</li>
+                </ul>
+
+                <h3>6. Deployment (Peluncuran)</h3>
+                <p>Merilis software ke production environment agar bisa digunakan user.</p>
+
+                <h3>7. Maintenance (Pemeliharaan)</h3>
+                <p>Memperbaiki bug, menambah fitur baru, dan melakukan update setelah deployment.</p>
+
+                <h2 id="model">🔄 Model SDLC</h2>
+                
+                <h3>1. Waterfall Model</h3>
+                <p>Model sequential dimana setiap fase harus selesai sebelum fase berikutnya dimulai.</p>
+                <p><strong>Kelebihan:</strong> Sederhana, mudah dipahami, cocok untuk proyek dengan requirements yang jelas.</p>
+                <p><strong>Kekurangan:</strong> Tidak fleksibel, sulit mengakomodasi perubahan.</p>
+
+                <h3>2. Agile Model</h3>
+                <p>Model iterative dengan siklus development pendek (sprint). Fokus pada kolaborasi dan adaptasi terhadap perubahan.</p>
+                <p><strong>Kelebihan:</strong> Fleksibel, feedback cepat, cocok untuk proyek yang requirements-nya sering berubah.</p>
+
+                <h3>3. Spiral Model</h3>
+                <p>Kombinasi Waterfall dan prototyping dengan fokus pada risk analysis.</p>
+
+                <div class="info-box">
+                    <strong>💡 Tips Memilih Model SDLC:</strong><br>
+                    - Waterfall: Proyek dengan requirements jelas dan stabil<br>
+                    - Agile: Proyek dengan requirements yang dinamis<br>
+                    - Spiral: Proyek besar dengan risiko tinggi
+                </div>
+
+                <h2 id="kesimpulan">✨ Kesimpulan</h2>
+                <p>SDLC adalah framework penting dalam pengembangan software yang memastikan proyek berjalan sistematis dan menghasilkan software berkualitas. Pemilihan model SDLC yang tepat sangat berpengaruh pada kesuksesan proyek.</p>
+            </div>
+
+            <div class="article-navigation">
+                <a href="apa-itu-rpl.html" class="nav-article">
+                    <div class="nav-label">← Sebelumnya</div>
+                    <div class="nav-title">Apa itu RPL?</div>
+                </a>
+                <a href="oop.html" class="nav-article" style="text-align:right">
+                    <div class="nav-label">Selanjutnya →</div>
+                    <div class="nav-title">Object Oriented Programming</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk mahasiswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="../../index.html">Beranda</a></li>
+                        <li><a href="../roadmap/index.html">Roadmap</a></li>
+                        <li><a href="index.html">Artikel</a></li>
+                        <li><a href="../kuis/index.html">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>function copyCode(button){const code=button.nextElementSibling.textContent;navigator.clipboard.writeText(code).then(()=>{button.textContent='Copied!';setTimeout(()=>{button.textContent='Copy'},2000)})}</script>
+</body>
+</html>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Kontributor - WikiRPL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .profil-page {
+            padding: 2rem 0;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, #283593 100%);
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contributors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contributor-card {
+            background-color: var(--bg-secondary-light);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid var(--border-light);
+            transition: all 0.3s;
+        }
+
+        .contributor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-color: var(--accent);
+        }
+
+        .contributor-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .contributor-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contributor-role {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .contributor-bio {
+            color: var(--text-secondary-light);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .contributor-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 1.5rem 0;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary-light);
+        }
+
+        .contributor-social {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--bg-light);
+            border: 2px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .join-section {
+            background-color: var(--bg-secondary-light);
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border-light);
+        }
+
+        .join-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .join-section p {
+            color: var(--text-secondary-light);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contribution-form {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .leaderboard-section {
+            margin-top: 3rem;
+        }
+
+        .leaderboard-table {
+            background-color: var(--bg-secondary-light);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+        }
+
+        .leaderboard-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .leaderboard-table th {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .leaderboard-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .leaderboard-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .leaderboard-table tr:hover {
+            background-color: var(--bg-light);
+        }
+
+        .rank {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .rank.gold {
+            color: #ffd700;
+        }
+
+        .rank.silver {
+            color: #c0c0c0;
+        }
+
+        .rank.bronze {
+            color: #cd7f32;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .contributors-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .leaderboard-table {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">
+                <i class="fas fa-book-open"></i>
+                WikiRPL
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../roadmap/index.html">Roadmap</a></li>
+                <li><a href="../artikel/index.html">Artikel</a></li>
+                <li><a href="../kuis/index.html">Kuis</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li>
+                    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>👥 Kontributor WikiRPL</h1>
+        <p>Orang-orang hebat di balik WikiRPL</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="profil-page">
+        <div class="container">
+            <!-- Contributors Grid -->
+            <h2 style="text-align: center; margin-bottom: 2rem;">Kontributor</h2>
+            <div class="contributors-grid">
+                <div class="contributor-card">
+                    <div class="contributor-avatar" style="background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); overflow: hidden;">
+                        <img src="../../assets/images/profile.jpeg" alt="Arshavin Bintang Wibowo" 
+                             style="width: 100%; height: 100%; object-fit: cover;"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-user\' style=\'font-size: 3rem; color: white;\'></i>'">
+                    </div>
+                    <div class="contributor-name">Arshavin Bintang Wibowo</div>
+                    <div class="contributor-role">Founder & Full Stack Developer</div>
+                    <div class="contributor-bio">
+                        Siswa RPL yang passionate dalam web development dan open source. Memulai WikiRPL untuk membantu teman-teman belajar pemrograman.
+                    </div>
+                    <div class="contributor-stats">
+                        <div class="stat">
+                            <div class="stat-number">18</div>
+                            <div class="stat-label">Artikel</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">150</div>
+                            <div class="stat-label">Kontribusi</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">3.5k</div>
+                            <div class="stat-label">Poin</div>
+                        </div>
+                    </div>
+                    <div class="contributor-social">
+                        <a href="https://github.com/letmeburn" target="_blank" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://instagram.com/vinooril" target="_blank" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leaderboard -->
+            <div class="leaderboard-section">
+                <h2 style="text-align: center; margin-bottom: 2rem;">🏆 Leaderboard Kontributor</h2>
+                <div class="leaderboard-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Nama</th>
+                                <th>Artikel</th>
+                                <th>Kontribusi</th>
+                                <th>Poin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="rank gold">🥇 1</span></td>
+                                <td>Arshavin Bintang Wibowo</td>
+                                <td>18</td>
+                                <td>150</td>
+                                <td>3,500</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Join Section -->
+            <div class="join-section" style="margin-top: 3rem;">
+                <h2>🚀 Bergabung Sebagai Kontributor</h2>
+                <p>Ingin berkontribusi di WikiRPL? Isi form di bawah ini dan mulai berbagi pengetahuanmu dengan ribuan learner lainnya!</p>
+                
+                <form class="contribution-form" id="contributionForm">
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap *</label>
+                        <input type="text" id="name" required placeholder="Masukkan nama lengkap">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" required placeholder="email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="role">Ingin Berkontribusi Sebagai *</label>
+                        <select id="role" required>
+                            <option value="">Pilih peran</option>
+                            <option value="writer">Content Writer</option>
+                            <option value="developer">Developer</option>
+                            <option value="designer">Designer</option>
+                            <option value="reviewer">Reviewer</option>
+                            <option value="translator">Translator</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">Pengalaman & Keahlian</label>
+                        <textarea id="experience" placeholder="Ceritakan tentang pengalaman dan keahlianmu..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="github">GitHub Profile (opsional)</label>
+                        <input type="url" id="github" placeholder="https://github.com/username">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="motivation">Mengapa Ingin Bergabung?</label>
+                        <textarea id="motivation" placeholder="Ceritakan motivasimu..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Kirim Aplikasi</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk siswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="../../index.html">Beranda</a></li>
+                        <li><a href="../roadmap/index.html">Roadmap</a></li>
+                        <li><a href="index.html">Artikel</a></li>
+                        <li><a href="../kuis/index.html">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        // Form submission dengan auto email
+        document.getElementById('contributionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const role = document.getElementById('role').value;
+            const experience = document.getElementById('experience').value;
+            const github = document.getElementById('github').value;
+            const motivation = document.getElementById('motivation').value;
+            
+            // Mapping role ke bahasa Indonesia
+            const roleMap = {
+                'writer': 'Content Writer',
+                'developer': 'Developer',
+                'designer': 'Designer',
+                'reviewer': 'Reviewer',
+                'translator': 'Translator'
+            };
+            
+            // Template email yang rapi
+            const subject = `[WikiRPL] Aplikasi Kontributor - ${name}`;
+            const body = `
+==============================================
+📝 APLIKASI KONTRIBUTOR WIKIRPL
+==============================================
+
+👤 INFORMASI PRIBADI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Nama Lengkap    : ${name}
+Email           : ${email}
+Peran           : ${roleMap[role] || role}
+
+💼 PENGALAMAN & KEAHLIAN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+${experience || 'Tidak diisi'}
+
+🔗 GITHUB PROFILE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+${github || 'Tidak diisi'}
+
+💡 MOTIVASI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+${motivation || 'Tidak diisi'}
+
+==============================================
+Dikirim pada: ${new Date().toLocaleString('id-ID', { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+})}
+==============================================
+            `.trim();
+            
+            // Buat mailto link dengan template
+            const mailtoLink = `mailto:arsavinbintang@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Buka email client
+            window.location.href = mailtoLink;
+            
+            // Simpan ke localStorage sebagai backup
+            const submissions = JSON.parse(localStorage.getItem('contributorSubmissions') || '[]');
+            submissions.push({
+                name,
+                email,
+                role,
+                experience,
+                github,
+                motivation,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('contributorSubmissions', JSON.stringify(submissions));
+            
+            // Notifikasi
+            setTimeout(() => {
+                alert('✅ Email client telah dibuka!\n\nSilakan kirim email yang sudah terisi otomatis.\n\nData juga telah disimpan sebagai backup di browser.');
+                this.reset();
+            }, 500);
+        });
+    </script>
+</body>
+</html>

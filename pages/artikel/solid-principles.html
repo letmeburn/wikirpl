@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOLID Principles - WikiRPL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .article-detail{padding:2rem 0;min-height:100vh}.article-container{max-width:900px;margin:0 auto;padding:0 1.5rem}.article-header{margin-bottom:2rem}.breadcrumb{display:flex;gap:.5rem;margin-bottom:1.5rem;color:var(--text-secondary-light);font-size:.9rem}.breadcrumb a{color:var(--accent);text-decoration:none}.article-title{font-size:2.5rem;margin-bottom:1rem;line-height:1.2}.article-meta-info{display:flex;gap:1.5rem;flex-wrap:wrap;color:var(--text-secondary-light);margin-bottom:1.5rem}.article-badges{display:flex;gap:.5rem;margin-bottom:1.5rem}.article-content{background-color:var(--bg-secondary-light);padding:3rem;border-radius:12px;border:1px solid var(--border-light);line-height:1.8}.article-content h2{font-size:1.8rem;margin-top:2rem;margin-bottom:1rem;color:var(--accent)}.article-content h3{font-size:1.4rem;margin-top:1.5rem;margin-bottom:.75rem}.article-content p{margin-bottom:1rem}.article-content ul,.article-content ol{margin-left:2rem;margin-bottom:1rem}.article-content li{margin-bottom:.5rem}.code-block{background-color:#1e1e1e;color:#d4d4d4;padding:1.5rem;border-radius:8px;margin:1.5rem 0;position:relative;font-family:'Fira Code',monospace;overflow-x:auto}.copy-btn{position:absolute;top:.5rem;right:.5rem;background-color:var(--accent);color:white;border:none;padding:.5rem 1rem;border-radius:4px;cursor:pointer;font-size:.85rem}.copy-btn:hover{opacity:.8}.info-box{background-color:var(--bg-light);border-left:4px solid var(--accent);padding:1rem 1.5rem;margin:1.5rem 0;border-radius:4px}.toc{background-color:var(--bg-light);padding:1.5rem;border-radius:8px;margin-bottom:2rem;border:1px solid var(--border-light)}.toc h3{margin-bottom:1rem;font-size:1.2rem}.toc ul{list-style:none}.toc li{margin-bottom:.5rem}.toc a{color:var(--text-light);text-decoration:none;transition:color .3s}.toc a:hover{color:var(--accent)}.article-navigation{display:flex;justify-content:space-between;margin-top:3rem;gap:1rem}.nav-article{flex:1;background-color:var(--bg-secondary-light);padding:1.5rem;border-radius:8px;border:2px solid var(--border-light);text-decoration:none;color:var(--text-light);transition:all .3s}.nav-article:hover{border-color:var(--accent);transform:translateY(-2px)}.nav-label{font-size:.85rem;color:var(--text-secondary-light);margin-bottom:.5rem}.nav-title{font-weight:600}@media (max-width:768px){.article-title{font-size:2rem}.article-content{padding:1.5rem}.article-navigation{flex-direction:column}}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo"><i class="fas fa-book-open"></i> WikiRPL</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../roadmap/index.html">Roadmap</a></li>
+                <li><a href="../artikel/index.html">Artikel</a></li>
+                <li><a href="../kuis/index.html">Kuis</a></li>
+                <li><a href="../profil/index.html">Kontributor</a></li>
+                <li><button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button></li>
+            </ul>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="article-detail">
+        <div class="article-container">
+            <div class="breadcrumb">
+                <a href="../../index.html">Beranda</a><span>/</span>
+                <a href="index.html">Artikel</a><span>/</span>
+                <span>SOLID Principles</span>
+            </div>
+
+            <div class="article-header">
+                <h1 class="article-title">SOLID Principles: Fondasi OOP yang Baik</h1>
+                <div class="article-badges">
+                    <span class="badge badge-category">Software Design</span>
+                    <span class="badge badge-level">Menengah</span>
+                </div>
+                <div class="article-meta-info">
+                    <span><i class="far fa-clock"></i> 16 menit baca</span>
+                    <span><i class="far fa-eye"></i> 1.920 views</span>
+                    <span><i class="far fa-calendar"></i> 1 Februari 2024</span>
+                </div>
+            </div>
+
+            <div class="toc">
+                <h3>📑 Daftar Isi</h3>
+                <ul>
+                    <li><a href="#intro">1. Apa itu SOLID?</a></li>
+                    <li><a href="#srp">2. Single Responsibility Principle</a></li>
+                    <li><a href="#ocp">3. Open/Closed Principle</a></li>
+                    <li><a href="#lsp">4. Liskov Substitution Principle</a></li>
+                    <li><a href="#isp">5. Interface Segregation Principle</a></li>
+                    <li><a href="#dip">6. Dependency Inversion Principle</a></li>
+                    <li><a href="#kesimpulan">7. Kesimpulan</a></li>
+                </ul>
+            </div>
+
+            <div class="article-content">
+                <h2 id="intro">🎯 Apa itu SOLID?</h2>
+                <p><strong>SOLID</strong> adalah akronim untuk 5 prinsip desain OOP yang diperkenalkan oleh Robert C. Martin (Uncle Bob). Prinsip-prinsip ini membantu membuat kode yang lebih maintainable, scalable, dan testable.</p>
+
+                <ul>
+                    <li><strong>S</strong> - Single Responsibility Principle</li>
+                    <li><strong>O</strong> - Open/Closed Principle</li>
+                    <li><strong>L</strong> - Liskov Substitution Principle</li>
+                    <li><strong>I</strong> - Interface Segregation Principle</li>
+                    <li><strong>D</strong> - Dependency Inversion Principle</li>
+                </ul>
+
+                <h2 id="srp">1️⃣ Single Responsibility Principle (SRP)</h2>
+                <p><strong>"A class should have one, and only one, reason to change."</strong></p>
+                <p>Setiap class harus memiliki satu tanggung jawab atau satu alasan untuk berubah.</p>
+
+                <h3>❌ Pelanggaran SRP</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// SALAH: Class ini punya terlalu banyak tanggung jawab
+class User {
+    constructor(name, email) {
+        this.name = name;
+        this.email = email;
+    }
+
+    // Tanggung jawab 1: User data
+    getName() {
+        return this.name;
+    }
+
+    // Tanggung jawab 2: Database operations
+    save() {
+        // Save to database
+        console.log('Saving user to database...');
+    }
+
+    // Tanggung jawab 3: Email operations
+    sendEmail(message) {
+        // Send email
+        console.log(`Sending email to ${this.email}`);
+    }
+
+    // Tanggung jawab 4: Validation
+    validate() {
+        // Validate user data
+        return this.email.includes('@');
+    }
+}</code></pre>
+                </div>
+
+                <h3>✅ Mengikuti SRP</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// BENAR: Pisahkan tanggung jawab ke class berbeda
+class User {
+    constructor(name, email) {
+        this.name = name;
+        this.email = email;
+    }
+
+    getName() {
+        return this.name;
+    }
+
+    getEmail() {
+        return this.email;
+    }
+}
+
+class UserRepository {
+    save(user) {
+        console.log('Saving user to database...');
+    }
+
+    find(id) {
+        // Find user by id
+    }
+}
+
+class EmailService {
+    send(email, message) {
+        console.log(`Sending email to ${email}`);
+    }
+}
+
+class UserValidator {
+    validate(user) {
+        return user.getEmail().includes('@');
+    }
+}</code></pre>
+                </div>
+
+                <h2 id="ocp">2️⃣ Open/Closed Principle (OCP)</h2>
+                <p><strong>"Software entities should be open for extension, but closed for modification."</strong></p>
+                <p>Class harus bisa di-extend tanpa memodifikasi kode yang sudah ada.</p>
+
+                <h3>❌ Pelanggaran OCP</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// SALAH: Harus modify class setiap tambah shape baru
+class AreaCalculator {
+    calculate(shapes) {
+        let area = 0;
+        for (let shape of shapes) {
+            if (shape.type === 'circle') {
+                area += Math.PI * shape.radius ** 2;
+            } else if (shape.type === 'rectangle') {
+                area += shape.width * shape.height;
+            }
+            // Harus tambah if-else untuk shape baru!
+        }
+        return area;
+    }
+}</code></pre>
+                </div>
+
+                <h3>✅ Mengikuti OCP</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// BENAR: Gunakan polymorphism
+class Shape {
+    area() {
+        throw new Error('Method must be implemented');
+    }
+}
+
+class Circle extends Shape {
+    constructor(radius) {
+        super();
+        this.radius = radius;
+    }
+
+    area() {
+        return Math.PI * this.radius ** 2;
+    }
+}
+
+class Rectangle extends Shape {
+    constructor(width, height) {
+        super();
+        this.width = width;
+        this.height = height;
+    }
+
+    area() {
+        return this.width * this.height;
+    }
+}
+
+// Tambah shape baru tanpa modify AreaCalculator
+class Triangle extends Shape {
+    constructor(base, height) {
+        super();
+        this.base = base;
+        this.height = height;
+    }
+
+    area() {
+        return 0.5 * this.base * this.height;
+    }
+}
+
+class AreaCalculator {
+    calculate(shapes) {
+        return shapes.reduce((total, shape) => total + shape.area(), 0);
+    }
+}</code></pre>
+                </div>
+
+                <h2 id="lsp">3️⃣ Liskov Substitution Principle (LSP)</h2>
+                <p><strong>"Objects of a superclass should be replaceable with objects of a subclass without breaking the application."</strong></p>
+                <p>Subclass harus bisa menggantikan parent class tanpa mengubah behavior program.</p>
+
+                <h3>❌ Pelanggaran LSP</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// SALAH: Square mengubah behavior Rectangle
+class Rectangle {
+    setWidth(width) {
+        this.width = width;
+    }
+
+    setHeight(height) {
+        this.height = height;
+    }
+
+    area() {
+        return this.width * this.height;
+    }
+}
+
+class Square extends Rectangle {
+    setWidth(width) {
+        this.width = width;
+        this.height = width; // Mengubah behavior!
+    }
+
+    setHeight(height) {
+        this.width = height;
+        this.height = height; // Mengubah behavior!
+    }
+}
+
+// Problem:
+const rect = new Rectangle();
+rect.setWidth(5);
+rect.setHeight(10);
+console.log(rect.area()); // 50
+
+const square = new Square();
+square.setWidth(5);
+square.setHeight(10);
+console.log(square.area()); // 100 (unexpected!)</code></pre>
+                </div>
+
+                <h3>✅ Mengikuti LSP</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// BENAR: Pisahkan hierarchy
+class Shape {
+    area() {
+        throw new Error('Method must be implemented');
+    }
+}
+
+class Rectangle extends Shape {
+    constructor(width, height) {
+        super();
+        this.width = width;
+        this.height = height;
+    }
+
+    area() {
+        return this.width * this.height;
+    }
+}
+
+class Square extends Shape {
+    constructor(side) {
+        super();
+        this.side = side;
+    }
+
+    area() {
+        return this.side ** 2;
+    }
+}</code></pre>
+                </div>
+
+                <h2 id="isp">4️⃣ Interface Segregation Principle (ISP)</h2>
+                <p><strong>"Clients should not be forced to depend on interfaces they don't use."</strong></p>
+                <p>Lebih baik banyak interface spesifik daripada satu interface general.</p>
+
+                <h3>❌ Pelanggaran ISP</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// SALAH: Interface terlalu besar
+class Worker {
+    work() {}
+    eat() {}
+    sleep() {}
+}
+
+class Human extends Worker {
+    work() { console.log('Working...'); }
+    eat() { console.log('Eating...'); }
+    sleep() { console.log('Sleeping...'); }
+}
+
+class Robot extends Worker {
+    work() { console.log('Working...'); }
+    eat() { throw new Error('Robots don\'t eat!'); }
+    sleep() { throw new Error('Robots don\'t sleep!'); }
+}</code></pre>
+                </div>
+
+                <h3>✅ Mengikuti ISP</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// BENAR: Pisahkan interface
+class Workable {
+    work() {
+        throw new Error('Method must be implemented');
+    }
+}
+
+class Eatable {
+    eat() {
+        throw new Error('Method must be implemented');
+    }
+}
+
+class Sleepable {
+    sleep() {
+        throw new Error('Method must be implemented');
+    }
+}
+
+class Human extends Workable {
+    work() { console.log('Working...'); }
+}
+
+// Human juga bisa implement Eatable dan Sleepable
+class HumanWithNeeds {
+    constructor() {
+        this.workable = new Workable();
+        this.eatable = new Eatable();
+        this.sleepable = new Sleepable();
+    }
+}
+
+class Robot extends Workable {
+    work() { console.log('Working...'); }
+    // Robot tidak perlu implement eat() dan sleep()
+}</code></pre>
+                </div>
+
+                <h2 id="dip">5️⃣ Dependency Inversion Principle (DIP)</h2>
+                <p><strong>"High-level modules should not depend on low-level modules. Both should depend on abstractions."</strong></p>
+                <p>Depend on abstractions (interfaces), bukan concrete implementations.</p>
+
+                <h3>❌ Pelanggaran DIP</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// SALAH: High-level depend pada low-level
+class MySQLDatabase {
+    save(data) {
+        console.log('Saving to MySQL...');
+    }
+}
+
+class UserService {
+    constructor() {
+        this.database = new MySQLDatabase(); // Tight coupling!
+    }
+
+    saveUser(user) {
+        this.database.save(user);
+    }
+}
+
+// Sulit untuk switch ke database lain!</code></pre>
+                </div>
+
+                <h3>✅ Mengikuti DIP</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// BENAR: Depend pada abstraction
+class Database {
+    save(data) {
+        throw new Error('Method must be implemented');
+    }
+}
+
+class MySQLDatabase extends Database {
+    save(data) {
+        console.log('Saving to MySQL...');
+    }
+}
+
+class MongoDatabase extends Database {
+    save(data) {
+        console.log('Saving to MongoDB...');
+    }
+}
+
+class UserService {
+    constructor(database) {
+        this.database = database; // Dependency injection
+    }
+
+    saveUser(user) {
+        this.database.save(user);
+    }
+}
+
+// Mudah switch database
+const mysqlService = new UserService(new MySQLDatabase());
+const mongoService = new UserService(new MongoDatabase());</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Manfaat SOLID:</strong><br>
+                    - Kode lebih maintainable dan readable<br>
+                    - Mudah untuk testing (testable)<br>
+                    - Fleksibel untuk perubahan<br>
+                    - Mengurangi coupling antar components<br>
+                    - Meningkatkan reusability
+                </div>
+
+                <h2 id="kesimpulan">✨ Kesimpulan</h2>
+                <p>SOLID principles adalah fondasi penting untuk menulis kode OOP yang baik. Meskipun awalnya terlihat kompleks, prinsip-prinsip ini akan membuat kode Anda lebih maintainable dan scalable dalam jangka panjang. Praktikkan SOLID dalam setiap project untuk menjadi developer yang lebih baik!</p>
+            </div>
+
+            <div class="article-navigation">
+                <a href="nosql-vs-sql.html" class="nav-article">
+                    <div class="nav-label">← Sebelumnya</div>
+                    <div class="nav-title">NoSQL vs SQL</div>
+                </a>
+                <a href="design-patterns.html" class="nav-article" style="text-align:right">
+                    <div class="nav-label">Selanjutnya →</div>
+                    <div class="nav-title">Design Patterns</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk mahasiswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="../../index.html">Beranda</a></li>
+                        <li><a href="../roadmap/index.html">Roadmap</a></li>
+                        <li><a href="index.html">Artikel</a></li>
+                        <li><a href="../kuis/index.html">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>function copyCode(button){const code=button.nextElementSibling.textContent;navigator.clipboard.writeText(code).then(()=>{button.textContent='Copied!';setTimeout(()=>{button.textContent='Copy'},2000)})}</script>
+</body>
+</html>

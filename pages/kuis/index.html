@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis - WikiRPL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .kuis-page {
+            padding: 2rem 0;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, #283593 100%);
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .quiz-card {
+            background-color: var(--bg-secondary-light);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 2px solid var(--border-light);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .quiz-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-color: var(--accent);
+        }
+
+        .quiz-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .quiz-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .quiz-meta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            color: var(--text-secondary-light);
+            font-size: 0.9rem;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .quiz-container.active {
+            display: block;
+        }
+
+        .quiz-header {
+            background-color: var(--bg-secondary-light);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .quiz-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background-color: var(--border-light);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            transition: width 0.3s ease;
+        }
+
+        .question-card {
+            background-color: var(--bg-secondary-light);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .question-number {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .question-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .option {
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background-color: var(--bg-light);
+        }
+
+        .option:hover {
+            border-color: var(--accent);
+            background-color: var(--bg-secondary-light);
+        }
+
+        .option.selected {
+            border-color: var(--accent);
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .option.correct {
+            border-color: #4caf50;
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .option.wrong {
+            border-color: #f44336;
+            background-color: #f44336;
+            color: white;
+        }
+
+        .option.disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .explanation {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: var(--bg-light);
+            border-left: 4px solid var(--accent);
+            border-radius: 4px;
+            display: none;
+        }
+
+        .explanation.show {
+            display: block;
+        }
+
+        .quiz-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .btn-quiz {
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-secondary-light);
+            color: var(--text-light);
+            border: 2px solid var(--border-light);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, var(--primary) 0%, #3949ab 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            display: none;
+        }
+
+        .result-card.show {
+            display: block;
+        }
+
+        .result-score {
+            font-size: 4rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .result-message {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .result-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-box {
+            background-color: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .result-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .quiz-selection {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">
+                <i class="fas fa-book-open"></i>
+                WikiRPL
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../roadmap/index.html">Roadmap</a></li>
+                <li><a href="../artikel/index.html">Artikel</a></li>
+                <li><a href="../kuis/index.html">Kuis</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li>
+                    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>🧪 Kuis Interaktif</h1>
+        <p>Uji pemahamanmu dengan kuis per topik</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="kuis-page">
+        <div class="container">
+            <!-- Quiz Selection -->
+            <div class="quiz-selection" id="quizSelection">
+                <div class="quiz-card" data-quiz="dasar-rpl">
+                    <div class="quiz-icon"><i class="fas fa-book"></i></div>
+                    <h3>Dasar RPL</h3>
+                    <p>Uji pemahaman tentang konsep dasar Rekayasa Perangkat Lunak</p>
+                    <div class="quiz-meta">
+                        <span><i class="fas fa-question-circle"></i> 10 soal</span>
+                        <span><i class="far fa-clock"></i> 15 menit</span>
+                    </div>
+                </div>
+
+                <div class="quiz-card" data-quiz="algoritma">
+                    <div class="quiz-icon"><i class="fas fa-sitemap"></i></div>
+                    <h3>Algoritma</h3>
+                    <p>Tes kemampuan logika dan pemahaman algoritma dasar</p>
+                    <div class="quiz-meta">
+                        <span><i class="fas fa-question-circle"></i> 10 soal</span>
+                        <span><i class="far fa-clock"></i> 15 menit</span>
+                    </div>
+                </div>
+
+                <div class="quiz-card" data-quiz="oop">
+                    <div class="quiz-icon"><i class="fas fa-cubes"></i></div>
+                    <h3>OOP</h3>
+                    <p>Kuis tentang Object Oriented Programming dan konsepnya</p>
+                    <div class="quiz-meta">
+                        <span><i class="fas fa-question-circle"></i> 10 soal</span>
+                        <span><i class="far fa-clock"></i> 15 menit</span>
+                    </div>
+                </div>
+
+                <div class="quiz-card" data-quiz="database">
+                    <div class="quiz-icon"><i class="fas fa-database"></i></div>
+                    <h3>Database & SQL</h3>
+                    <p>Uji pengetahuan tentang database dan query SQL</p>
+                    <div class="quiz-meta">
+                        <span><i class="fas fa-question-circle"></i> 10 soal</span>
+                        <span><i class="far fa-clock"></i> 15 menit</span>
+                    </div>
+                </div>
+
+                <div class="quiz-card" data-quiz="web">
+                    <div class="quiz-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Web Development</h3>
+                    <p>Tes pemahaman HTML, CSS, dan JavaScript</p>
+                    <div class="quiz-meta">
+                        <span><i class="fas fa-question-circle"></i> 10 soal</span>
+                        <span><i class="far fa-clock"></i> 15 menit</span>
+                    </div>
+                </div>
+
+                <div class="quiz-card" data-quiz="git">
+                    <div class="quiz-icon"><i class="fab fa-git-alt"></i></div>
+                    <h3>Git & Version Control</h3>
+                    <p>Kuis tentang Git workflow dan version control</p>
+                    <div class="quiz-meta">
+                        <span><i class="fas fa-question-circle"></i> 10 soal</span>
+                        <span><i class="far fa-clock"></i> 15 menit</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Container -->
+            <div class="quiz-container" id="quizContainer">
+                <div class="quiz-header">
+                    <h2 id="quizTitle">Kuis Dasar RPL</h2>
+                    <div class="quiz-progress">
+                        <span>Pertanyaan <span id="currentQuestion">1</span> dari <span id="totalQuestions">10</span></span>
+                        <span>Skor: <span id="currentScore">0</span></span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="quizProgress" style="width: 10%"></div>
+                    </div>
+                </div>
+
+                <div class="question-card" id="questionCard">
+                    <!-- Question will be loaded here -->
+                </div>
+
+                <div class="quiz-actions">
+                    <button class="btn-quiz btn-secondary" id="backBtn">Kembali</button>
+                    <button class="btn-quiz btn-primary" id="nextBtn">Lanjut</button>
+                </div>
+
+                <!-- Result Card -->
+                <div class="result-card" id="resultCard">
+                    <h2>🎉 Kuis Selesai!</h2>
+                    <div class="result-score" id="finalScore">80%</div>
+                    <div class="result-message" id="resultMessage">Bagus! Kamu sudah memahami materi dengan baik</div>
+                    <div class="result-stats">
+                        <div class="stat-box">
+                            <div class="stat-number" id="correctAnswers">8</div>
+                            <div class="stat-label">Benar</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number" id="wrongAnswers">2</div>
+                            <div class="stat-label">Salah</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number" id="finalPercentage">80%</div>
+                            <div class="stat-label">Persentase</div>
+                        </div>
+                    </div>
+                    <div class="quiz-actions">
+                        <button class="btn-quiz btn-secondary" id="reviewBtn">Review Jawaban</button>
+                        <button class="btn-quiz btn-primary" id="retryBtn">Coba Lagi</button>
+                        <button class="btn-quiz btn-secondary" id="backToListBtn">Pilih Kuis Lain</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk mahasiswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="../../index.html">Beranda</a></li>
+                        <li><a href="../roadmap/index.html">Roadmap</a></li>
+                        <li><a href="index.html">Artikel</a></li>
+                        <li><a href="../kuis/index.html">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        // Quiz data
+        const quizData = {
+            'dasar-rpl': {
+                title: 'Kuis Dasar RPL',
+                questions: [
+                    {
+                        question: 'Apa kepanjangan dari RPL?',
+                        options: ['Rekayasa Perangkat Lunak', 'Rancang Perangkat Lunak', 'Riset Perangkat Lunak', 'Reparasi Perangkat Lunak'],
+                        correct: 0,
+                        explanation: 'RPL adalah singkatan dari Rekayasa Perangkat Lunak (Software Engineering), yaitu disiplin ilmu yang mempelajari pengembangan software secara sistematis.'
+                    },
+                    {
+                        question: 'Apa tujuan utama dari SDLC?',
+                        options: ['Membuat kode lebih cepat', 'Mengatur proses pengembangan software secara sistematis', 'Mengurangi biaya hardware', 'Meningkatkan kecepatan komputer'],
+                        correct: 1,
+                        explanation: 'SDLC (Software Development Life Cycle) bertujuan untuk mengatur proses pengembangan software secara sistematis dari perencanaan hingga maintenance.'
+                    },
+                    {
+                        question: 'Metodologi Agile menekankan pada?',
+                        options: ['Dokumentasi lengkap', 'Iterasi dan feedback cepat', 'Perencanaan detail di awal', 'Proses yang kaku'],
+                        correct: 1,
+                        explanation: 'Agile menekankan pada iterasi cepat, feedback berkelanjutan, dan adaptasi terhadap perubahan kebutuhan.'
+                    },
+                    {
+                        question: 'Apa yang dimaksud dengan requirement analysis?',
+                        options: ['Menulis kode program', 'Mengidentifikasi kebutuhan sistem', 'Testing aplikasi', 'Deploy ke server'],
+                        correct: 1,
+                        explanation: 'Requirement analysis adalah tahap mengidentifikasi dan mendokumentasikan kebutuhan sistem dari stakeholder.'
+                    },
+                    {
+                        question: 'UML adalah singkatan dari?',
+                        options: ['Universal Modeling Language', 'Unified Modeling Language', 'User Modeling Language', 'Unique Modeling Language'],
+                        correct: 1,
+                        explanation: 'UML (Unified Modeling Language) adalah bahasa standar untuk visualisasi, spesifikasi, dan dokumentasi sistem software.'
+                    },
+                    {
+                        question: 'Apa perbedaan utama Waterfall dan Agile?',
+                        options: ['Waterfall lebih cepat', 'Waterfall sequential, Agile iterative', 'Agile tidak butuh testing', 'Tidak ada perbedaan'],
+                        correct: 1,
+                        explanation: 'Waterfall bersifat sequential (berurutan), sedangkan Agile bersifat iterative (berulang) dengan siklus pengembangan pendek.'
+                    },
+                    {
+                        question: 'Apa fungsi dari version control?',
+                        options: ['Mempercepat komputer', 'Mengelola perubahan kode', 'Membuat UI lebih bagus', 'Mengurangi bug'],
+                        correct: 1,
+                        explanation: 'Version control berfungsi untuk mengelola dan melacak perubahan kode, memudahkan kolaborasi dan rollback jika diperlukan.'
+                    },
+                    {
+                        question: 'Apa yang dimaksud dengan software maintenance?',
+                        options: ['Membuat software baru', 'Memperbaiki dan update software setelah deployment', 'Menghapus software lama', 'Backup data'],
+                        correct: 1,
+                        explanation: 'Software maintenance adalah proses memperbaiki bug, menambah fitur, dan mengupdate software setelah di-deploy.'
+                    },
+                    {
+                        question: 'Apa tujuan dari testing?',
+                        options: ['Membuat kode lebih panjang', 'Menemukan dan memperbaiki bug', 'Memperlambat development', 'Menambah fitur'],
+                        correct: 1,
+                        explanation: 'Testing bertujuan untuk menemukan bug dan memastikan software berfungsi sesuai requirement sebelum di-deploy.'
+                    },
+                    {
+                        question: 'Apa yang dimaksud dengan deployment?',
+                        options: ['Menulis kode', 'Merilis software ke production', 'Membuat dokumentasi', 'Testing aplikasi'],
+                        correct: 1,
+                        explanation: 'Deployment adalah proses merilis dan menginstal software ke environment production agar bisa digunakan user.'
+                    }
+                ]
+            }
+        };
+
+        let currentQuiz = null;
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answers = [];
+
+        // Quiz selection
+        document.querySelectorAll('.quiz-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const quizId = card.dataset.quiz;
+                startQuiz(quizId);
+            });
+        });
+
+        function startQuiz(quizId) {
+            currentQuiz = quizData[quizId] || quizData['dasar-rpl'];
+            currentQuestionIndex = 0;
+            score = 0;
+            answers = [];
+            
+            document.getElementById('quizSelection').style.display = 'none';
+            document.getElementById('quizContainer').classList.add('active');
+            document.getElementById('resultCard').classList.remove('show');
+            document.getElementById('questionCard').style.display = 'block';
+            
+            document.getElementById('quizTitle').textContent = currentQuiz.title;
+            document.getElementById('totalQuestions').textContent = currentQuiz.questions.length;
+            
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const question = currentQuiz.questions[currentQuestionIndex];
+            const questionCard = document.getElementById('questionCard');
+            
+            document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+            document.getElementById('currentScore').textContent = score;
+            
+            const progress = ((currentQuestionIndex + 1) / currentQuiz.questions.length) * 100;
+            document.getElementById('quizProgress').style.width = progress + '%';
+            
+            questionCard.innerHTML = `
+                <div class="question-number">Pertanyaan ${currentQuestionIndex + 1}</div>
+                <div class="question-text">${question.question}</div>
+                <div class="options">
+                    ${question.options.map((option, index) => `
+                        <div class="option" data-index="${index}">${option}</div>
+                    `).join('')}
+                </div>
+                <div class="explanation" id="explanation">
+                    <strong>Penjelasan:</strong> ${question.explanation}
+                </div>
+            `;
+            
+            // Add click handlers to options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', () => selectOption(option));
+            });
+        }
+
+        function selectOption(selectedOption) {
+            const options = document.querySelectorAll('.option');
+            const selectedIndex = parseInt(selectedOption.dataset.index);
+            const question = currentQuiz.questions[currentQuestionIndex];
+            
+            // Disable all options
+            options.forEach(opt => opt.classList.add('disabled'));
+            
+            // Show correct/wrong
+            if (selectedIndex === question.correct) {
+                selectedOption.classList.add('correct');
+                score += 10;
+                answers.push(true);
+            } else {
+                selectedOption.classList.add('wrong');
+                options[question.correct].classList.add('correct');
+                answers.push(false);
+            }
+            
+            // Show explanation
+            document.getElementById('explanation').classList.add('show');
+            document.getElementById('currentScore').textContent = score;
+        }
+
+        // Next button
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (currentQuestionIndex < currentQuiz.questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        });
+
+        // Back button
+        document.getElementById('backBtn').addEventListener('click', () => {
+            document.getElementById('quizSelection').style.display = 'grid';
+            document.getElementById('quizContainer').classList.remove('active');
+        });
+
+        function showResult() {
+            document.getElementById('questionCard').style.display = 'none';
+            document.getElementById('resultCard').classList.add('show');
+            
+            const percentage = Math.round((score / (currentQuiz.questions.length * 10)) * 100);
+            const correct = answers.filter(a => a).length;
+            const wrong = answers.filter(a => !a).length;
+            
+            document.getElementById('finalScore').textContent = percentage + '%';
+            document.getElementById('correctAnswers').textContent = correct;
+            document.getElementById('wrongAnswers').textContent = wrong;
+            document.getElementById('finalPercentage').textContent = percentage + '%';
+            
+            let message = '';
+            if (percentage >= 80) {
+                message = '🎉 Luar biasa! Kamu sangat memahami materi ini!';
+            } else if (percentage >= 60) {
+                message = '👍 Bagus! Kamu sudah memahami sebagian besar materi.';
+            } else {
+                message = '💪 Tetap semangat! Coba pelajari lagi materinya.';
+            }
+            document.getElementById('resultMessage').textContent = message;
+        }
+
+        // Retry button
+        document.getElementById('retryBtn').addEventListener('click', () => {
+            currentQuestionIndex = 0;
+            score = 0;
+            answers = [];
+            document.getElementById('resultCard').classList.remove('show');
+            document.getElementById('questionCard').style.display = 'block';
+            loadQuestion();
+        });
+
+        // Back to list button
+        document.getElementById('backToListBtn').addEventListener('click', () => {
+            document.getElementById('quizSelection').style.display = 'grid';
+            document.getElementById('quizContainer').classList.remove('active');
+        });
+
+        // Review button
+        document.getElementById('reviewBtn').addEventListener('click', () => {
+            currentQuestionIndex = 0;
+            document.getElementById('resultCard').classList.remove('show');
+            document.getElementById('questionCard').style.display = 'block';
+            loadQuestion();
+        });
+    </script>
+</body>
+</html>

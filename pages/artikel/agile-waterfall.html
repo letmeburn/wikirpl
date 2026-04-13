@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agile vs Waterfall - WikiRPL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .article-detail{padding:2rem 0;min-height:100vh}.article-container{max-width:900px;margin:0 auto;padding:0 1.5rem}.article-header{margin-bottom:2rem}.breadcrumb{display:flex;gap:.5rem;margin-bottom:1.5rem;color:var(--text-secondary-light);font-size:.9rem}.breadcrumb a{color:var(--accent);text-decoration:none}.article-title{font-size:2.5rem;margin-bottom:1rem;line-height:1.2}.article-meta-info{display:flex;gap:1.5rem;flex-wrap:wrap;color:var(--text-secondary-light);margin-bottom:1.5rem}.article-badges{display:flex;gap:.5rem;margin-bottom:1.5rem}.article-content{background-color:var(--bg-secondary-light);padding:3rem;border-radius:12px;border:1px solid var(--border-light);line-height:1.8}.article-content h2{font-size:1.8rem;margin-top:2rem;margin-bottom:1rem;color:var(--accent)}.article-content h3{font-size:1.4rem;margin-top:1.5rem;margin-bottom:.75rem}.article-content p{margin-bottom:1rem}.article-content ul,.article-content ol{margin-left:2rem;margin-bottom:1rem}.article-content li{margin-bottom:.5rem}.code-block{background-color:#1e1e1e;color:#d4d4d4;padding:1.5rem;border-radius:8px;margin:1.5rem 0;position:relative;font-family:'Fira Code',monospace;overflow-x:auto}.copy-btn{position:absolute;top:.5rem;right:.5rem;background-color:var(--accent);color:white;border:none;padding:.5rem 1rem;border-radius:4px;cursor:pointer;font-size:.85rem}.copy-btn:hover{opacity:.8}.info-box{background-color:var(--bg-light);border-left:4px solid var(--accent);padding:1rem 1.5rem;margin:1.5rem 0;border-radius:4px}.toc{background-color:var(--bg-light);padding:1.5rem;border-radius:8px;margin-bottom:2rem;border:1px solid var(--border-light)}.toc h3{margin-bottom:1rem;font-size:1.2rem}.toc ul{list-style:none}.toc li{margin-bottom:.5rem}.toc a{color:var(--text-light);text-decoration:none;transition:color .3s}.toc a:hover{color:var(--accent)}.article-navigation{display:flex;justify-content:space-between;margin-top:3rem;gap:1rem}.nav-article{flex:1;background-color:var(--bg-secondary-light);padding:1.5rem;border-radius:8px;border:2px solid var(--border-light);text-decoration:none;color:var(--text-light);transition:all .3s}.nav-article:hover{border-color:var(--accent);transform:translateY(-2px)}.nav-label{font-size:.85rem;color:var(--text-secondary-light);margin-bottom:.5rem}.nav-title{font-weight:600}@media (max-width:768px){.article-title{font-size:2rem}.article-content{padding:1.5rem}.article-navigation{flex-direction:column}}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo"><i class="fas fa-book-open"></i> WikiRPL</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../roadmap/index.html">Roadmap</a></li>
+                <li><a href="../artikel/index.html">Artikel</a></li>
+                <li><a href="../kuis/index.html">Kuis</a></li>
+                <li><a href="../profil/index.html">Kontributor</a></li>
+                <li><button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button></li>
+            </ul>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="article-detail">
+        <div class="article-container">
+            <div class="breadcrumb">
+                <a href="../../index.html">Beranda</a><span>/</span>
+                <a href="index.html">Artikel</a><span>/</span>
+                <span>Agile vs Waterfall</span>
+            </div>
+
+            <div class="article-header">
+                <h1 class="article-title">Agile vs Waterfall: Memilih Metodologi yang Tepat</h1>
+                <div class="article-badges">
+                    <span class="badge badge-category">Metodologi</span>
+                    <span class="badge badge-level">Pemula</span>
+                </div>
+                <div class="article-meta-info">
+                    <span><i class="far fa-clock"></i> 13 menit baca</span>
+                    <span><i class="far fa-eye"></i> 2.120 views</span>
+                    <span><i class="far fa-calendar"></i> 11 Februari 2024</span>
+                </div>
+            </div>
+
+            <div class="toc">
+                <h3>📑 Daftar Isi</h3>
+                <ul>
+                    <li><a href="#intro">1. Pengenalan</a></li>
+                    <li><a href="#waterfall">2. Waterfall Methodology</a></li>
+                    <li><a href="#agile">3. Agile Methodology</a></li>
+                    <li><a href="#comparison">4. Perbandingan</a></li>
+                    <li><a href="#choose">5. Kapan Menggunakan Apa?</a></li>
+                    <li><a href="#kesimpulan">6. Kesimpulan</a></li>
+                </ul>
+            </div>
+
+            <div class="article-content">
+                <h2 id="intro">🎯 Pengenalan</h2>
+                <p>Dalam software development, memilih metodologi yang tepat sangat penting untuk kesuksesan project. <strong>Waterfall</strong> dan <strong>Agile</strong> adalah dua metodologi paling populer dengan pendekatan yang sangat berbeda.</p>
+
+                <h2 id="waterfall">🌊 Waterfall Methodology</h2>
+                <p><strong>Waterfall</strong> adalah metodologi sequential/linear dimana setiap fase harus selesai sebelum fase berikutnya dimulai. Seperti air terjun yang mengalir dari atas ke bawah.</p>
+
+                <h3>Fase-fase Waterfall</h3>
+                <ol>
+                    <li><strong>Requirements:</strong> Mengumpulkan dan mendokumentasikan semua requirements</li>
+                    <li><strong>Design:</strong> Merancang arsitektur sistem dan database</li>
+                    <li><strong>Implementation:</strong> Coding berdasarkan design</li>
+                    <li><strong>Testing:</strong> Testing setelah semua kode selesai</li>
+                    <li><strong>Deployment:</strong> Release ke production</li>
+                    <li><strong>Maintenance:</strong> Bug fixes dan updates</li>
+                </ol>
+
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>Waterfall Flow:
+Requirements → Design → Implementation → Testing → Deployment → Maintenance
+     ↓            ↓            ↓             ↓           ↓            ↓
+  (Complete)  (Complete)   (Complete)    (Complete)  (Complete)  (Ongoing)
+
+Tidak bisa kembali ke fase sebelumnya!</code></pre>
+                </div>
+
+                <h3>Karakteristik Waterfall</h3>
+                <ul>
+                    <li><strong>Sequential:</strong> Fase berjalan berurutan</li>
+                    <li><strong>Fixed Requirements:</strong> Requirements ditentukan di awal</li>
+                    <li><strong>Dokumentasi Lengkap:</strong> Setiap fase menghasilkan dokumentasi detail</li>
+                    <li><strong>Testing di Akhir:</strong> Testing dilakukan setelah development selesai</li>
+                    <li><strong>Rigid:</strong> Sulit mengakomodasi perubahan</li>
+                </ul>
+
+                <h3>Kelebihan Waterfall</h3>
+                <ul>
+                    <li>Mudah dipahami dan diimplementasikan</li>
+                    <li>Struktur yang jelas dan terorganisir</li>
+                    <li>Dokumentasi lengkap</li>
+                    <li>Cocok untuk project dengan requirements yang jelas dan stabil</li>
+                    <li>Mudah untuk manage dan track progress</li>
+                    <li>Cocok untuk tim yang terpisah geografis</li>
+                </ul>
+
+                <h3>Kekurangan Waterfall</h3>
+                <ul>
+                    <li>Tidak fleksibel terhadap perubahan</li>
+                    <li>Testing terlambat (di akhir)</li>
+                    <li>Customer tidak melihat product sampai akhir</li>
+                    <li>Risiko tinggi jika requirements salah</li>
+                    <li>Tidak cocok untuk project kompleks dengan requirements yang berubah</li>
+                </ul>
+
+                <h2 id="agile">🚀 Agile Methodology</h2>
+                <p><strong>Agile</strong> adalah metodologi iterative dan incremental yang fokus pada kolaborasi, feedback cepat, dan adaptasi terhadap perubahan.</p>
+
+                <h3>Prinsip Agile (Agile Manifesto)</h3>
+                <ul>
+                    <li><strong>Individuals and interactions</strong> over processes and tools</li>
+                    <li><strong>Working software</strong> over comprehensive documentation</li>
+                    <li><strong>Customer collaboration</strong> over contract negotiation</li>
+                    <li><strong>Responding to change</strong> over following a plan</li>
+                </ul>
+
+                <h3>Agile Sprint Cycle</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>Sprint (1-4 minggu):
+1. Sprint Planning → Tentukan apa yang akan dikerjakan
+2. Daily Standup → Update harian (15 menit)
+3. Development → Coding, testing, review
+4. Sprint Review → Demo ke stakeholders
+5. Sprint Retrospective → Evaluasi dan improvement
+
+Lalu ulangi untuk Sprint berikutnya!
+
+Sprint 1 → Sprint 2 → Sprint 3 → ... → Release
+  ↓          ↓          ↓
+Working    Working    Working
+Software   Software   Software</code></pre>
+                </div>
+
+                <h3>Karakteristik Agile</h3>
+                <ul>
+                    <li><strong>Iterative:</strong> Development dalam siklus pendek (sprints)</li>
+                    <li><strong>Incremental:</strong> Deliver working software secara bertahap</li>
+                    <li><strong>Flexible:</strong> Mudah mengakomodasi perubahan</li>
+                    <li><strong>Collaborative:</strong> Komunikasi intensif dengan customer</li>
+                    <li><strong>Continuous Testing:</strong> Testing di setiap sprint</li>
+                </ul>
+
+                <h3>Agile Frameworks</h3>
+
+                <h4>1. Scrum</h4>
+                <p>Framework Agile paling populer dengan roles, events, dan artifacts yang jelas.</p>
+                <ul>
+                    <li><strong>Roles:</strong> Product Owner, Scrum Master, Development Team</li>
+                    <li><strong>Events:</strong> Sprint Planning, Daily Standup, Sprint Review, Retrospective</li>
+                    <li><strong>Artifacts:</strong> Product Backlog, Sprint Backlog, Increment</li>
+                </ul>
+
+                <h4>2. Kanban</h4>
+                <p>Visual workflow management dengan focus pada continuous delivery.</p>
+                <ul>
+                    <li>Visualize workflow dengan board</li>
+                    <li>Limit Work In Progress (WIP)</li>
+                    <li>Continuous flow (tidak ada sprints)</li>
+                </ul>
+
+                <h4>3. Extreme Programming (XP)</h4>
+                <p>Focus pada technical practices dan code quality.</p>
+                <ul>
+                    <li>Pair Programming</li>
+                    <li>Test-Driven Development (TDD)</li>
+                    <li>Continuous Integration</li>
+                    <li>Refactoring</li>
+                </ul>
+
+                <h3>Kelebihan Agile</h3>
+                <ul>
+                    <li>Fleksibel terhadap perubahan requirements</li>
+                    <li>Feedback cepat dari customer</li>
+                    <li>Working software delivered secara regular</li>
+                    <li>Risiko lebih rendah (detect problems early)</li>
+                    <li>Team collaboration lebih baik</li>
+                    <li>Customer satisfaction lebih tinggi</li>
+                </ul>
+
+                <h3>Kekurangan Agile</h3>
+                <ul>
+                    <li>Butuh customer involvement yang tinggi</li>
+                    <li>Dokumentasi bisa kurang lengkap</li>
+                    <li>Sulit untuk predict timeline dan budget</li>
+                    <li>Butuh team yang experienced dan self-organizing</li>
+                    <li>Tidak cocok untuk project dengan fixed scope dan deadline ketat</li>
+                </ul>
+
+                <h2 id="comparison">⚖️ Perbandingan Waterfall vs Agile</h2>
+
+                <h3>Approach</h3>
+                <p><strong>Waterfall:</strong> Sequential, linear<br>
+                <strong>Agile:</strong> Iterative, incremental</p>
+
+                <h3>Flexibility</h3>
+                <p><strong>Waterfall:</strong> Rigid, sulit berubah<br>
+                <strong>Agile:</strong> Flexible, embrace change</p>
+
+                <h3>Requirements</h3>
+                <p><strong>Waterfall:</strong> Fixed di awal<br>
+                <strong>Agile:</strong> Evolving, bisa berubah</p>
+
+                <h3>Customer Involvement</h3>
+                <p><strong>Waterfall:</strong> Di awal dan akhir saja<br>
+                <strong>Agile:</strong> Continuous, setiap sprint</p>
+
+                <h3>Testing</h3>
+                <p><strong>Waterfall:</strong> Di akhir setelah development<br>
+                <strong>Agile:</strong> Continuous, setiap sprint</p>
+
+                <h3>Delivery</h3>
+                <p><strong>Waterfall:</strong> Satu kali di akhir<br>
+                <strong>Agile:</strong> Incremental, setiap sprint</p>
+
+                <h3>Documentation</h3>
+                <p><strong>Waterfall:</strong> Comprehensive, detail<br>
+                <strong>Agile:</strong> Minimal, just enough</p>
+
+                <h3>Team Size</h3>
+                <p><strong>Waterfall:</strong> Bisa besar, terstruktur<br>
+                <strong>Agile:</strong> Lebih baik small team (5-9 orang)</p>
+
+                <div class="info-box">
+                    <strong>💡 Hybrid Approach:</strong><br>
+                    Banyak organisasi menggunakan hybrid approach, mengambil yang terbaik dari kedua metodologi. Contoh: Waterfall untuk planning dan design, Agile untuk development dan testing.
+                </div>
+
+                <h2 id="choose">🤔 Kapan Menggunakan Apa?</h2>
+
+                <h3>Gunakan Waterfall Jika:</h3>
+                <ul>
+                    <li>Requirements jelas, lengkap, dan tidak akan berubah</li>
+                    <li>Technology dan tools sudah well-understood</li>
+                    <li>Project pendek dengan scope yang fixed</li>
+                    <li>Butuh dokumentasi lengkap (regulated industries)</li>
+                    <li>Customer tidak bisa involved secara regular</li>
+                    <li>Budget dan timeline fixed</li>
+                    <li>Contoh: Government projects, construction software, embedded systems</li>
+                </ul>
+
+                <h3>Gunakan Agile Jika:</h3>
+                <ul>
+                    <li>Requirements tidak jelas atau sering berubah</li>
+                    <li>Butuh feedback cepat dari customer</li>
+                    <li>Project kompleks dan innovative</li>
+                    <li>Customer bisa involved secara regular</li>
+                    <li>Team experienced dan self-organizing</li>
+                    <li>Time-to-market penting</li>
+                    <li>Contoh: Startups, web/mobile apps, SaaS products</li>
+                </ul>
+
+                <h3>Contoh Skenario</h3>
+
+                <h4>Skenario 1: E-commerce Website (Agile)</h4>
+                <p>Requirements sering berubah berdasarkan market trends, butuh release features cepat, customer feedback penting.</p>
+
+                <h4>Skenario 2: Banking System (Waterfall)</h4>
+                <p>Requirements jelas dan fixed, heavily regulated, butuh dokumentasi lengkap, security critical.</p>
+
+                <h4>Skenario 3: Mobile App Startup (Agile)</h4>
+                <p>Pivot cepat berdasarkan user feedback, MVP approach, iterative development.</p>
+
+                <h4>Skenario 4: Medical Device Software (Waterfall)</h4>
+                <p>Strict regulations, comprehensive testing required, fixed requirements, safety critical.</p>
+
+                <h2 id="kesimpulan">✨ Kesimpulan</h2>
+                <p>Waterfall dan Agile adalah dua metodologi dengan kelebihan dan kekurangan masing-masing. Tidak ada yang "lebih baik" secara absolut - pilihan tergantung pada nature project, team, dan organizational context. Waterfall cocok untuk project dengan requirements yang jelas dan stabil, sementara Agile cocok untuk project yang butuh flexibility dan feedback cepat. Banyak organisasi modern menggunakan hybrid approach untuk mendapatkan benefit dari kedua metodologi.</p>
+            </div>
+
+            <div class="article-navigation">
+                <a href="percabangan-perulangan.html" class="nav-article">
+                    <div class="nav-label">← Sebelumnya</div>
+                    <div class="nav-title">Percabangan & Perulangan</div>
+                </a>
+                <a href="memahami-sdlc.html" class="nav-article" style="text-align:right">
+                    <div class="nav-label">Selanjutnya →</div>
+                    <div class="nav-title">Memahami SDLC</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk mahasiswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="../../index.html">Beranda</a></li>
+                        <li><a href="../roadmap/index.html">Roadmap</a></li>
+                        <li><a href="index.html">Artikel</a></li>
+                        <li><a href="../kuis/index.html">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>function copyCode(button){const code=button.nextElementSibling.textContent;navigator.clipboard.writeText(code).then(()=>{button.textContent='Copied!';setTimeout(()=>{button.textContent='Copy'},2000)})}</script>
+</body>
+</html>

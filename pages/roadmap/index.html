@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap Belajar - WikiRPL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .roadmap-page {
+            padding: 2rem 0;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, #283593 100%);
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .progress-tracker {
+            background-color: var(--bg-secondary-light);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            color: var(--text-secondary-light);
+            font-size: 0.9rem;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 12px;
+            background-color: var(--border-light);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            transition: width 0.3s ease;
+        }
+
+        .roadmap-timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
+            transform: translateX(-50%);
+        }
+
+        .roadmap-step {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+            align-items: center;
+        }
+
+        .roadmap-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .step-content {
+            width: 45%;
+            background-color: var(--bg-secondary-light);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--border-light);
+            transition: all 0.3s;
+        }
+
+        .step-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-color: var(--accent);
+        }
+
+        .step-content.completed {
+            border-color: #4caf50;
+        }
+
+        .step-content.active {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(255, 111, 0, 0.3);
+        }
+
+        .step-content.locked {
+            opacity: 0.6;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            z-index: 10;
+            border: 4px solid var(--bg-light);
+        }
+
+        .step-number.completed {
+            background: #4caf50;
+        }
+
+        .step-number.locked {
+            background: #9e9e9e;
+        }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-completed {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .status-active {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .status-locked {
+            background-color: #9e9e9e;
+            color: white;
+        }
+
+        .step-topics {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .step-topics li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary-light);
+        }
+
+        .step-topics li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .step-topics li.cached::after {
+            content: '💾';
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .cache-indicator {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            background-color: #4caf50;
+            color: white;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-left: 0.5rem;
+            font-weight: 600;
+        }
+
+        .step-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+
+        .step-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .step-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            color: var(--text-secondary-light);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 30px;
+            }
+
+            .roadmap-step {
+                flex-direction: column !important;
+                padding-left: 60px;
+            }
+
+            .step-content {
+                width: 100%;
+            }
+
+            .step-number {
+                left: 30px;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">
+                <i class="fas fa-book-open"></i>
+                WikiRPL
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../roadmap/index.html">Roadmap</a></li>
+                <li><a href="../artikel/index.html">Artikel</a></li>
+                <li><a href="../kuis/index.html">Kuis</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li>
+                    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>🗺️ Roadmap Belajar RPL</h1>
+        <p>Jalur belajar terstruktur dari pemula hingga ahli</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="roadmap-page">
+        <div class="container">
+            <!-- Progress Tracker -->
+            <div class="progress-tracker">
+                <h2>Progress Belajar Kamu</h2>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="progressBar" style="width: 25%"></div>
+                </div>
+                <p style="text-align: center; color: var(--text-secondary-light); margin-top: 0.5rem;">
+                    <span id="progressText">3 dari 8 topik selesai (38%)</span>
+                </p>
+                <div class="progress-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" id="completedCount">3</div>
+                        <div class="stat-label">Topik Selesai</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="activeCount">2</div>
+                        <div class="stat-label">Sedang Dipelajari</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="lockedCount">3</div>
+                        <div class="stat-label">Belum Dibuka</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Roadmap Timeline -->
+            <div class="roadmap-timeline">
+                <div class="timeline-line"></div>
+
+                <!-- Step 1 -->
+                <div class="roadmap-step">
+                    <div class="step-number completed">1</div>
+                    <div class="step-content completed" data-step="1">
+                        <div class="step-header">
+                            <div>
+                                <div class="step-title">Pengenalan RPL</div>
+                                <span class="step-status status-completed">✓ Selesai</span>
+                            </div>
+                        </div>
+                        <p>Memahami dasar-dasar Rekayasa Perangkat Lunak dan metodologi pengembangan</p>
+                        <ul class="step-topics">
+                            <li><a href="../artikel/apa-itu-rpl.html">Apa itu Rekayasa Perangkat Lunak?</a></li>
+                            <li><a href="../artikel/memahami-sdlc.html">Memahami SDLC</a></li>
+                            <li><a href="../artikel/agile-waterfall.html">Metodologi Agile vs Waterfall</a></li>
+                        </ul>
+                        <div class="step-meta">
+                            <span><i class="far fa-clock"></i> 3-4 minggu</span>
+                            <span><i class="fas fa-signal"></i> Pemula</span>
+                        </div>
+                        <label class="step-checkbox">
+                            <input type="checkbox" checked disabled>
+                            <span>Tandai sebagai selesai</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="roadmap-step">
+                    <div class="step-number completed">2</div>
+                    <div class="step-content completed" data-step="2">
+                        <div class="step-header">
+                            <div>
+                                <div class="step-title">Dasar Pemrograman</div>
+                                <span class="step-status status-completed">✓ Selesai</span>
+                            </div>
+                        </div>
+                        <p>Memahami konsep dasar pemrograman dan algoritma</p>
+                        <ul class="step-topics">
+                            <li><a href="../artikel/algoritma-flowchart.html">Algoritma dan Flowchart</a></li>
+                            <li><a href="../artikel/tipe-data-variabel.html">Tipe Data dan Variabel</a></li>
+                            <li><a href="../artikel/percabangan-perulangan.html">Percabangan dan Perulangan</a></li>
+                        </ul>
+                        <div class="step-meta">
+                            <span><i class="far fa-clock"></i> 4-5 minggu</span>
+                            <span><i class="fas fa-signal"></i> Pemula</span>
+                        </div>
+                        <label class="step-checkbox">
+                            <input type="checkbox" checked disabled>
+                            <span>Tandai sebagai selesai</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="roadmap-step">
+                    <div class="step-number completed">3</div>
+                    <div class="step-content completed" data-step="3">
+                        <div class="step-header">
+                            <div>
+                                <div class="step-title">HTML & CSS</div>
+                                <span class="step-status status-completed">✓ Selesai</span>
+                            </div>
+                        </div>
+                        <p>Membuat halaman web dengan HTML5 dan styling dengan CSS3</p>
+                        <ul class="step-topics">
+                            <li><a href="../artikel/html5-semantik.html">HTML5 Semantik</a></li>
+                            <li><a href="../artikel/css-flexbox-grid.html">CSS Flexbox & Grid</a></li>
+                            <li>Responsive Design</li>
+                        </ul>
+                        <div class="step-meta">
+                            <span><i class="far fa-clock"></i> 3-4 minggu</span>
+                            <span><i class="fas fa-signal"></i> Pemula</span>
+                        </div>
+                        <label class="step-checkbox">
+                            <input type="checkbox" checked disabled>
+                            <span>Tandai sebagai selesai</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="roadmap-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content active" data-step="4">
+                        <div class="step-header">
+                            <div>
+                                <div class="step-title">JavaScript Modern</div>
+                                <span class="step-status status-active">📍 Sedang Belajar</span>
+                            </div>
+                        </div>
+                        <p>Menguasai JavaScript untuk membuat web interaktif</p>
+                        <ul class="step-topics">
+                            <li><a href="../artikel/javascript-es6.html">JavaScript ES6+</a></li>
+                            <li>DOM Manipulation</li>
+                            <li>Event Handling</li>
+                            <li>Async/Await & Promises</li>
+                        </ul>
+                        <div class="step-meta">
+                            <span><i class="far fa-clock"></i> 4-5 minggu</span>
+                            <span><i class="fas fa-signal"></i> Menengah</span>
+                        </div>
+                        <label class="step-checkbox">
+                            <input type="checkbox" class="step-check" data-step="4">
+                            <span>Tandai sebagai selesai</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="roadmap-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content active" data-step="5">
+                        <div class="step-header">
+                            <div>
+                                <div class="step-title">Git & Version Control</div>
+                                <span class="step-status status-active">📍 Sedang Belajar</span>
+                            </div>
+                        </div>
+                        <p>Mengelola kode dengan Git dan kolaborasi di GitHub</p>
+                        <ul class="step-topics">
+                            <li><a href="../artikel/git-github.html">Git & GitHub Workflow</a></li>
+                            <li>Branching & Merging</li>
+                            <li>Pull Request & Code Review</li>
+                            <li><a href="../artikel/vscode-tips.html">VS Code Tips & Tricks</a></li>
+                        </ul>
+                        <div class="step-meta">
+                            <span><i class="far fa-clock"></i> 2-3 minggu</span>
+                            <span><i class="fas fa-signal"></i> Pemula</span>
+                        </div>
+                        <label class="step-checkbox">
+                            <input type="checkbox" class="step-check" data-step="5">
+                            <span>Tandai sebagai selesai</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="roadmap-step">
+                    <div class="step-number locked">6</div>
+                    <div class="step-content locked" data-step="6">
+                        <div class="step-header">
+                            <div>
+                                <div class="step-title">Database & SQL</div>
+                                <span class="step-status status-locked">🔒 Terkunci</span>
+                            </div>
+                        </div>
+                        <p>Mengelola data dengan database relasional dan NoSQL</p>
+                        <ul class="step-topics">
+                            <li><a href="../artikel/sql-pemula.html">SQL untuk Pemula</a></li>
+                            <li><a href="../artikel/database-normalisasi.html">Database Normalisasi</a></li>
+                            <li><a href="../artikel/nosql-vs-sql.html">NoSQL vs SQL</a></li>
+                            <li>CRUD Operations</li>
+                        </ul>
+                        <div class="step-meta">
+                            <span><i class="far fa-clock"></i> 4-5 minggu</span>
+                            <span><i class="fas fa-signal"></i> Menengah</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 7 -->
+                <div class="roadmap-step">
+                    <div class="step-number locked">7</div>
+                    <div class="step-content locked" data-step="7">
+                        <div class="step-header">
+                            <div>
+                                <div class="step-title">Object Oriented Programming</div>
+                                <span class="step-status status-locked">🔒 Terkunci</span>
+                            </div>
+                        </div>
+                        <p>Memahami paradigma OOP dan implementasinya</p>
+                        <ul class="step-topics">
+                            <li><a href="../artikel/oop.html">Object Oriented Programming</a></li>
+                            <li><a href="../artikel/solid-principles.html">SOLID Principles</a></li>
+                            <li><a href="../artikel/design-patterns.html">Design Patterns</a></li>
+                        </ul>
+                        <div class="step-meta">
+                            <span><i class="far fa-clock"></i> 5-6 minggu</span>
+                            <span><i class="fas fa-signal"></i> Menengah</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 8 -->
+                <div class="roadmap-step">
+                    <div class="step-number locked">8</div>
+                    <div class="step-content locked" data-step="8">
+                        <div class="step-header">
+                            <div>
+                                <div class="step-title">Backend Development</div>
+                                <span class="step-status status-locked">🔒 Terkunci</span>
+                            </div>
+                        </div>
+                        <p>Membuat server-side application dan REST API</p>
+                        <ul class="step-topics">
+                            <li><a href="../artikel/rest-api.html">Membuat REST API</a></li>
+                            <li>Node.js & Express.js</li>
+                            <li>Authentication & Authorization</li>
+                            <li>API Documentation</li>
+                        </ul>
+                        <div class="step-meta">
+                            <span><i class="far fa-clock"></i> 6-8 minggu</span>
+                            <span><i class="fas fa-signal"></i> Menengah</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk mahasiswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="../../index.html">Beranda</a></li>
+                        <li><a href="../roadmap/index.html">Roadmap</a></li>
+                        <li><a href="index.html">Artikel</a></li>
+                        <li><a href="../kuis/index.html">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        // ==========================================
+        // ARTIKEL CACHE SYSTEM
+        // ==========================================
+        
+        const ArticleCache = {
+            // Simpan artikel ke cache
+            saveArticle: function(url, content, title) {
+                try {
+                    const cache = this.getCache();
+                    cache[url] = {
+                        content: content,
+                        title: title,
+                        cachedAt: new Date().toISOString(),
+                        lastAccessed: new Date().toISOString()
+                    };
+                    localStorage.setItem('articleCache', JSON.stringify(cache));
+                    console.log('✅ Artikel di-cache:', title);
+                    return true;
+                } catch (e) {
+                    console.error('❌ Gagal menyimpan cache:', e);
+                    return false;
+                }
+            },
+            
+            // Ambil artikel dari cache
+            getArticle: function(url) {
+                const cache = this.getCache();
+                if (cache[url]) {
+                    // Update last accessed
+                    cache[url].lastAccessed = new Date().toISOString();
+                    localStorage.setItem('articleCache', JSON.stringify(cache));
+                    return cache[url];
+                }
+                return null;
+            },
+            
+            // Cek apakah artikel sudah di-cache
+            isCached: function(url) {
+                const cache = this.getCache();
+                return !!cache[url];
+            },
+            
+            // Ambil semua cache
+            getCache: function() {
+                try {
+                    return JSON.parse(localStorage.getItem('articleCache') || '{}');
+                } catch (e) {
+                    return {};
+                }
+            },
+            
+            // Hapus cache lama (lebih dari 7 hari)
+            cleanOldCache: function() {
+                const cache = this.getCache();
+                const sevenDaysAgo = new Date();
+                sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+                
+                let cleaned = 0;
+                Object.keys(cache).forEach(url => {
+                    const cachedDate = new Date(cache[url].cachedAt);
+                    if (cachedDate < sevenDaysAgo) {
+                        delete cache[url];
+                        cleaned++;
+                    }
+                });
+                
+                if (cleaned > 0) {
+                    localStorage.setItem('articleCache', JSON.stringify(cache));
+                    console.log(`🧹 ${cleaned} cache lama dibersihkan`);
+                }
+            },
+            
+            // Statistik cache
+            getStats: function() {
+                const cache = this.getCache();
+                return {
+                    total: Object.keys(cache).length,
+                    size: new Blob([JSON.stringify(cache)]).size,
+                    articles: Object.keys(cache)
+                };
+            }
+        };
+        
+        // Auto-cache saat klik link artikel
+        function setupArticleCache() {
+            const articleLinks = document.querySelectorAll('.step-topics a[href*="artikel"]');
+            
+            articleLinks.forEach(link => {
+                const url = link.getAttribute('href');
+                
+                // Tandai artikel yang sudah di-cache
+                if (ArticleCache.isCached(url)) {
+                    link.parentElement.classList.add('cached');
+                    const indicator = document.createElement('span');
+                    indicator.className = 'cache-indicator';
+                    indicator.textContent = 'Cached';
+                    indicator.title = 'Artikel sudah tersimpan offline';
+                    link.appendChild(indicator);
+                }
+                
+                // Intercept klik untuk cache
+                link.addEventListener('click', function(e) {
+                    const articleUrl = this.getAttribute('href');
+                    const articleTitle = this.textContent.replace('Cached', '').trim();
+                    
+                    // Cek cache terlebih dahulu
+                    const cached = ArticleCache.getArticle(articleUrl);
+                    if (cached) {
+                        console.log('📖 Membaca dari cache:', articleTitle);
+                        // Biarkan navigasi normal terjadi
+                        return;
+                    }
+                    
+                    // Jika belum di-cache, fetch dan simpan
+                    console.log('🌐 Fetching artikel:', articleTitle);
+                    fetch(articleUrl)
+                        .then(response => response.text())
+                        .then(html => {
+                            ArticleCache.saveArticle(articleUrl, html, articleTitle);
+                            // Update UI
+                            this.parentElement.classList.add('cached');
+                            if (!this.querySelector('.cache-indicator')) {
+                                const indicator = document.createElement('span');
+                                indicator.className = 'cache-indicator';
+                                indicator.textContent = 'Cached';
+                                indicator.title = 'Artikel sudah tersimpan offline';
+                                this.appendChild(indicator);
+                            }
+                        })
+                        .catch(err => {
+                            console.error('❌ Gagal fetch artikel:', err);
+                        });
+                });
+            });
+        }
+        
+        // Preload artikel yang sering dibaca
+        function preloadPopularArticles() {
+            const popularArticles = [
+                '../artikel/apa-itu-rpl.html',
+                '../artikel/memahami-sdlc.html',
+                '../artikel/git-github.html'
+            ];
+            
+            popularArticles.forEach(url => {
+                if (!ArticleCache.isCached(url)) {
+                    fetch(url)
+                        .then(response => response.text())
+                        .then(html => {
+                            const title = url.split('/').pop().replace('.html', '');
+                            ArticleCache.saveArticle(url, html, title);
+                            console.log('📥 Preloaded:', title);
+                        })
+                        .catch(err => console.error('Preload failed:', err));
+                }
+            });
+        }
+        
+        // ==========================================
+        // ROADMAP PROGRESS SYSTEM
+        // ==========================================
+        
+        // Load progress from localStorage
+        function loadProgress() {
+            const saved = localStorage.getItem('roadmapProgress');
+            if (saved) {
+                return JSON.parse(saved);
+            }
+            return [1, 2, 3]; // Default completed steps
+        }
+
+        // Save progress to localStorage
+        function saveProgress(completedSteps) {
+            localStorage.setItem('roadmapProgress', JSON.stringify(completedSteps));
+        }
+
+        // Update progress display
+        function updateProgress() {
+            const completedSteps = loadProgress();
+            const totalSteps = 8;
+            const percentage = Math.round((completedSteps.length / totalSteps) * 100);
+
+            document.getElementById('progressBar').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = 
+                `${completedSteps.length} dari ${totalSteps} topik selesai (${percentage}%)`;
+            document.getElementById('completedCount').textContent = completedSteps.length;
+            
+            // Count active (next 2 after completed)
+            const maxCompleted = Math.max(...completedSteps);
+            const activeCount = Math.min(2, totalSteps - completedSteps.length);
+            document.getElementById('activeCount').textContent = activeCount;
+            document.getElementById('lockedCount').textContent = totalSteps - completedSteps.length - activeCount;
+        }
+
+        // Handle checkbox changes
+        document.querySelectorAll('.step-check').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const stepNum = parseInt(this.dataset.step);
+                const completedSteps = loadProgress();
+                
+                if (this.checked) {
+                    if (!completedSteps.includes(stepNum)) {
+                        completedSteps.push(stepNum);
+                        completedSteps.sort((a, b) => a - b);
+                    }
+                } else {
+                    const index = completedSteps.indexOf(stepNum);
+                    if (index > -1) {
+                        completedSteps.splice(index, 1);
+                    }
+                }
+                
+                saveProgress(completedSteps);
+                updateProgress();
+                location.reload(); // Reload to update UI
+            });
+        });
+
+        // ==========================================
+        // INITIALIZATION
+        // ==========================================
+        
+        // Initialize semua fitur
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+            setupArticleCache();
+            ArticleCache.cleanOldCache();
+            
+            // Preload artikel populer setelah 2 detik
+            setTimeout(preloadPopularArticles, 2000);
+            
+            // Log cache stats
+            const stats = ArticleCache.getStats();
+            console.log('📊 Cache Stats:', stats);
+            console.log(`💾 Total: ${stats.total} artikel (${(stats.size / 1024).toFixed(2)} KB)`);
+        });
+    </script>
+</body>
+</html>

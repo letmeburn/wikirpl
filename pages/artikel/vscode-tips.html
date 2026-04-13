@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tips & Trik VS Code - WikiRPL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .article-detail{padding:2rem 0;min-height:100vh}.article-container{max-width:900px;margin:0 auto;padding:0 1.5rem}.article-header{margin-bottom:2rem}.breadcrumb{display:flex;gap:.5rem;margin-bottom:1.5rem;color:var(--text-secondary-light);font-size:.9rem}.breadcrumb a{color:var(--accent);text-decoration:none}.article-title{font-size:2.5rem;margin-bottom:1rem;line-height:1.2}.article-meta-info{display:flex;gap:1.5rem;flex-wrap:wrap;color:var(--text-secondary-light);margin-bottom:1.5rem}.article-badges{display:flex;gap:.5rem;margin-bottom:1.5rem}.article-content{background-color:var(--bg-secondary-light);padding:3rem;border-radius:12px;border:1px solid var(--border-light);line-height:1.8}.article-content h2{font-size:1.8rem;margin-top:2rem;margin-bottom:1rem;color:var(--accent)}.article-content h3{font-size:1.4rem;margin-top:1.5rem;margin-bottom:.75rem}.article-content p{margin-bottom:1rem}.article-content ul,.article-content ol{margin-left:2rem;margin-bottom:1rem}.article-content li{margin-bottom:.5rem}.code-block{background-color:#1e1e1e;color:#d4d4d4;padding:1.5rem;border-radius:8px;margin:1.5rem 0;position:relative;font-family:'Fira Code',monospace;overflow-x:auto}.copy-btn{position:absolute;top:.5rem;right:.5rem;background-color:var(--accent);color:white;border:none;padding:.5rem 1rem;border-radius:4px;cursor:pointer;font-size:.85rem}.copy-btn:hover{opacity:.8}.info-box{background-color:var(--bg-light);border-left:4px solid var(--accent);padding:1rem 1.5rem;margin:1.5rem 0;border-radius:4px}.toc{background-color:var(--bg-light);padding:1.5rem;border-radius:8px;margin-bottom:2rem;border:1px solid var(--border-light)}.toc h3{margin-bottom:1rem;font-size:1.2rem}.toc ul{list-style:none}.toc li{margin-bottom:.5rem}.toc a{color:var(--text-light);text-decoration:none;transition:color .3s}.toc a:hover{color:var(--accent)}.article-navigation{display:flex;justify-content:space-between;margin-top:3rem;gap:1rem}.nav-article{flex:1;background-color:var(--bg-secondary-light);padding:1.5rem;border-radius:8px;border:2px solid var(--border-light);text-decoration:none;color:var(--text-light);transition:all .3s}.nav-article:hover{border-color:var(--accent);transform:translateY(-2px)}.nav-label{font-size:.85rem;color:var(--text-secondary-light);margin-bottom:.5rem}.nav-title{font-weight:600}@media (max-width:768px){.article-title{font-size:2rem}.article-content{padding:1.5rem}.article-navigation{flex-direction:column}}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo"><i class="fas fa-book-open"></i> WikiRPL</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../roadmap/index.html">Roadmap</a></li>
+                <li><a href="../artikel/index.html">Artikel</a></li>
+                <li><a href="../kuis/index.html">Kuis</a></li>
+                <li><a href="../profil/index.html">Kontributor</a></li>
+                <li><button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button></li>
+            </ul>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="article-detail">
+        <div class="article-container">
+            <div class="breadcrumb">
+                <a href="../../index.html">Beranda</a><span>/</span>
+                <a href="index.html">Artikel</a><span>/</span>
+                <span>Tips & Trik VS Code</span>
+            </div>
+
+            <div class="article-header">
+                <h1 class="article-title">Tips & Trik Visual Studio Code untuk Developer</h1>
+                <div class="article-badges">
+                    <span class="badge badge-category">Tools</span>
+                    <span class="badge badge-level">Pemula</span>
+                </div>
+                <div class="article-meta-info">
+                    <span><i class="far fa-clock"></i> 10 menit baca</span>
+                    <span><i class="far fa-eye"></i> 1.245 views</span>
+                    <span><i class="far fa-calendar"></i> 20 Januari 2024</span>
+                </div>
+            </div>
+
+            <div class="toc">
+                <h3>📑 Daftar Isi</h3>
+                <ul>
+                    <li><a href="#intro">1. Pengenalan VS Code</a></li>
+                    <li><a href="#shortcuts">2. Keyboard Shortcuts Penting</a></li>
+                    <li><a href="#extensions">3. Extensions Wajib</a></li>
+                    <li><a href="#tips">4. Tips Produktivitas</a></li>
+                    <li><a href="#kesimpulan">5. Kesimpulan</a></li>
+                </ul>
+            </div>
+
+            <div class="article-content">
+                <h2 id="intro">🎯 Pengenalan VS Code</h2>
+                <p><strong>Visual Studio Code (VS Code)</strong> adalah code editor gratis dan open-source dari Microsoft yang sangat populer di kalangan developer. VS Code ringan, cepat, dan memiliki ekosistem extension yang sangat kaya.</p>
+
+                <h2 id="shortcuts">⌨️ Keyboard Shortcuts Penting</h2>
+                
+                <h3>Navigasi & Pencarian</h3>
+                <ul>
+                    <li><strong>Ctrl + P</strong> - Quick Open (cari file dengan cepat)</li>
+                    <li><strong>Ctrl + Shift + F</strong> - Search di seluruh project</li>
+                    <li><strong>Ctrl + G</strong> - Go to Line</li>
+                    <li><strong>Ctrl + Tab</strong> - Switch antar file yang terbuka</li>
+                    <li><strong>Alt + ← / →</strong> - Navigate back/forward</li>
+                </ul>
+
+                <h3>Editing</h3>
+                <ul>
+                    <li><strong>Ctrl + D</strong> - Select next occurrence (multi-cursor)</li>
+                    <li><strong>Alt + Click</strong> - Add cursor di posisi tertentu</li>
+                    <li><strong>Ctrl + Shift + K</strong> - Delete line</li>
+                    <li><strong>Alt + ↑ / ↓</strong> - Move line up/down</li>
+                    <li><strong>Shift + Alt + ↑ / ↓</strong> - Copy line up/down</li>
+                    <li><strong>Ctrl + /</strong> - Toggle comment</li>
+                </ul>
+
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// Contoh penggunaan multi-cursor (Ctrl + D)
+const name = "John";
+const age = 25;
+const city = "Jakarta";
+
+// Pilih "const" lalu tekan Ctrl + D beberapa kali
+// untuk select semua occurrence dan edit sekaligus</code></pre>
+                </div>
+
+                <h3>View & Layout</h3>
+                <ul>
+                    <li><strong>Ctrl + B</strong> - Toggle sidebar</li>
+                    <li><strong>Ctrl + `</strong> - Toggle terminal</li>
+                    <li><strong>Ctrl + \</strong> - Split editor</li>
+                    <li><strong>Ctrl + 1/2/3</strong> - Focus ke editor group</li>
+                </ul>
+
+                <h2 id="extensions">🔌 Extensions Wajib</h2>
+
+                <h3>1. Prettier - Code Formatter</h3>
+                <p>Auto-format code agar konsisten dan rapi.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// settings.json
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}</code></pre>
+                </div>
+
+                <h3>2. ESLint</h3>
+                <p>Linting untuk JavaScript/TypeScript, mendeteksi error dan bad practices.</p>
+
+                <h3>3. Live Server</h3>
+                <p>Development server dengan auto-reload untuk HTML/CSS/JS.</p>
+
+                <h3>4. GitLens</h3>
+                <p>Supercharge Git capabilities, lihat history, blame, dan lainnya.</p>
+
+                <h3>5. Auto Rename Tag</h3>
+                <p>Otomatis rename pasangan HTML/XML tag.</p>
+
+                <h3>6. Path Intellisense</h3>
+                <p>Autocomplete untuk file paths.</p>
+
+                <h3>7. Bracket Pair Colorizer 2</h3>
+                <p>Warnai bracket berpasangan agar mudah dibaca (built-in di VS Code versi terbaru).</p>
+
+                <h2 id="tips">💡 Tips Produktivitas</h2>
+
+                <h3>1. Command Palette (Ctrl + Shift + P)</h3>
+                <p>Akses semua command VS Code dengan cepat. Ketik apa yang ingin dilakukan.</p>
+
+                <h3>2. Snippets</h3>
+                <p>Buat custom snippets untuk code yang sering dipakai.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// File > Preferences > User Snippets
+{
+  "Console Log": {
+    "prefix": "clg",
+    "body": [
+      "console.log('$1:', $1);"
+    ],
+    "description": "Console log with label"
+  }
+}</code></pre>
+                </div>
+
+                <h3>3. Emmet</h3>
+                <p>Tulis HTML dengan cepat menggunakan abbreviations.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code><!-- Ketik ini lalu tekan Tab -->
+div.container>ul>li*3>a
+
+<!-- Hasilnya: -->
+<div class="container">
+  <ul>
+    <li><a href=""></a></li>
+    <li><a href=""></a></li>
+    <li><a href=""></a></li>
+  </ul>
+</div></code></pre>
+                </div>
+
+                <h3>4. Settings Sync</h3>
+                <p>Sync settings, extensions, dan shortcuts ke cloud (built-in dengan GitHub account).</p>
+
+                <h3>5. Zen Mode (Ctrl + K Z)</h3>
+                <p>Mode fokus tanpa distraksi, sembunyikan semua UI kecuali editor.</p>
+
+                <div class="info-box">
+                    <strong>💡 Pro Tip:</strong><br>
+                    Pelajari shortcuts sedikit demi sedikit. Fokus pada yang paling sering dipakai dulu. Dalam beberapa minggu, produktivitas coding Anda akan meningkat drastis!
+                </div>
+
+                <h3>6. Integrated Terminal</h3>
+                <p>Gunakan terminal langsung di VS Code, bisa split multiple terminals.</p>
+
+                <h3>7. Workspace Settings</h3>
+                <p>Buat settings khusus per project di <code>.vscode/settings.json</code>.</p>
+
+                <h2 id="kesimpulan">✨ Kesimpulan</h2>
+                <p>VS Code adalah tool yang sangat powerful untuk developer. Dengan menguasai shortcuts, memanfaatkan extensions yang tepat, dan mengoptimalkan workflow, produktivitas coding Anda akan meningkat signifikan. Jangan ragu untuk eksplorasi fitur-fitur lainnya dan customize sesuai kebutuhan Anda!</p>
+            </div>
+
+            <div class="article-navigation">
+                <a href="memahami-sdlc.html" class="nav-article">
+                    <div class="nav-label">← Sebelumnya</div>
+                    <div class="nav-title">Memahami SDLC</div>
+                </a>
+                <a href="javascript-es6.html" class="nav-article" style="text-align:right">
+                    <div class="nav-label">Selanjutnya →</div>
+                    <div class="nav-title">JavaScript ES6</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk mahasiswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="../../index.html">Beranda</a></li>
+                        <li><a href="../roadmap/index.html">Roadmap</a></li>
+                        <li><a href="index.html">Artikel</a></li>
+                        <li><a href="../kuis/index.html">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>function copyCode(button){const code=button.nextElementSibling.textContent;navigator.clipboard.writeText(code).then(()=>{button.textContent='Copied!';setTimeout(()=>{button.textContent='Copy'},2000)})}</script>
+</body>
+</html>

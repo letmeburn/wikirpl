@@ -1,0 +1,90 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Apa itu Rekayasa Perangkat Lunak?",
+      "slug": "apa-itu-rekayasa-perangkat-lunak",
+      "category": "Dasar RPL",
+      "level": "Pemula",
+      "readTime": 5,
+      "views": 1200,
+      "icon": "fa-code",
+      "description": "Pengenalan lengkap tentang RPL, metodologi, dan peran penting dalam industri teknologi modern.",
+      "content": "Konten artikel akan ditambahkan di sini..."
+    },
+    {
+      "id": 2,
+      "title": "Memahami SDLC",
+      "slug": "memahami-sdlc",
+      "category": "Metodologi",
+      "level": "Pemula",
+      "readTime": 8,
+      "views": 980,
+      "icon": "fa-project-diagram",
+      "description": "Software Development Life Cycle: tahapan pengembangan software dari perencanaan hingga maintenance.",
+      "content": "Konten artikel akan ditambahkan di sini..."
+    },
+    {
+      "id": 3,
+      "title": "Object Oriented Programming",
+      "slug": "object-oriented-programming",
+      "category": "OOP",
+      "level": "Menengah",
+      "readTime": 12,
+      "views": 1500,
+      "icon": "fa-cubes",
+      "description": "Konsep OOP: encapsulation, inheritance, polymorphism, dan abstraction dengan contoh praktis.",
+      "content": "Konten artikel akan ditambahkan di sini..."
+    },
+    {
+      "id": 4,
+      "title": "SQL untuk Pemula",
+      "slug": "sql-untuk-pemula",
+      "category": "Database",
+      "level": "Pemula",
+      "readTime": 10,
+      "views": 2100,
+      "icon": "fa-database",
+      "description": "Belajar query SQL dasar: SELECT, INSERT, UPDATE, DELETE, dan JOIN dengan contoh nyata.",
+      "content": "Konten artikel akan ditambahkan di sini..."
+    },
+    {
+      "id": 5,
+      "title": "Git & GitHub Workflow",
+      "slug": "git-github-workflow",
+      "category": "Tools",
+      "level": "Pemula",
+      "readTime": 15,
+      "views": 3200,
+      "icon": "fa-git-alt",
+      "description": "Panduan lengkap menggunakan Git untuk version control dan kolaborasi dengan GitHub.",
+      "content": "Konten artikel akan ditambahkan di sini..."
+    },
+    {
+      "id": 6,
+      "title": "Membuat REST API",
+      "slug": "membuat-rest-api",
+      "category": "Web Dev",
+      "level": "Menengah",
+      "readTime": 20,
+      "views": 1800,
+      "icon": "fa-rocket",
+      "description": "Tutorial step-by-step membuat REST API dengan Node.js, Express, dan MongoDB.",
+      "content": "Konten artikel akan ditambahkan di sini..."
+    }
+  ],
+  "categories": [
+    "Dasar RPL",
+    "Pemrograman Dasar",
+    "Pemrograman Lanjut",
+    "Web Development",
+    "Database",
+    "Tools & Workflow",
+    "Karir & Soft Skill"
+  ],
+  "levels": [
+    "Pemula",
+    "Menengah",
+    "Ahli"
+  ]
+}

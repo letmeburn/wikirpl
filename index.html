@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WikiRPL — Panduan Lengkap Rekayasa Perangkat Lunak</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-book-open"></i>
+                WikiRPL
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="pages/roadmap/index.html">Roadmap</a></li>
+                <li><a href="pages/artikel/index.html">Artikel</a></li>
+                <li><a href="pages/kuis/index.html">Kuis</a></li>
+                <li><a href="pages/profil/index.html">Kontributor</a></li>
+                <li>
+                    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>📚 Panduan Lengkap Rekayasa Perangkat Lunak</h1>
+            <p>Dari pemula hingga ahli — pelajari RPL dengan roadmap terstruktur, artikel berkualitas, dan tips dari praktisi berpengalaman.</p>
+            <div class="cta-buttons">
+                <a href="pages/roadmap/index.html" class="btn btn-primary">Mulai Belajar</a>
+                <a href="pages/artikel/index.html" class="btn btn-secondary">Jelajahi Artikel</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Fitur Unggulan</h2>
+            <p class="section-subtitle">Semua yang kamu butuhkan untuk menguasai Rekayasa Perangkat Lunak</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Roadmap Belajar</h3>
+                    <p>Jalur belajar terstruktur dari level pemula hingga ahli dengan checklist progres yang bisa disimpan.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Artikel Lengkap</h3>
+                    <p>Ratusan artikel terstruktur dengan syntax highlighting, contoh kode, dan penjelasan yang mudah dipahami.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Pencarian Cepat</h3>
+                    <p>Temukan materi yang kamu butuhkan dengan fitur pencarian real-time dan filter berdasarkan kategori.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Tips & Trik</h3>
+                    <p>Koleksi tips dari komunitas RPL, shortcut, workflow, dan productivity hack untuk developer.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Kuis Interaktif</h3>
+                    <p>Uji pemahamanmu dengan kuis per topik, dapatkan pembahasan lengkap dan badge pencapaian.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Komunitas</h3>
+                    <p>Bergabung dengan komunitas RPL, kontribusi artikel, dan diskusi dengan sesama learner.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Preview Section -->
+    <section class="section" id="roadmap" style="background-color: var(--bg-secondary-light);">
+        <div class="container">
+            <h2 class="section-title">Roadmap Belajar</h2>
+            <p class="section-subtitle">Pilih level yang sesuai dengan kemampuanmu dan mulai perjalanan belajar</p>
+            <div class="roadmap-grid">
+                <div class="roadmap-card">
+                    <div class="roadmap-level">Level 1</div>
+                    <h3>🌱 Pemula</h3>
+                    <ul>
+                        <li>Dasar Pemrograman</li>
+                        <li>Algoritma & Flowchart</li>
+                        <li>HTML, CSS, JavaScript</li>
+                        <li>Git & GitHub Dasar</li>
+                        <li>Database SQL Dasar</li>
+                    </ul>
+                    <p style="opacity: 0.8; font-size: 0.9rem;">⏱️ Estimasi: 3-6 bulan</p>
+                </div>
+                <div class="roadmap-card">
+                    <div class="roadmap-level">Level 2</div>
+                    <h3>🚀 Menengah</h3>
+                    <ul>
+                        <li>OOP & Design Patterns</li>
+                        <li>Framework Frontend</li>
+                        <li>Backend Development</li>
+                        <li>REST API & Testing</li>
+                        <li>SDLC & Agile</li>
+                    </ul>
+                    <p style="opacity: 0.8; font-size: 0.9rem;">⏱️ Estimasi: 6-12 bulan</p>
+                </div>
+                <div class="roadmap-card">
+                    <div class="roadmap-level">Level 3</div>
+                    <h3>⭐ Ahli</h3>
+                    <ul>
+                        <li>Microservices Architecture</li>
+                        <li>DevOps & CI/CD</li>
+                        <li>Cloud Computing</li>
+                        <li>System Design</li>
+                        <li>Performance Optimization</li>
+                    </ul>
+                    <p style="opacity: 0.8; font-size: 0.9rem;">⏱️ Estimasi: 12+ bulan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="section" id="artikel">
+        <div class="container">
+            <h2 class="section-title">Artikel Terbaru</h2>
+            <p class="section-subtitle">Pelajari topik-topik penting dalam Rekayasa Perangkat Lunak</p>
+            <div class="articles-grid">
+                <a href="pages/artikel/apa-itu-rpl.html" style="text-decoration: none; color: inherit;">
+                    <div class="article-card">
+                        <div class="article-thumbnail">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-badges">
+                                <span class="badge badge-category">Dasar RPL</span>
+                                <span class="badge badge-level">Pemula</span>
+                            </div>
+                            <h3>Apa itu Rekayasa Perangkat Lunak?</h3>
+                            <p>Pengenalan lengkap tentang RPL, metodologi, dan peran penting dalam industri teknologi modern.</p>
+                            <div class="article-meta">
+                                <span><i class="far fa-clock"></i> 5 menit</span>
+                                <span><i class="far fa-eye"></i> 1.2k views</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="pages/artikel/memahami-sdlc.html" style="text-decoration: none; color: inherit;">
+                    <div class="article-card">
+                        <div class="article-thumbnail">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-badges">
+                                <span class="badge badge-category">Metodologi</span>
+                                <span class="badge badge-level">Pemula</span>
+                            </div>
+                            <h3>Memahami SDLC</h3>
+                            <p>Software Development Life Cycle: tahapan pengembangan software dari perencanaan hingga maintenance.</p>
+                            <div class="article-meta">
+                                <span><i class="far fa-clock"></i> 8 menit</span>
+                                <span><i class="far fa-eye"></i> 980 views</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="pages/artikel/oop.html" style="text-decoration: none; color: inherit;">
+                    <div class="article-card">
+                        <div class="article-thumbnail">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-badges">
+                                <span class="badge badge-category">OOP</span>
+                                <span class="badge badge-level">Menengah</span>
+                            </div>
+                            <h3>Object Oriented Programming</h3>
+                            <p>Konsep OOP: encapsulation, inheritance, polymorphism, dan abstraction dengan contoh praktis.</p>
+                            <div class="article-meta">
+                                <span><i class="far fa-clock"></i> 12 menit</span>
+                                <span><i class="far fa-eye"></i> 1.5k views</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="pages/artikel/sql-pemula.html" style="text-decoration: none; color: inherit;">
+                    <div class="article-card">
+                        <div class="article-thumbnail">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-badges">
+                                <span class="badge badge-category">Database</span>
+                                <span class="badge badge-level">Pemula</span>
+                            </div>
+                            <h3>SQL untuk Pemula</h3>
+                            <p>Belajar query SQL dasar: SELECT, INSERT, UPDATE, DELETE, dan JOIN dengan contoh nyata.</p>
+                            <div class="article-meta">
+                                <span><i class="far fa-clock"></i> 10 menit</span>
+                                <span><i class="far fa-eye"></i> 2.1k views</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="pages/artikel/git-github.html" style="text-decoration: none; color: inherit;">
+                    <div class="article-card">
+                        <div class="article-thumbnail">
+                            <i class="fab fa-git-alt"></i>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-badges">
+                                <span class="badge badge-category">Tools</span>
+                                <span class="badge badge-level">Pemula</span>
+                            </div>
+                            <h3>Git & GitHub Workflow</h3>
+                            <p>Panduan lengkap menggunakan Git untuk version control dan kolaborasi dengan GitHub.</p>
+                            <div class="article-meta">
+                                <span><i class="far fa-clock"></i> 15 menit</span>
+                                <span><i class="far fa-eye"></i> 3.2k views</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="pages/artikel/rest-api.html" style="text-decoration: none; color: inherit;">
+                    <div class="article-card">
+                        <div class="article-thumbnail">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-badges">
+                                <span class="badge badge-category">Web Dev</span>
+                                <span class="badge badge-level">Menengah</span>
+                            </div>
+                            <h3>Membuat REST API</h3>
+                            <p>Tutorial step-by-step membuat REST API dengan Node.js, Express, dan MongoDB.</p>
+                            <div class="article-meta">
+                                <span><i class="far fa-clock"></i> 20 menit</span>
+                                <span><i class="far fa-eye"></i> 1.8k views</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="tentang">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk mahasiswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#roadmap">Roadmap</a></li>
+                        <li><a href="#artikel">Artikel</a></li>
+                        <li><a href="#kuis">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

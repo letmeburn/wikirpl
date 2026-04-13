@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoSQL vs SQL - WikiRPL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .article-detail{padding:2rem 0;min-height:100vh}.article-container{max-width:900px;margin:0 auto;padding:0 1.5rem}.article-header{margin-bottom:2rem}.breadcrumb{display:flex;gap:.5rem;margin-bottom:1.5rem;color:var(--text-secondary-light);font-size:.9rem}.breadcrumb a{color:var(--accent);text-decoration:none}.article-title{font-size:2.5rem;margin-bottom:1rem;line-height:1.2}.article-meta-info{display:flex;gap:1.5rem;flex-wrap:wrap;color:var(--text-secondary-light);margin-bottom:1.5rem}.article-badges{display:flex;gap:.5rem;margin-bottom:1.5rem}.article-content{background-color:var(--bg-secondary-light);padding:3rem;border-radius:12px;border:1px solid var(--border-light);line-height:1.8}.article-content h2{font-size:1.8rem;margin-top:2rem;margin-bottom:1rem;color:var(--accent)}.article-content h3{font-size:1.4rem;margin-top:1.5rem;margin-bottom:.75rem}.article-content p{margin-bottom:1rem}.article-content ul,.article-content ol{margin-left:2rem;margin-bottom:1rem}.article-content li{margin-bottom:.5rem}.code-block{background-color:#1e1e1e;color:#d4d4d4;padding:1.5rem;border-radius:8px;margin:1.5rem 0;position:relative;font-family:'Fira Code',monospace;overflow-x:auto}.copy-btn{position:absolute;top:.5rem;right:.5rem;background-color:var(--accent);color:white;border:none;padding:.5rem 1rem;border-radius:4px;cursor:pointer;font-size:.85rem}.copy-btn:hover{opacity:.8}.info-box{background-color:var(--bg-light);border-left:4px solid var(--accent);padding:1rem 1.5rem;margin:1.5rem 0;border-radius:4px}.toc{background-color:var(--bg-light);padding:1.5rem;border-radius:8px;margin-bottom:2rem;border:1px solid var(--border-light)}.toc h3{margin-bottom:1rem;font-size:1.2rem}.toc ul{list-style:none}.toc li{margin-bottom:.5rem}.toc a{color:var(--text-light);text-decoration:none;transition:color .3s}.toc a:hover{color:var(--accent)}.article-navigation{display:flex;justify-content:space-between;margin-top:3rem;gap:1rem}.nav-article{flex:1;background-color:var(--bg-secondary-light);padding:1.5rem;border-radius:8px;border:2px solid var(--border-light);text-decoration:none;color:var(--text-light);transition:all .3s}.nav-article:hover{border-color:var(--accent);transform:translateY(-2px)}.nav-label{font-size:.85rem;color:var(--text-secondary-light);margin-bottom:.5rem}.nav-title{font-weight:600}@media (max-width:768px){.article-title{font-size:2rem}.article-content{padding:1.5rem}.article-navigation{flex-direction:column}}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo"><i class="fas fa-book-open"></i> WikiRPL</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../roadmap/index.html">Roadmap</a></li>
+                <li><a href="../artikel/index.html">Artikel</a></li>
+                <li><a href="../kuis/index.html">Kuis</a></li>
+                <li><a href="../profil/index.html">Kontributor</a></li>
+                <li><button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button></li>
+            </ul>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="article-detail">
+        <div class="article-container">
+            <div class="breadcrumb">
+                <a href="../../index.html">Beranda</a><span>/</span>
+                <a href="index.html">Artikel</a><span>/</span>
+                <span>NoSQL vs SQL</span>
+            </div>
+
+            <div class="article-header">
+                <h1 class="article-title">NoSQL vs SQL: Memilih Database yang Tepat</h1>
+                <div class="article-badges">
+                    <span class="badge badge-category">Database</span>
+                    <span class="badge badge-level">Menengah</span>
+                </div>
+                <div class="article-meta-info">
+                    <span><i class="far fa-clock"></i> 14 menit baca</span>
+                    <span><i class="far fa-eye"></i> 1.680 views</span>
+                    <span><i class="far fa-calendar"></i> 30 Januari 2024</span>
+                </div>
+            </div>
+
+            <div class="toc">
+                <h3>📑 Daftar Isi</h3>
+                <ul>
+                    <li><a href="#intro">1. Pengenalan</a></li>
+                    <li><a href="#sql">2. SQL Database</a></li>
+                    <li><a href="#nosql">3. NoSQL Database</a></li>
+                    <li><a href="#comparison">4. Perbandingan</a></li>
+                    <li><a href="#choose">5. Kapan Menggunakan Apa?</a></li>
+                    <li><a href="#kesimpulan">6. Kesimpulan</a></li>
+                </ul>
+            </div>
+
+            <div class="article-content">
+                <h2 id="intro">🎯 Pengenalan</h2>
+                <p>Memilih database yang tepat adalah keputusan penting dalam development. <strong>SQL</strong> dan <strong>NoSQL</strong> adalah dua paradigma database yang berbeda, masing-masing dengan kelebihan dan use case tersendiri.</p>
+
+                <h2 id="sql">🗄️ SQL Database (Relational)</h2>
+                <p><strong>SQL (Structured Query Language)</strong> databases adalah relational databases yang menyimpan data dalam tabel dengan schema yang fixed.</p>
+
+                <h3>Karakteristik SQL</h3>
+                <ul>
+                    <li><strong>Schema Fixed:</strong> Struktur tabel harus didefinisikan sebelumnya</li>
+                    <li><strong>ACID Compliant:</strong> Atomicity, Consistency, Isolation, Durability</li>
+                    <li><strong>Relational:</strong> Data terhubung melalui foreign keys</li>
+                    <li><strong>Vertical Scaling:</strong> Scale up dengan hardware lebih powerful</li>
+                </ul>
+
+                <h3>Contoh SQL Databases</h3>
+                <ul>
+                    <li>MySQL</li>
+                    <li>PostgreSQL</li>
+                    <li>Oracle</li>
+                    <li>Microsoft SQL Server</li>
+                    <li>SQLite</li>
+                </ul>
+
+                <h3>Contoh Query SQL</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- Create table
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Insert data
+INSERT INTO users (name, email) 
+VALUES ('John Doe', 'john@example.com');
+
+-- Query with JOIN
+SELECT u.name, o.order_date, o.total
+FROM users u
+INNER JOIN orders o ON u.id = o.user_id
+WHERE u.id = 1;
+
+-- Update
+UPDATE users 
+SET email = 'newemail@example.com' 
+WHERE id = 1;
+
+-- Delete
+DELETE FROM users WHERE id = 1;</code></pre>
+                </div>
+
+                <h2 id="nosql">📦 NoSQL Database (Non-Relational)</h2>
+                <p><strong>NoSQL</strong> databases adalah non-relational databases yang lebih fleksibel dalam struktur data.</p>
+
+                <h3>Tipe-tipe NoSQL</h3>
+
+                <h4>1. Document Store</h4>
+                <p>Menyimpan data dalam dokumen (JSON, BSON, XML).</p>
+                <p><strong>Contoh:</strong> MongoDB, CouchDB</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// MongoDB - Insert document
+db.users.insertOne({
+    name: "John Doe",
+    email: "john@example.com",
+    age: 25,
+    address: {
+        city: "Jakarta",
+        country: "Indonesia"
+    },
+    hobbies: ["coding", "gaming"]
+});
+
+// Query
+db.users.find({ age: { $gt: 20 } });
+
+// Update
+db.users.updateOne(
+    { email: "john@example.com" },
+    { $set: { age: 26 } }
+);</code></pre>
+                </div>
+
+                <h4>2. Key-Value Store</h4>
+                <p>Menyimpan data sebagai key-value pairs. Sangat cepat untuk read/write sederhana.</p>
+                <p><strong>Contoh:</strong> Redis, DynamoDB</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// Redis
+SET user:1:name "John Doe"
+GET user:1:name
+HSET user:1 name "John" email "john@example.com"
+HGETALL user:1</code></pre>
+                </div>
+
+                <h4>3. Column-Family Store</h4>
+                <p>Menyimpan data dalam column families. Cocok untuk big data.</p>
+                <p><strong>Contoh:</strong> Cassandra, HBase</p>
+
+                <h4>4. Graph Database</h4>
+                <p>Menyimpan data sebagai nodes dan relationships. Cocok untuk social networks, recommendation engines.</p>
+                <p><strong>Contoh:</strong> Neo4j, ArangoDB</p>
+
+                <h3>Karakteristik NoSQL</h3>
+                <ul>
+                    <li><strong>Schema Flexible:</strong> Struktur data bisa berubah</li>
+                    <li><strong>BASE:</strong> Basically Available, Soft state, Eventually consistent</li>
+                    <li><strong>Horizontal Scaling:</strong> Scale out dengan menambah servers</li>
+                    <li><strong>High Performance:</strong> Optimized untuk specific use cases</li>
+                </ul>
+
+                <h2 id="comparison">⚖️ Perbandingan SQL vs NoSQL</h2>
+
+                <h3>Schema</h3>
+                <p><strong>SQL:</strong> Fixed schema, harus didefinisikan sebelumnya<br>
+                <strong>NoSQL:</strong> Dynamic schema, fleksibel</p>
+
+                <h3>Scalability</h3>
+                <p><strong>SQL:</strong> Vertical scaling (scale up)<br>
+                <strong>NoSQL:</strong> Horizontal scaling (scale out)</p>
+
+                <h3>ACID vs BASE</h3>
+                <p><strong>SQL:</strong> ACID - Strong consistency<br>
+                <strong>NoSQL:</strong> BASE - Eventual consistency</p>
+
+                <h3>Query Language</h3>
+                <p><strong>SQL:</strong> Standardized SQL<br>
+                <strong>NoSQL:</strong> Varies by database (MongoDB query, Redis commands, etc.)</p>
+
+                <h3>Relationships</h3>
+                <p><strong>SQL:</strong> Built-in dengan JOINs<br>
+                <strong>NoSQL:</strong> Tidak ada JOINs, data sering denormalized</p>
+
+                <h3>Performance</h3>
+                <p><strong>SQL:</strong> Bagus untuk complex queries<br>
+                <strong>NoSQL:</strong> Sangat cepat untuk simple queries dan large volumes</p>
+
+                <div class="info-box">
+                    <strong>💡 ACID vs BASE:</strong><br>
+                    <strong>ACID:</strong> Atomicity, Consistency, Isolation, Durability - Garantee strong consistency<br>
+                    <strong>BASE:</strong> Basically Available, Soft state, Eventually consistent - Prioritize availability over consistency
+                </div>
+
+                <h2 id="choose">🤔 Kapan Menggunakan Apa?</h2>
+
+                <h3>Gunakan SQL Jika:</h3>
+                <ul>
+                    <li>Data terstruktur dengan relationships yang jelas</li>
+                    <li>Butuh ACID compliance (banking, financial systems)</li>
+                    <li>Complex queries dengan multiple JOINs</li>
+                    <li>Data consistency sangat penting</li>
+                    <li>Schema tidak sering berubah</li>
+                    <li>Contoh: E-commerce, ERP, CRM systems</li>
+                </ul>
+
+                <h3>Gunakan NoSQL Jika:</h3>
+                <ul>
+                    <li>Data tidak terstruktur atau semi-structured</li>
+                    <li>Butuh horizontal scaling untuk big data</li>
+                    <li>Schema sering berubah (rapid development)</li>
+                    <li>High throughput untuk read/write operations</li>
+                    <li>Eventual consistency acceptable</li>
+                    <li>Contoh: Social media, IoT, real-time analytics, caching</li>
+                </ul>
+
+                <h3>Hybrid Approach</h3>
+                <p>Banyak aplikasi modern menggunakan keduanya:</p>
+                <ul>
+                    <li>SQL untuk transactional data</li>
+                    <li>NoSQL untuk caching (Redis)</li>
+                    <li>NoSQL untuk analytics (MongoDB)</li>
+                    <li>NoSQL untuk session storage</li>
+                </ul>
+
+                <h2>📊 Contoh Use Cases</h2>
+
+                <h3>SQL Use Cases</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- Banking: Transfer uang (ACID penting)
+BEGIN TRANSACTION;
+UPDATE accounts SET balance = balance - 100 WHERE id = 1;
+UPDATE accounts SET balance = balance + 100 WHERE id = 2;
+COMMIT;
+
+-- E-commerce: Order dengan multiple items
+SELECT o.id, o.total, u.name, p.name as product
+FROM orders o
+JOIN users u ON o.user_id = u.id
+JOIN order_items oi ON o.id = oi.order_id
+JOIN products p ON oi.product_id = p.id
+WHERE o.status = 'pending';</code></pre>
+                </div>
+
+                <h3>NoSQL Use Cases</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// Social Media: User profile dengan nested data
+{
+    "_id": "user123",
+    "username": "johndoe",
+    "profile": {
+        "bio": "Software Developer",
+        "avatar": "url",
+        "location": "Jakarta"
+    },
+    "posts": [
+        { "id": 1, "content": "Hello World", "likes": 100 },
+        { "id": 2, "content": "Learning NoSQL", "likes": 50 }
+    ],
+    "followers": ["user456", "user789"]
+}
+
+// IoT: Sensor data (high write throughput)
+db.sensors.insertMany([
+    { sensor_id: "temp01", value: 25.5, timestamp: new Date() },
+    { sensor_id: "temp02", value: 26.1, timestamp: new Date() }
+]);</code></pre>
+                </div>
+
+                <h2 id="kesimpulan">✨ Kesimpulan</h2>
+                <p>SQL dan NoSQL bukan kompetitor, tapi tools yang berbeda untuk kebutuhan berbeda. SQL cocok untuk data terstruktur dengan relationships kompleks dan butuh strong consistency. NoSQL cocok untuk data fleksibel, high scalability, dan rapid development. Pahami kebutuhan aplikasi Anda dan pilih database yang paling sesuai - atau gunakan kombinasi keduanya!</p>
+            </div>
+
+            <div class="article-navigation">
+                <a href="database-normalisasi.html" class="nav-article">
+                    <div class="nav-label">← Sebelumnya</div>
+                    <div class="nav-title">Database Normalisasi</div>
+                </a>
+                <a href="solid-principles.html" class="nav-article" style="text-align:right">
+                    <div class="nav-label">Selanjutnya →</div>
+                    <div class="nav-title">SOLID Principles</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk mahasiswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="../../index.html">Beranda</a></li>
+                        <li><a href="../roadmap/index.html">Roadmap</a></li>
+                        <li><a href="index.html">Artikel</a></li>
+                        <li><a href="../kuis/index.html">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>function copyCode(button){const code=button.nextElementSibling.textContent;navigator.clipboard.writeText(code).then(()=>{button.textContent='Copied!';setTimeout(()=>{button.textContent='Copy'},2000)})}</script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Semantik - WikiRPL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .article-detail{padding:2rem 0;min-height:100vh}.article-container{max-width:900px;margin:0 auto;padding:0 1.5rem}.article-header{margin-bottom:2rem}.breadcrumb{display:flex;gap:.5rem;margin-bottom:1.5rem;color:var(--text-secondary-light);font-size:.9rem}.breadcrumb a{color:var(--accent);text-decoration:none}.article-title{font-size:2.5rem;margin-bottom:1rem;line-height:1.2}.article-meta-info{display:flex;gap:1.5rem;flex-wrap:wrap;color:var(--text-secondary-light);margin-bottom:1.5rem}.article-badges{display:flex;gap:.5rem;margin-bottom:1.5rem}.article-content{background-color:var(--bg-secondary-light);padding:3rem;border-radius:12px;border:1px solid var(--border-light);line-height:1.8}.article-content h2{font-size:1.8rem;margin-top:2rem;margin-bottom:1rem;color:var(--accent)}.article-content h3{font-size:1.4rem;margin-top:1.5rem;margin-bottom:.75rem}.article-content p{margin-bottom:1rem}.article-content ul,.article-content ol{margin-left:2rem;margin-bottom:1rem}.article-content li{margin-bottom:.5rem}.code-block{background-color:#1e1e1e;color:#d4d4d4;padding:1.5rem;border-radius:8px;margin:1.5rem 0;position:relative;font-family:'Fira Code',monospace;overflow-x:auto}.copy-btn{position:absolute;top:.5rem;right:.5rem;background-color:var(--accent);color:white;border:none;padding:.5rem 1rem;border-radius:4px;cursor:pointer;font-size:.85rem}.copy-btn:hover{opacity:.8}.info-box{background-color:var(--bg-light);border-left:4px solid var(--accent);padding:1rem 1.5rem;margin:1.5rem 0;border-radius:4px}.toc{background-color:var(--bg-light);padding:1.5rem;border-radius:8px;margin-bottom:2rem;border:1px solid var(--border-light)}.toc h3{margin-bottom:1rem;font-size:1.2rem}.toc ul{list-style:none}.toc li{margin-bottom:.5rem}.toc a{color:var(--text-light);text-decoration:none;transition:color .3s}.toc a:hover{color:var(--accent)}.article-navigation{display:flex;justify-content:space-between;margin-top:3rem;gap:1rem}.nav-article{flex:1;background-color:var(--bg-secondary-light);padding:1.5rem;border-radius:8px;border:2px solid var(--border-light);text-decoration:none;color:var(--text-light);transition:all .3s}.nav-article:hover{border-color:var(--accent);transform:translateY(-2px)}.nav-label{font-size:.85rem;color:var(--text-secondary-light);margin-bottom:.5rem}.nav-title{font-weight:600}@media (max-width:768px){.article-title{font-size:2rem}.article-content{padding:1.5rem}.article-navigation{flex-direction:column}}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo"><i class="fas fa-book-open"></i> WikiRPL</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../roadmap/index.html">Roadmap</a></li>
+                <li><a href="../artikel/index.html">Artikel</a></li>
+                <li><a href="../kuis/index.html">Kuis</a></li>
+                <li><a href="../profil/index.html">Kontributor</a></li>
+                <li><button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button></li>
+            </ul>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="article-detail">
+        <div class="article-container">
+            <div class="breadcrumb">
+                <a href="../../index.html">Beranda</a><span>/</span>
+                <a href="index.html">Artikel</a><span>/</span>
+                <span>HTML5 Semantik</span>
+            </div>
+
+            <div class="article-header">
+                <h1 class="article-title">Memahami HTML5 Semantic Elements</h1>
+                <div class="article-badges">
+                    <span class="badge badge-category">Web Development</span>
+                    <span class="badge badge-level">Pemula</span>
+                </div>
+                <div class="article-meta-info">
+                    <span><i class="far fa-clock"></i> 9 menit baca</span>
+                    <span><i class="far fa-eye"></i> 1.120 views</span>
+                    <span><i class="far fa-calendar"></i> 24 Januari 2024</span>
+                </div>
+            </div>
+
+            <div class="toc">
+                <h3>📑 Daftar Isi</h3>
+                <ul>
+                    <li><a href="#intro">1. Apa itu Semantic HTML?</a></li>
+                    <li><a href="#elements">2. Semantic Elements</a></li>
+                    <li><a href="#benefits">3. Manfaat Semantic HTML</a></li>
+                    <li><a href="#example">4. Contoh Implementasi</a></li>
+                    <li><a href="#kesimpulan">5. Kesimpulan</a></li>
+                </ul>
+            </div>
+
+            <div class="article-content">
+                <h2 id="intro">🎯 Apa itu Semantic HTML?</h2>
+                <p><strong>Semantic HTML</strong> adalah penggunaan tag HTML yang memberikan makna (meaning) pada konten, bukan hanya tampilan. Tag semantic mendeskripsikan tujuan dan struktur konten dengan jelas.</p>
+
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code><!-- Non-semantic -->
+<div id="header">...</div>
+<div class="navigation">...</div>
+<div class="content">...</div>
+
+<!-- Semantic -->
+<header>...</header>
+<nav>...</nav>
+<main>...</main></code></pre>
+                </div>
+
+                <h2 id="elements">📦 Semantic Elements HTML5</h2>
+
+                <h3>&lt;header&gt;</h3>
+                <p>Mendefinisikan header untuk dokumen atau section. Biasanya berisi logo, judul, navigasi.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code><header>
+    <h1>Website Title</h1>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+    </nav>
+</header></code></pre>
+                </div>
+
+                <h3>&lt;nav&gt;</h3>
+                <p>Mendefinisikan navigasi links.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code><nav>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav></code></pre>
+                </div>
+
+                <h3>&lt;main&gt;</h3>
+                <p>Mendefinisikan konten utama dokumen. Hanya boleh ada satu <code>&lt;main&gt;</code> per halaman.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code><main>
+    <h1>Main Content</h1>
+    <p>This is the primary content of the page.</p>
+</main></code></pre>
+                </div>
+
+                <h3>&lt;article&gt;</h3>
+                <p>Konten independen yang bisa berdiri sendiri (blog post, news article, forum post).</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code><article>
+    <h2>Article Title</h2>
+    <p>Published on <time datetime="2024-01-24">January 24, 2024</time></p>
+    <p>Article content goes here...</p>
+</article></code></pre>
+                </div>
+
+                <h3>&lt;section&gt;</h3>
+                <p>Mengelompokkan konten tematik. Biasanya memiliki heading.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code><section>
+    <h2>About Us</h2>
+    <p>Information about our company...</p>
+</section>
+
+<section>
+    <h2>Our Services</h2>
+    <p>List of services we provide...</p>
+</section></code></pre>
+                </div>
+
+                <h3>&lt;aside&gt;</h3>
+                <p>Konten yang terkait tapi terpisah dari konten utama (sidebar, callout boxes).</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code><aside>
+    <h3>Related Articles</h3>
+    <ul>
+        <li><a href="#">Article 1</a></li>
+        <li><a href="#">Article 2</a></li>
+    </ul>
+</aside></code></pre>
+                </div>
+
+                <h3>&lt;footer&gt;</h3>
+                <p>Footer untuk dokumen atau section. Biasanya berisi copyright, links, contact info.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code><footer>
+    <p>&copy; 2024 Company Name. All rights reserved.</p>
+    <nav>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of Service</a>
+    </nav>
+</footer></code></pre>
+                </div>
+
+                <h3>&lt;figure&gt; dan &lt;figcaption&gt;</h3>
+                <p>Untuk gambar, diagram, code snippets dengan caption.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code><figure>
+    <img src="chart.png" alt="Sales Chart">
+    <figcaption>Figure 1: Sales data for 2024</figcaption>
+</figure></code></pre>
+                </div>
+
+                <h3>&lt;time&gt;</h3>
+                <p>Mendefinisikan tanggal/waktu yang machine-readable.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code><p>Published on <time datetime="2024-01-24">January 24, 2024</time></p>
+<p>Event starts at <time datetime="14:00">2:00 PM</time></p></code></pre>
+                </div>
+
+                <h2 id="benefits">✨ Manfaat Semantic HTML</h2>
+
+                <h3>1. Accessibility (Aksesibilitas)</h3>
+                <p>Screen readers dapat memahami struktur halaman dengan lebih baik, membantu pengguna dengan disabilitas visual.</p>
+
+                <h3>2. SEO (Search Engine Optimization)</h3>
+                <p>Search engines lebih mudah memahami konten dan struktur website, meningkatkan ranking.</p>
+
+                <h3>3. Maintainability</h3>
+                <p>Kode lebih mudah dibaca dan dipahami oleh developer lain.</p>
+
+                <h3>4. Consistency</h3>
+                <p>Struktur yang konsisten di seluruh website.</p>
+
+                <div class="info-box">
+                    <strong>💡 Best Practice:</strong><br>
+                    Gunakan semantic elements untuk struktur, bukan styling. Styling dilakukan dengan CSS. Semantic HTML membuat kode lebih meaningful dan accessible.
+                </div>
+
+                <h2 id="example">🎨 Contoh Implementasi Lengkap</h2>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code><!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Post</title>
+</head>
+<body>
+    <header>
+        <h1>My Blog</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <header>
+                <h2>Understanding Semantic HTML</h2>
+                <p>By John Doe on <time datetime="2024-01-24">Jan 24, 2024</time></p>
+            </header>
+            
+            <section>
+                <h3>Introduction</h3>
+                <p>Semantic HTML is important for...</p>
+            </section>
+
+            <section>
+                <h3>Benefits</h3>
+                <p>The main benefits include...</p>
+            </section>
+
+            <footer>
+                <p>Tags: HTML, Web Development</p>
+            </footer>
+        </article>
+
+        <aside>
+            <h3>Related Posts</h3>
+            <ul>
+                <li><a href="#">CSS Flexbox Guide</a></li>
+                <li><a href="#">JavaScript Basics</a></li>
+            </ul>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Blog. All rights reserved.</p>
+    </footer>
+</body>
+</html></code></pre>
+                </div>
+
+                <h2 id="kesimpulan">✨ Kesimpulan</h2>
+                <p>Semantic HTML adalah fondasi penting dalam web development modern. Dengan menggunakan semantic elements, kita membuat website yang lebih accessible, SEO-friendly, dan maintainable. Mulai gunakan semantic HTML dalam setiap project Anda!</p>
+            </div>
+
+            <div class="article-navigation">
+                <a href="javascript-es6.html" class="nav-article">
+                    <div class="nav-label">← Sebelumnya</div>
+                    <div class="nav-title">JavaScript ES6</div>
+                </a>
+                <a href="css-flexbox-grid.html" class="nav-article" style="text-align:right">
+                    <div class="nav-label">Selanjutnya →</div>
+                    <div class="nav-title">CSS Flexbox & Grid</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk mahasiswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="../../index.html">Beranda</a></li>
+                        <li><a href="../roadmap/index.html">Roadmap</a></li>
+                        <li><a href="index.html">Artikel</a></li>
+                        <li><a href="../kuis/index.html">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>function copyCode(button){const code=button.nextElementSibling.textContent;navigator.clipboard.writeText(code).then(()=>{button.textContent='Copied!';setTimeout(()=>{button.textContent='Copy'},2000)})}</script>
+</body>
+</html>

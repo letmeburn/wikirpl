@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Patterns - WikiRPL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .article-detail{padding:2rem 0;min-height:100vh}.article-container{max-width:900px;margin:0 auto;padding:0 1.5rem}.article-header{margin-bottom:2rem}.breadcrumb{display:flex;gap:.5rem;margin-bottom:1.5rem;color:var(--text-secondary-light);font-size:.9rem}.breadcrumb a{color:var(--accent);text-decoration:none}.article-title{font-size:2.5rem;margin-bottom:1rem;line-height:1.2}.article-meta-info{display:flex;gap:1.5rem;flex-wrap:wrap;color:var(--text-secondary-light);margin-bottom:1.5rem}.article-badges{display:flex;gap:.5rem;margin-bottom:1.5rem}.article-content{background-color:var(--bg-secondary-light);padding:3rem;border-radius:12px;border:1px solid var(--border-light);line-height:1.8}.article-content h2{font-size:1.8rem;margin-top:2rem;margin-bottom:1rem;color:var(--accent)}.article-content h3{font-size:1.4rem;margin-top:1.5rem;margin-bottom:.75rem}.article-content p{margin-bottom:1rem}.article-content ul,.article-content ol{margin-left:2rem;margin-bottom:1rem}.article-content li{margin-bottom:.5rem}.code-block{background-color:#1e1e1e;color:#d4d4d4;padding:1.5rem;border-radius:8px;margin:1.5rem 0;position:relative;font-family:'Fira Code',monospace;overflow-x:auto}.copy-btn{position:absolute;top:.5rem;right:.5rem;background-color:var(--accent);color:white;border:none;padding:.5rem 1rem;border-radius:4px;cursor:pointer;font-size:.85rem}.copy-btn:hover{opacity:.8}.info-box{background-color:var(--bg-light);border-left:4px solid var(--accent);padding:1rem 1.5rem;margin:1.5rem 0;border-radius:4px}.toc{background-color:var(--bg-light);padding:1.5rem;border-radius:8px;margin-bottom:2rem;border:1px solid var(--border-light)}.toc h3{margin-bottom:1rem;font-size:1.2rem}.toc ul{list-style:none}.toc li{margin-bottom:.5rem}.toc a{color:var(--text-light);text-decoration:none;transition:color .3s}.toc a:hover{color:var(--accent)}.article-navigation{display:flex;justify-content:space-between;margin-top:3rem;gap:1rem}.nav-article{flex:1;background-color:var(--bg-secondary-light);padding:1.5rem;border-radius:8px;border:2px solid var(--border-light);text-decoration:none;color:var(--text-light);transition:all .3s}.nav-article:hover{border-color:var(--accent);transform:translateY(-2px)}.nav-label{font-size:.85rem;color:var(--text-secondary-light);margin-bottom:.5rem}.nav-title{font-weight:600}@media (max-width:768px){.article-title{font-size:2rem}.article-content{padding:1.5rem}.article-navigation{flex-direction:column}}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo"><i class="fas fa-book-open"></i> WikiRPL</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../roadmap/index.html">Roadmap</a></li>
+                <li><a href="../artikel/index.html">Artikel</a></li>
+                <li><a href="../kuis/index.html">Kuis</a></li>
+                <li><a href="../profil/index.html">Kontributor</a></li>
+                <li><button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button></li>
+            </ul>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="article-detail">
+        <div class="article-container">
+            <div class="breadcrumb">
+                <a href="../../index.html">Beranda</a><span>/</span>
+                <a href="index.html">Artikel</a><span>/</span>
+                <span>Design Patterns</span>
+            </div>
+
+            <div class="article-header">
+                <h1 class="article-title">Design Patterns: Solusi untuk Masalah Umum</h1>
+                <div class="article-badges">
+                    <span class="badge badge-category">Software Design</span>
+                    <span class="badge badge-level">Lanjutan</span>
+                </div>
+                <div class="article-meta-info">
+                    <span><i class="far fa-clock"></i> 18 menit baca</span>
+                    <span><i class="far fa-eye"></i> 2.150 views</span>
+                    <span><i class="far fa-calendar"></i> 3 Februari 2024</span>
+                </div>
+            </div>
+
+            <div class="toc">
+                <h3>📑 Daftar Isi</h3>
+                <ul>
+                    <li><a href="#intro">1. Apa itu Design Patterns?</a></li>
+                    <li><a href="#creational">2. Creational Patterns</a></li>
+                    <li><a href="#structural">3. Structural Patterns</a></li>
+                    <li><a href="#behavioral">4. Behavioral Patterns</a></li>
+                    <li><a href="#kesimpulan">5. Kesimpulan</a></li>
+                </ul>
+            </div>
+
+            <div class="article-content">
+                <h2 id="intro">🎯 Apa itu Design Patterns?</h2>
+                <p><strong>Design Patterns</strong> adalah solusi umum yang dapat digunakan kembali untuk masalah yang sering muncul dalam software design. Patterns ini bukan kode yang bisa langsung dipakai, tapi template untuk menyelesaikan masalah dalam berbagai situasi.</p>
+
+                <p>Design patterns dikategorikan menjadi 3 kelompok:</p>
+                <ul>
+                    <li><strong>Creational:</strong> Cara membuat objects</li>
+                    <li><strong>Structural:</strong> Cara menyusun objects dan classes</li>
+                    <li><strong>Behavioral:</strong> Cara objects berkomunikasi</li>
+                </ul>
+
+                <h2 id="creational">🏗️ Creational Patterns</h2>
+
+                <h3>1. Singleton Pattern</h3>
+                <p>Memastikan class hanya punya satu instance dan menyediakan global access point.</p>
+                <p><strong>Use Case:</strong> Database connection, Logger, Configuration manager</p>
+
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>class Database {
+    constructor() {
+        if (Database.instance) {
+            return Database.instance;
+        }
+        this.connection = 'Connected to DB';
+        Database.instance = this;
+    }
+
+    getConnection() {
+        return this.connection;
+    }
+}
+
+// Usage
+const db1 = new Database();
+const db2 = new Database();
+console.log(db1 === db2); // true (same instance)</code></pre>
+                </div>
+
+                <h3>2. Factory Pattern</h3>
+                <p>Membuat objects tanpa specify exact class yang akan dibuat.</p>
+                <p><strong>Use Case:</strong> Membuat objects berdasarkan kondisi tertentu</p>
+
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>class Car {
+    constructor(type) {
+        this.type = type;
+    }
+}
+
+class Truck {
+    constructor(type) {
+        this.type = type;
+    }
+}
+
+class VehicleFactory {
+    createVehicle(type) {
+        switch(type) {
+            case 'car':
+                return new Car('Sedan');
+            case 'truck':
+                return new Truck('Pickup');
+            default:
+                throw new Error('Unknown vehicle type');
+        }
+    }
+}
+
+// Usage
+const factory = new VehicleFactory();
+const car = factory.createVehicle('car');
+const truck = factory.createVehicle('truck');</code></pre>
+                </div>
+
+                <h3>3. Builder Pattern</h3>
+                <p>Membangun complex objects step by step.</p>
+                <p><strong>Use Case:</strong> Objects dengan banyak optional parameters</p>
+
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>class User {
+    constructor(builder) {
+        this.name = builder.name;
+        this.age = builder.age;
+        this.email = builder.email;
+        this.phone = builder.phone;
+    }
+}
+
+class UserBuilder {
+    constructor(name) {
+        this.name = name;
+    }
+
+    setAge(age) {
+        this.age = age;
+        return this;
+    }
+
+    setEmail(email) {
+        this.email = email;
+        return this;
+    }
+
+    setPhone(phone) {
+        this.phone = phone;
+        return this;
+    }
+
+    build() {
+        return new User(this);
+    }
+}
+
+// Usage
+const user = new UserBuilder('John')
+    .setAge(25)
+    .setEmail('john@example.com')
+    .setPhone('123456789')
+    .build();</code></pre>
+                </div>
+
+                <h2 id="structural">🏛️ Structural Patterns</h2>
+
+                <h3>1. Adapter Pattern</h3>
+                <p>Mengkonversi interface class menjadi interface lain yang diharapkan client.</p>
+                <p><strong>Use Case:</strong> Integrasi dengan third-party libraries</p>
+
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// Old interface
+class OldPrinter {
+    printOld(text) {
+        console.log(`Old: ${text}`);
+    }
+}
+
+// New interface
+class NewPrinter {
+    print(text) {
+        console.log(`New: ${text}`);
+    }
+}
+
+// Adapter
+class PrinterAdapter {
+    constructor(oldPrinter) {
+        this.oldPrinter = oldPrinter;
+    }
+
+    print(text) {
+        this.oldPrinter.printOld(text);
+    }
+}
+
+// Usage
+const oldPrinter = new OldPrinter();
+const adapter = new PrinterAdapter(oldPrinter);
+adapter.print('Hello'); // Works with new interface</code></pre>
+                </div>
+
+                <h3>2. Decorator Pattern</h3>
+                <p>Menambahkan behavior baru ke objects tanpa mengubah structure-nya.</p>
+                <p><strong>Use Case:</strong> Menambahkan features secara dinamis</p>
+
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>class Coffee {
+    cost() {
+        return 5;
+    }
+
+    description() {
+        return 'Coffee';
+    }
+}
+
+class MilkDecorator {
+    constructor(coffee) {
+        this.coffee = coffee;
+    }
+
+    cost() {
+        return this.coffee.cost() + 2;
+    }
+
+    description() {
+        return this.coffee.description() + ', Milk';
+    }
+}
+
+class SugarDecorator {
+    constructor(coffee) {
+        this.coffee = coffee;
+    }
+
+    cost() {
+        return this.coffee.cost() + 1;
+    }
+
+    description() {
+        return this.coffee.description() + ', Sugar';
+    }
+}
+
+// Usage
+let coffee = new Coffee();
+coffee = new MilkDecorator(coffee);
+coffee = new SugarDecorator(coffee);
+console.log(coffee.description()); // Coffee, Milk, Sugar
+console.log(coffee.cost()); // 8</code></pre>
+                </div>
+
+                <h3>3. Facade Pattern</h3>
+                <p>Menyediakan interface sederhana untuk complex subsystem.</p>
+                <p><strong>Use Case:</strong> Simplify complex APIs</p>
+
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// Complex subsystems
+class CPU {
+    freeze() { console.log('CPU freeze'); }
+    jump() { console.log('CPU jump'); }
+    execute() { console.log('CPU execute'); }
+}
+
+class Memory {
+    load() { console.log('Memory load'); }
+}
+
+class HardDrive {
+    read() { console.log('HardDrive read'); }
+}
+
+// Facade
+class ComputerFacade {
+    constructor() {
+        this.cpu = new CPU();
+        this.memory = new Memory();
+        this.hardDrive = new HardDrive();
+    }
+
+    start() {
+        this.cpu.freeze();
+        this.memory.load();
+        this.hardDrive.read();
+        this.cpu.jump();
+        this.cpu.execute();
+    }
+}
+
+// Usage
+const computer = new ComputerFacade();
+computer.start(); // Simple interface!</code></pre>
+                </div>
+
+                <h2 id="behavioral">🔄 Behavioral Patterns</h2>
+
+                <h3>1. Observer Pattern</h3>
+                <p>Define one-to-many dependency, ketika satu object berubah, semua dependents di-notify.</p>
+                <p><strong>Use Case:</strong> Event handling, Pub/Sub systems</p>
+
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>class Subject {
+    constructor() {
+        this.observers = [];
+    }
+
+    subscribe(observer) {
+        this.observers.push(observer);
+    }
+
+    unsubscribe(observer) {
+        this.observers = this.observers.filter(obs => obs !== observer);
+    }
+
+    notify(data) {
+        this.observers.forEach(observer => observer.update(data));
+    }
+}
+
+class Observer {
+    constructor(name) {
+        this.name = name;
+    }
+
+    update(data) {
+        console.log(`${this.name} received: ${data}`);
+    }
+}
+
+// Usage
+const subject = new Subject();
+const observer1 = new Observer('Observer 1');
+const observer2 = new Observer('Observer 2');
+
+subject.subscribe(observer1);
+subject.subscribe(observer2);
+subject.notify('Hello!'); // Both observers notified</code></pre>
+                </div>
+
+                <h3>2. Strategy Pattern</h3>
+                <p>Define family of algorithms, encapsulate masing-masing, dan buat mereka interchangeable.</p>
+                <p><strong>Use Case:</strong> Payment methods, Sorting algorithms</p>
+
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// Strategies
+class CreditCardStrategy {
+    pay(amount) {
+        console.log(`Paid ${amount} using Credit Card`);
+    }
+}
+
+class PayPalStrategy {
+    pay(amount) {
+        console.log(`Paid ${amount} using PayPal`);
+    }
+}
+
+class CryptoStrategy {
+    pay(amount) {
+        console.log(`Paid ${amount} using Cryptocurrency`);
+    }
+}
+
+// Context
+class ShoppingCart {
+    constructor(paymentStrategy) {
+        this.paymentStrategy = paymentStrategy;
+    }
+
+    setPaymentStrategy(strategy) {
+        this.paymentStrategy = strategy;
+    }
+
+    checkout(amount) {
+        this.paymentStrategy.pay(amount);
+    }
+}
+
+// Usage
+const cart = new ShoppingCart(new CreditCardStrategy());
+cart.checkout(100);
+
+cart.setPaymentStrategy(new PayPalStrategy());
+cart.checkout(200);</code></pre>
+                </div>
+
+                <h3>3. Command Pattern</h3>
+                <p>Encapsulate request sebagai object, memungkinkan parameterize clients dengan different requests.</p>
+                <p><strong>Use Case:</strong> Undo/Redo functionality, Task queues</p>
+
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// Receiver
+class Light {
+    on() {
+        console.log('Light is ON');
+    }
+
+    off() {
+        console.log('Light is OFF');
+    }
+}
+
+// Commands
+class LightOnCommand {
+    constructor(light) {
+        this.light = light;
+    }
+
+    execute() {
+        this.light.on();
+    }
+
+    undo() {
+        this.light.off();
+    }
+}
+
+class LightOffCommand {
+    constructor(light) {
+        this.light = light;
+    }
+
+    execute() {
+        this.light.off();
+    }
+
+    undo() {
+        this.light.on();
+    }
+}
+
+// Invoker
+class RemoteControl {
+    constructor() {
+        this.history = [];
+    }
+
+    execute(command) {
+        command.execute();
+        this.history.push(command);
+    }
+
+    undo() {
+        const command = this.history.pop();
+        if (command) {
+            command.undo();
+        }
+    }
+}
+
+// Usage
+const light = new Light();
+const lightOn = new LightOnCommand(light);
+const lightOff = new LightOffCommand(light);
+const remote = new RemoteControl();
+
+remote.execute(lightOn);  // Light is ON
+remote.execute(lightOff); // Light is OFF
+remote.undo();            // Light is ON (undo)</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Tips Menggunakan Design Patterns:</strong><br>
+                    - Jangan over-engineer! Gunakan pattern hanya jika benar-benar diperlukan<br>
+                    - Pahami problem dulu sebelum apply pattern<br>
+                    - Patterns bukan silver bullet, tapi tools untuk solve specific problems<br>
+                    - Kombinasi patterns sering lebih powerful daripada single pattern
+                </div>
+
+                <h2 id="kesimpulan">✨ Kesimpulan</h2>
+                <p>Design patterns adalah vocabulary yang powerful untuk software developers. Dengan memahami patterns ini, Anda bisa berkomunikasi lebih efektif dengan developer lain dan menulis kode yang lebih maintainable. Ingat, patterns adalah guidelines, bukan rules - gunakan dengan bijak sesuai kebutuhan project Anda!</p>
+            </div>
+
+            <div class="article-navigation">
+                <a href="solid-principles.html" class="nav-article">
+                    <div class="nav-label">← Sebelumnya</div>
+                    <div class="nav-title">SOLID Principles</div>
+                </a>
+                <a href="algoritma-flowchart.html" class="nav-article" style="text-align:right">
+                    <div class="nav-label">Selanjutnya →</div>
+                    <div class="nav-title">Algoritma & Flowchart</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk mahasiswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="../../index.html">Beranda</a></li>
+                        <li><a href="../roadmap/index.html">Roadmap</a></li>
+                        <li><a href="index.html">Artikel</a></li>
+                        <li><a href="../kuis/index.html">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>function copyCode(button){const code=button.nextElementSibling.textContent;navigator.clipboard.writeText(code).then(()=>{button.textContent='Copied!';setTimeout(()=>{button.textContent='Copy'},2000)})}</script>
+</body>
+</html>

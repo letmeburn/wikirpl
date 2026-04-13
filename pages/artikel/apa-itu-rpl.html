@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apa itu Rekayasa Perangkat Lunak? - WikiRPL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .article-detail {
+            padding: 2rem 0;
+            min-height: 100vh;
+        }
+
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .article-header {
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary-light);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .article-meta-info {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            color: var(--text-secondary-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .article-badges {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content {
+            background-color: var(--bg-secondary-light);
+            padding: 3rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            line-height: 1.8;
+        }
+
+        .article-content h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .article-content h3 {
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+        }
+
+        .article-content ul, .article-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .code-block {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            position: relative;
+            font-family: 'Fira Code', monospace;
+            overflow-x: auto;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .copy-btn:hover {
+            opacity: 0.8;
+        }
+
+        .info-box {
+            background-color: var(--bg-light);
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .toc {
+            background-color: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .toc h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .toc ul {
+            list-style: none;
+        }
+
+        .toc li {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .toc a:hover {
+            color: var(--accent);
+        }
+
+        .article-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            gap: 1rem;
+        }
+
+        .nav-article {
+            flex: 1;
+            background-color: var(--bg-secondary-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--border-light);
+            text-decoration: none;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+
+        .nav-article:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .nav-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-title {
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-content {
+                padding: 1.5rem;
+            }
+
+            .article-navigation {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">
+                <i class="fas fa-book-open"></i>
+                WikiRPL
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../roadmap/index.html">Roadmap</a></li>
+                <li><a href="../artikel/index.html">Artikel</a></li>
+                <li><a href="../kuis/index.html">Kuis</a></li>
+                <li><a href="../profil/index.html">Kontributor</a></li>
+                <li>
+                    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Article Detail -->
+    <div class="article-detail">
+        <div class="article-container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="../../index.html">Beranda</a>
+                <span>/</span>
+                <a href="index.html">Artikel</a>
+                <span>/</span>
+                <span>Apa itu Rekayasa Perangkat Lunak?</span>
+            </div>
+
+            <!-- Article Header -->
+            <div class="article-header">
+                <h1 class="article-title">Apa itu Rekayasa Perangkat Lunak?</h1>
+                <div class="article-badges">
+                    <span class="badge badge-category">Dasar RPL</span>
+                    <span class="badge badge-level">Pemula</span>
+                </div>
+                <div class="article-meta-info">
+                    <span><i class="far fa-clock"></i> 5 menit baca</span>
+                    <span><i class="far fa-eye"></i> 1.2k views</span>
+                    <span><i class="far fa-calendar"></i> 15 Januari 2024</span>
+                    <span><i class="fas fa-user"></i> Ahmad Rizki</span>
+                </div>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc">
+                <h3>📑 Daftar Isi</h3>
+                <ul>
+                    <li><a href="#pengertian">1. Pengertian RPL</a></li>
+                    <li><a href="#mengapa-penting">2. Mengapa RPL Penting?</a></li>
+                    <li><a href="#prinsip-dasar">3. Prinsip Dasar RPL</a></li>
+                    <li><a href="#bidang-kerja">4. Bidang Kerja RPL</a></li>
+                    <li><a href="#kesimpulan">5. Kesimpulan</a></li>
+                </ul>
+            </div>
+
+            <!-- Article Content -->
+            <div class="article-content">
+                <h2 id="pengertian">🎯 Pengertian Rekayasa Perangkat Lunak</h2>
+                <p>
+                    <strong>Rekayasa Perangkat Lunak (RPL)</strong> atau <em>Software Engineering</em> adalah disiplin ilmu yang mempelajari tentang pengembangan, pemeliharaan, dan pengelolaan perangkat lunak (software) secara sistematis, terstruktur, dan terukur.
+                </p>
+                <p>
+                    RPL bukan hanya tentang menulis kode program, tetapi mencakup seluruh proses pengembangan software mulai dari:
+                </p>
+                <ul>
+                    <li><strong>Analisis kebutuhan</strong> - Memahami apa yang dibutuhkan user</li>
+                    <li><strong>Desain sistem</strong> - Merancang arsitektur dan struktur software</li>
+                    <li><strong>Implementasi</strong> - Menulis kode program</li>
+                    <li><strong>Testing</strong> - Menguji apakah software berfungsi dengan baik</li>
+                    <li><strong>Deployment</strong> - Merilis software ke production</li>
+                    <li><strong>Maintenance</strong> - Memperbaiki bug dan menambah fitur baru</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>💡 Tahukah kamu?</strong><br>
+                    Istilah "Software Engineering" pertama kali digunakan pada konferensi NATO di Jerman tahun 1968 untuk mengatasi "software crisis" - masalah dimana banyak proyek software gagal atau melebihi budget.
+                </div>
+
+                <h2 id="mengapa-penting">🚀 Mengapa RPL Penting?</h2>
+                <p>
+                    Di era digital ini, hampir semua aspek kehidupan kita bergantung pada software. Dari smartphone, e-commerce, perbankan online, hingga sistem kesehatan - semuanya membutuhkan software yang reliable dan berkualitas.
+                </p>
+
+                <h3>Tantangan Tanpa RPL</h3>
+                <p>Tanpa pendekatan sistematis dalam pengembangan software, kita akan menghadapi:</p>
+                <ol>
+                    <li><strong>Kode yang sulit dipelihara</strong> - Spaghetti code yang membingungkan</li>
+                    <li><strong>Bug yang banyak</strong> - Software sering error dan crash</li>
+                    <li><strong>Proyek terlambat</strong> - Deadline tidak terpenuhi</li>
+                    <li><strong>Biaya membengkak</strong> - Budget melebihi estimasi</li>
+                    <li><strong>Kualitas rendah</strong> - User experience yang buruk</li>
+                </ol>
+
+                <h3>Manfaat Menerapkan RPL</h3>
+                <ul>
+                    <li>✅ Software lebih terstruktur dan mudah dipelihara</li>
+                    <li>✅ Kualitas software meningkat</li>
+                    <li>✅ Proses development lebih efisien</li>
+                    <li>✅ Tim bisa berkolaborasi dengan lebih baik</li>
+                    <li>✅ Biaya maintenance lebih rendah</li>
+                </ul>
+
+                <h2 id="prinsip-dasar">📚 Prinsip Dasar RPL</h2>
+                
+                <h3>1. Modularitas</h3>
+                <p>
+                    Memecah sistem besar menjadi modul-modul kecil yang independen. Setiap modul memiliki fungsi spesifik dan dapat dikembangkan secara terpisah.
+                </p>
+
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>// Contoh modularitas dalam JavaScript
+
+// Module: User Authentication
+class AuthService {
+    login(username, password) {
+        // Logic untuk login
+    }
+    
+    logout() {
+        // Logic untuk logout
+    }
+}
+
+// Module: User Profile
+class ProfileService {
+    getProfile(userId) {
+        // Logic untuk get profile
+    }
+    
+    updateProfile(userId, data) {
+        // Logic untuk update profile
+    }
+}</code></pre>
+                </div>
+
+                <h3>2. Abstraksi</h3>
+                <p>
+                    Menyembunyikan detail implementasi yang kompleks dan hanya menampilkan interface yang sederhana. Ini membuat kode lebih mudah dipahami dan digunakan.
+                </p>
+
+                <h3>3. Reusability</h3>
+                <p>
+                    Menulis kode yang bisa digunakan kembali (reusable) untuk menghindari duplikasi dan meningkatkan efisiensi development.
+                </p>
+
+                <h3>4. Maintainability</h3>
+                <p>
+                    Kode harus mudah dipelihara, diperbaiki, dan dikembangkan di masa depan. Ini dicapai dengan:
+                </p>
+                <ul>
+                    <li>Menulis kode yang clean dan readable</li>
+                    <li>Memberikan komentar yang jelas</li>
+                    <li>Mengikuti coding standards</li>
+                    <li>Membuat dokumentasi yang lengkap</li>
+                </ul>
+
+                <h2 id="bidang-kerja">💼 Bidang Kerja dan Karir RPL</h2>
+                <p>
+                    Lulusan RPL memiliki prospek karir yang sangat luas. Berikut beberapa posisi yang bisa kamu kejar:
+                </p>
+
+                <h3>1. Software Developer/Engineer</h3>
+                <p>Mengembangkan aplikasi desktop, mobile, atau web. Gaji: Rp 6-20 juta/bulan (tergantung pengalaman).</p>
+
+                <h3>2. Frontend Developer</h3>
+                <p>Fokus pada tampilan dan user interface aplikasi web. Teknologi: HTML, CSS, JavaScript, React, Vue.</p>
+
+                <h3>3. Backend Developer</h3>
+                <p>Mengembangkan server-side logic, database, dan API. Teknologi: Node.js, Python, Java, PHP.</p>
+
+                <h3>4. Full Stack Developer</h3>
+                <p>Menguasai frontend dan backend. Posisi yang sangat dicari dengan gaji kompetitif.</p>
+
+                <h3>5. DevOps Engineer</h3>
+                <p>Mengelola deployment, CI/CD, dan infrastructure. Teknologi: Docker, Kubernetes, AWS.</p>
+
+                <h3>6. Quality Assurance (QA)</h3>
+                <p>Memastikan kualitas software melalui testing yang sistematis.</p>
+
+                <h3>7. Software Architect</h3>
+                <p>Merancang arsitektur sistem yang scalable dan maintainable. Posisi senior dengan gaji tinggi.</p>
+
+                <div class="info-box">
+                    <strong>📊 Fun Fact:</strong><br>
+                    Menurut data 2024, rata-rata gaji Software Engineer di Indonesia adalah Rp 8-15 juta/bulan untuk level junior, dan bisa mencapai Rp 30-50 juta/bulan untuk level senior atau tech lead.
+                </div>
+
+                <h2 id="kesimpulan">✨ Kesimpulan</h2>
+                <p>
+                    Rekayasa Perangkat Lunak adalah disiplin ilmu yang sangat penting di era digital. Dengan mempelajari RPL, kamu tidak hanya belajar coding, tetapi juga:
+                </p>
+                <ul>
+                    <li>Cara berpikir sistematis dalam memecahkan masalah</li>
+                    <li>Metodologi pengembangan software yang efektif</li>
+                    <li>Best practices dalam menulis kode berkualitas</li>
+                    <li>Skill kolaborasi dalam tim development</li>
+                    <li>Pemahaman tentang software lifecycle</li>
+                </ul>
+
+                <p>
+                    <strong>Langkah selanjutnya:</strong> Mulai belajar dari dasar pemrograman, pahami algoritma, dan praktik membuat project nyata. Jangan lupa bergabung dengan komunitas developer untuk terus belajar dan berkembang!
+                </p>
+
+                <div class="info-box">
+                    <strong>🎯 Tips untuk Pemula:</strong><br>
+                    1. Mulai dari satu bahasa pemrograman (Python atau JavaScript recommended)<br>
+                    2. Buat project kecil untuk praktik<br>
+                    3. Belajar Git dan GitHub<br>
+                    4. Ikuti tutorial online dan coding bootcamp<br>
+                    5. Join komunitas developer (Discord, Telegram, dll)
+                </div>
+            </div>
+
+            <!-- Article Navigation -->
+            <div class="article-navigation">
+                <a href="index.html" class="nav-article">
+                    <div class="nav-label">← Kembali</div>
+                    <div class="nav-title">Daftar Artikel</div>
+                </a>
+                <a href="memahami-sdlc.html" class="nav-article" style="text-align: right;">
+                    <div class="nav-label">Selanjutnya →</div>
+                    <div class="nav-title">Memahami SDLC</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk mahasiswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="../../index.html">Beranda</a></li>
+                        <li><a href="../roadmap/index.html">Roadmap</a></li>
+                        <li><a href="index.html">Artikel</a></li>
+                        <li><a href="../kuis/index.html">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling;
+            const code = codeBlock.textContent;
+            
+            navigator.clipboard.writeText(code).then(() => {
+                button.textContent = 'Copied!';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

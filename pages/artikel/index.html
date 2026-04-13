@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artikel - WikiRPL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .artikel-page {
+            padding: 2rem 0;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, #283593 100%);
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .search-filter-section {
+            background-color: var(--bg-secondary-light);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .search-bar {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            transition: border-color 0.3s;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary-light);
+        }
+
+        .filter-section {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--border-light);
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .filter-btn.active {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .articles-count {
+            text-align: center;
+            color: var(--text-secondary-light);
+            margin-bottom: 2rem;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary-light);
+        }
+
+        .no-results i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .filter-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">
+                <i class="fas fa-book-open"></i>
+                WikiRPL
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../roadmap/index.html">Roadmap</a></li>
+                <li><a href="../artikel/index.html">Artikel</a></li>
+                <li><a href="../kuis/index.html">Kuis</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li>
+                    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>📖 Artikel & Materi</h1>
+        <p>Jelajahi ratusan artikel berkualitas tentang Rekayasa Perangkat Lunak</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="artikel-page">
+        <div class="container">
+            <!-- Search & Filter -->
+            <div class="search-filter-section">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Cari artikel... (contoh: OOP, database, git)">
+                </div>
+
+                <div class="filter-section">
+                    <span class="filter-label">Kategori:</span>
+                    <div class="filter-buttons" id="categoryFilters">
+                        <button class="filter-btn active" data-category="all">Semua</button>
+                        <button class="filter-btn" data-category="Dasar RPL">Dasar RPL</button>
+                        <button class="filter-btn" data-category="Pemrograman">Pemrograman</button>
+                        <button class="filter-btn" data-category="OOP">OOP</button>
+                        <button class="filter-btn" data-category="Database">Database</button>
+                        <button class="filter-btn" data-category="Web Dev">Web Dev</button>
+                        <button class="filter-btn" data-category="Tools">Tools</button>
+                    </div>
+                </div>
+
+                <div class="filter-section" style="margin-top: 1rem;">
+                    <span class="filter-label">Level:</span>
+                    <div class="filter-buttons" id="levelFilters">
+                        <button class="filter-btn active" data-level="all">Semua</button>
+                        <button class="filter-btn" data-level="Pemula">Pemula</button>
+                        <button class="filter-btn" data-level="Menengah">Menengah</button>
+                        <button class="filter-btn" data-level="Ahli">Ahli</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Articles Count -->
+            <div class="articles-count">
+                <p>Menampilkan <strong id="articlesCount">18</strong> artikel</p>
+            </div>
+
+            <!-- Articles Grid -->
+            <div class="articles-grid" id="articlesGrid">
+                <!-- Articles will be loaded here by JavaScript -->
+            </div>
+
+            <!-- No Results -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>Tidak ada artikel ditemukan</h3>
+                <p>Coba ubah kata kunci pencarian atau filter yang dipilih</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk mahasiswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="../../index.html">Beranda</a></li>
+                        <li><a href="../roadmap/index.html">Roadmap</a></li>
+                        <li><a href="index.html">Artikel</a></li>
+                        <li><a href="../kuis/index.html">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        // Articles data
+        const articles = [
+            { id: 1, title: "Apa itu Rekayasa Perangkat Lunak?", slug: "apa-itu-rpl", category: "Dasar RPL", level: "Pemula", readTime: 5, views: 1200, icon: "fa-code", description: "Pengenalan lengkap tentang RPL, metodologi, dan peran penting dalam industri teknologi modern." },
+            { id: 2, title: "Memahami SDLC", slug: "memahami-sdlc", category: "Dasar RPL", level: "Pemula", readTime: 8, views: 980, icon: "fa-project-diagram", description: "Software Development Life Cycle: tahapan pengembangan software dari perencanaan hingga maintenance." },
+            { id: 3, title: "Metodologi Agile vs Waterfall", slug: "agile-waterfall", category: "Dasar RPL", level: "Pemula", readTime: 10, views: 850, icon: "fa-tasks", description: "Perbandingan dua metodologi pengembangan software yang paling populer." },
+            { id: 4, title: "Algoritma dan Flowchart", slug: "algoritma-flowchart", category: "Pemrograman", level: "Pemula", readTime: 7, views: 1500, icon: "fa-sitemap", description: "Belajar membuat algoritma dan visualisasi dengan flowchart untuk pemecahan masalah." },
+            { id: 5, title: "Tipe Data dan Variabel", slug: "tipe-data-variabel", category: "Pemrograman", level: "Pemula", readTime: 6, views: 1300, icon: "fa-database", description: "Memahami berbagai tipe data dan cara menggunakan variabel dalam pemrograman." },
+            { id: 6, title: "Percabangan dan Perulangan", slug: "percabangan-perulangan", category: "Pemrograman", level: "Pemula", readTime: 8, views: 1100, icon: "fa-code-branch", description: "Kontrol alur program dengan if-else, switch, for, while, dan do-while." },
+            { id: 7, title: "Object Oriented Programming", slug: "oop", category: "OOP", level: "Menengah", readTime: 12, views: 1500, icon: "fa-cubes", description: "Konsep OOP: encapsulation, inheritance, polymorphism, dan abstraction dengan contoh praktis." },
+            { id: 8, title: "Design Patterns", slug: "design-patterns", category: "OOP", level: "Menengah", readTime: 15, views: 920, icon: "fa-puzzle-piece", description: "Pola desain yang umum digunakan: Singleton, Factory, Observer, dan lainnya." },
+            { id: 9, title: "SOLID Principles", slug: "solid-principles", category: "OOP", level: "Menengah", readTime: 10, views: 780, icon: "fa-layer-group", description: "Lima prinsip dasar untuk menulis kode OOP yang maintainable dan scalable." },
+            { id: 10, title: "SQL untuk Pemula", slug: "sql-pemula", category: "Database", level: "Pemula", readTime: 10, views: 2100, icon: "fa-database", description: "Belajar query SQL dasar: SELECT, INSERT, UPDATE, DELETE, dan JOIN dengan contoh nyata." },
+            { id: 11, title: "Database Normalisasi", slug: "database-normalisasi", category: "Database", level: "Menengah", readTime: 12, views: 890, icon: "fa-table", description: "Teknik normalisasi database untuk menghindari redundansi dan anomali data." },
+            { id: 12, title: "NoSQL vs SQL", slug: "nosql-vs-sql", category: "Database", level: "Menengah", readTime: 9, views: 1050, icon: "fa-server", description: "Perbandingan database relasional dan non-relasional, kapan menggunakan masing-masing." },
+            { id: 13, title: "HTML5 Semantik", slug: "html5-semantik", category: "Web Dev", level: "Pemula", readTime: 7, views: 1800, icon: "fa-html5", description: "Menggunakan tag HTML5 semantik untuk struktur web yang lebih baik." },
+            { id: 14, title: "CSS Flexbox & Grid", slug: "css-flexbox-grid", category: "Web Dev", level: "Pemula", readTime: 10, views: 1650, icon: "fa-css3-alt", description: "Layout modern dengan Flexbox dan CSS Grid untuk responsive design." },
+            { id: 15, title: "JavaScript ES6+", slug: "javascript-es6", category: "Web Dev", level: "Menengah", readTime: 13, views: 1900, icon: "fa-js", description: "Fitur-fitur modern JavaScript: arrow function, destructuring, async/await, dan lainnya." },
+            { id: 16, title: "Membuat REST API", slug: "rest-api", category: "Web Dev", level: "Menengah", readTime: 20, views: 1800, icon: "fa-rocket", description: "Tutorial step-by-step membuat REST API dengan Node.js, Express, dan MongoDB." },
+            { id: 17, title: "Git & GitHub Workflow", slug: "git-github", category: "Tools", level: "Pemula", readTime: 15, views: 3200, icon: "fa-git-alt", description: "Panduan lengkap menggunakan Git untuk version control dan kolaborasi dengan GitHub." },
+            { id: 18, title: "VS Code Tips & Tricks", slug: "vscode-tips", category: "Tools", level: "Pemula", readTime: 8, views: 2500, icon: "fa-code", description: "Shortcut, extensions, dan productivity tips untuk Visual Studio Code." },
+        ];
+
+        let currentCategory = 'all';
+        let currentLevel = 'all';
+        let searchQuery = '';
+
+        // Render articles
+        function renderArticles() {
+            const grid = document.getElementById('articlesGrid');
+            const noResults = document.getElementById('noResults');
+            
+            // Filter articles
+            let filtered = articles.filter(article => {
+                const matchCategory = currentCategory === 'all' || article.category === currentCategory;
+                const matchLevel = currentLevel === 'all' || article.level === currentLevel;
+                const matchSearch = searchQuery === '' || 
+                    article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    article.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    article.category.toLowerCase().includes(searchQuery.toLowerCase());
+                
+                return matchCategory && matchLevel && matchSearch;
+            });
+
+            // Update count
+            document.getElementById('articlesCount').textContent = filtered.length;
+
+            // Show/hide no results
+            if (filtered.length === 0) {
+                grid.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            } else {
+                grid.style.display = 'grid';
+                noResults.style.display = 'none';
+            }
+
+            // Render cards
+            grid.innerHTML = filtered.map(article => `
+                <a href="${article.slug}.html" style="text-decoration: none; color: inherit;">
+                    <div class="article-card">
+                        <div class="article-thumbnail">
+                            <i class="fas ${article.icon}"></i>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-badges">
+                                <span class="badge badge-category">${article.category}</span>
+                                <span class="badge badge-level">${article.level}</span>
+                            </div>
+                            <h3>${article.title}</h3>
+                            <p>${article.description}</p>
+                            <div class="article-meta">
+                                <span><i class="far fa-clock"></i> ${article.readTime} menit</span>
+                                <span><i class="far fa-eye"></i> ${article.views.toLocaleString()} views</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        // Category filter
+        document.getElementById('categoryFilters').addEventListener('click', (e) => {
+            if (e.target.classList.contains('filter-btn')) {
+                document.querySelectorAll('#categoryFilters .filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                e.target.classList.add('active');
+                currentCategory = e.target.dataset.category;
+                renderArticles();
+            }
+        });
+
+        // Level filter
+        document.getElementById('levelFilters').addEventListener('click', (e) => {
+            if (e.target.classList.contains('filter-btn')) {
+                document.querySelectorAll('#levelFilters .filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                e.target.classList.add('active');
+                currentLevel = e.target.dataset.level;
+                renderArticles();
+            }
+        });
+
+        // Search
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            renderArticles();
+        });
+
+        // Initial render
+        renderArticles();
+    </script>
+</body>
+</html>

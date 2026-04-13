@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Normalisasi - WikiRPL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .article-detail{padding:2rem 0;min-height:100vh}.article-container{max-width:900px;margin:0 auto;padding:0 1.5rem}.article-header{margin-bottom:2rem}.breadcrumb{display:flex;gap:.5rem;margin-bottom:1.5rem;color:var(--text-secondary-light);font-size:.9rem}.breadcrumb a{color:var(--accent);text-decoration:none}.article-title{font-size:2.5rem;margin-bottom:1rem;line-height:1.2}.article-meta-info{display:flex;gap:1.5rem;flex-wrap:wrap;color:var(--text-secondary-light);margin-bottom:1.5rem}.article-badges{display:flex;gap:.5rem;margin-bottom:1.5rem}.article-content{background-color:var(--bg-secondary-light);padding:3rem;border-radius:12px;border:1px solid var(--border-light);line-height:1.8}.article-content h2{font-size:1.8rem;margin-top:2rem;margin-bottom:1rem;color:var(--accent)}.article-content h3{font-size:1.4rem;margin-top:1.5rem;margin-bottom:.75rem}.article-content p{margin-bottom:1rem}.article-content ul,.article-content ol{margin-left:2rem;margin-bottom:1rem}.article-content li{margin-bottom:.5rem}.code-block{background-color:#1e1e1e;color:#d4d4d4;padding:1.5rem;border-radius:8px;margin:1.5rem 0;position:relative;font-family:'Fira Code',monospace;overflow-x:auto}.copy-btn{position:absolute;top:.5rem;right:.5rem;background-color:var(--accent);color:white;border:none;padding:.5rem 1rem;border-radius:4px;cursor:pointer;font-size:.85rem}.copy-btn:hover{opacity:.8}.info-box{background-color:var(--bg-light);border-left:4px solid var(--accent);padding:1rem 1.5rem;margin:1.5rem 0;border-radius:4px}.toc{background-color:var(--bg-light);padding:1.5rem;border-radius:8px;margin-bottom:2rem;border:1px solid var(--border-light)}.toc h3{margin-bottom:1rem;font-size:1.2rem}.toc ul{list-style:none}.toc li{margin-bottom:.5rem}.toc a{color:var(--text-light);text-decoration:none;transition:color .3s}.toc a:hover{color:var(--accent)}.article-navigation{display:flex;justify-content:space-between;margin-top:3rem;gap:1rem}.nav-article{flex:1;background-color:var(--bg-secondary-light);padding:1.5rem;border-radius:8px;border:2px solid var(--border-light);text-decoration:none;color:var(--text-light);transition:all .3s}.nav-article:hover{border-color:var(--accent);transform:translateY(-2px)}.nav-label{font-size:.85rem;color:var(--text-secondary-light);margin-bottom:.5rem}.nav-title{font-weight:600}@media (max-width:768px){.article-title{font-size:2rem}.article-content{padding:1.5rem}.article-navigation{flex-direction:column}}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo"><i class="fas fa-book-open"></i> WikiRPL</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../roadmap/index.html">Roadmap</a></li>
+                <li><a href="../artikel/index.html">Artikel</a></li>
+                <li><a href="../kuis/index.html">Kuis</a></li>
+                <li><a href="../profil/index.html">Kontributor</a></li>
+                <li><button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button></li>
+            </ul>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="article-detail">
+        <div class="article-container">
+            <div class="breadcrumb">
+                <a href="../../index.html">Beranda</a><span>/</span>
+                <a href="index.html">Artikel</a><span>/</span>
+                <span>Database Normalisasi</span>
+            </div>
+
+            <div class="article-header">
+                <h1 class="article-title">Memahami Normalisasi Database</h1>
+                <div class="article-badges">
+                    <span class="badge badge-category">Database</span>
+                    <span class="badge badge-level">Menengah</span>
+                </div>
+                <div class="article-meta-info">
+                    <span><i class="far fa-clock"></i> 13 menit baca</span>
+                    <span><i class="far fa-eye"></i> 1.450 views</span>
+                    <span><i class="far fa-calendar"></i> 28 Januari 2024</span>
+                </div>
+            </div>
+
+            <div class="toc">
+                <h3>📑 Daftar Isi</h3>
+                <ul>
+                    <li><a href="#intro">1. Apa itu Normalisasi?</a></li>
+                    <li><a href="#1nf">2. First Normal Form (1NF)</a></li>
+                    <li><a href="#2nf">3. Second Normal Form (2NF)</a></li>
+                    <li><a href="#3nf">4. Third Normal Form (3NF)</a></li>
+                    <li><a href="#bcnf">5. BCNF</a></li>
+                    <li><a href="#kesimpulan">6. Kesimpulan</a></li>
+                </ul>
+            </div>
+
+            <div class="article-content">
+                <h2 id="intro">🎯 Apa itu Normalisasi?</h2>
+                <p><strong>Normalisasi</strong> adalah proses mengorganisir data dalam database untuk mengurangi redundansi dan meningkatkan integritas data. Tujuannya adalah membuat struktur database yang efisien dan menghindari anomali saat insert, update, atau delete.</p>
+
+                <h3>Masalah Tanpa Normalisasi</h3>
+                <ul>
+                    <li><strong>Redundansi Data:</strong> Data yang sama disimpan berulang kali</li>
+                    <li><strong>Update Anomaly:</strong> Perubahan data harus dilakukan di banyak tempat</li>
+                    <li><strong>Insert Anomaly:</strong> Tidak bisa insert data tanpa data lain</li>
+                    <li><strong>Delete Anomaly:</strong> Menghapus data bisa menghilangkan informasi penting lainnya</li>
+                </ul>
+
+                <h2 id="1nf">📋 First Normal Form (1NF)</h2>
+                <p>Tabel dalam 1NF jika:</p>
+                <ul>
+                    <li>Setiap kolom berisi nilai atomic (tidak bisa dibagi lagi)</li>
+                    <li>Tidak ada repeating groups</li>
+                    <li>Setiap baris unik (ada primary key)</li>
+                </ul>
+
+                <h3>Contoh Pelanggaran 1NF</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- SALAH: Multiple values dalam satu kolom
+Students
++----+-------+------------------------+
+| ID | Name  | Courses                |
++----+-------+------------------------+
+| 1  | John  | Math, Physics, English |
+| 2  | Jane  | Biology, Chemistry     |
++----+-------+------------------------+</code></pre>
+                </div>
+
+                <h3>Solusi 1NF</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- BENAR: Atomic values
+Students
++----+-------+
+| ID | Name  |
++----+-------+
+| 1  | John  |
+| 2  | Jane  |
++----+-------+
+
+StudentCourses
++------------+-----------+
+| StudentID  | Course    |
++------------+-----------+
+| 1          | Math      |
+| 1          | Physics   |
+| 1          | English   |
+| 2          | Biology   |
+| 2          | Chemistry |
++------------+-----------+</code></pre>
+                </div>
+
+                <h2 id="2nf">📊 Second Normal Form (2NF)</h2>
+                <p>Tabel dalam 2NF jika:</p>
+                <ul>
+                    <li>Sudah dalam 1NF</li>
+                    <li>Semua non-key attributes fully dependent pada primary key (tidak ada partial dependency)</li>
+                </ul>
+
+                <h3>Contoh Pelanggaran 2NF</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- SALAH: Partial dependency
+-- Primary Key: (StudentID, CourseID)
+Enrollments
++------------+-----------+---------------+----------------+
+| StudentID  | CourseID  | StudentName   | CourseName     |
++------------+-----------+---------------+----------------+
+| 1          | 101       | John          | Math           |
+| 1          | 102       | John          | Physics        |
+| 2          | 101       | Jane          | Math           |
++------------+-----------+---------------+----------------+
+-- StudentName hanya depend pada StudentID (partial dependency)
+-- CourseName hanya depend pada CourseID (partial dependency)</code></pre>
+                </div>
+
+                <h3>Solusi 2NF</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- BENAR: Pisahkan tabel
+Students
++----+-------+
+| ID | Name  |
++----+-------+
+| 1  | John  |
+| 2  | Jane  |
++----+-------+
+
+Courses
++----+----------+
+| ID | Name     |
++----+----------+
+| 101| Math     |
+| 102| Physics  |
++----+----------+
+
+Enrollments
++------------+-----------+
+| StudentID  | CourseID  |
++------------+-----------+
+| 1          | 101       |
+| 1          | 102       |
+| 2          | 101       |
++------------+-----------+</code></pre>
+                </div>
+
+                <h2 id="3nf">🎨 Third Normal Form (3NF)</h2>
+                <p>Tabel dalam 3NF jika:</p>
+                <ul>
+                    <li>Sudah dalam 2NF</li>
+                    <li>Tidak ada transitive dependency (non-key attribute tidak depend pada non-key attribute lain)</li>
+                </ul>
+
+                <h3>Contoh Pelanggaran 3NF</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- SALAH: Transitive dependency
+Students
++----+-------+--------+---------------+
+| ID | Name  | ZipCode| City          |
++----+-------+--------+---------------+
+| 1  | John  | 12345  | Jakarta       |
+| 2  | Jane  | 12345  | Jakarta       |
+| 3  | Bob   | 54321  | Bandung       |
++----+-------+--------+---------------+
+-- City depend pada ZipCode, bukan pada ID (transitive dependency)</code></pre>
+                </div>
+
+                <h3>Solusi 3NF</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- BENAR: Pisahkan transitive dependency
+Students
++----+-------+--------+
+| ID | Name  | ZipCode|
++----+-------+--------+
+| 1  | John  | 12345  |
+| 2  | Jane  | 12345  |
+| 3  | Bob   | 54321  |
++----+-------+--------+
+
+ZipCodes
++---------+----------+
+| ZipCode | City     |
++---------+----------+
+| 12345   | Jakarta  |
+| 54321   | Bandung  |
++---------+----------+</code></pre>
+                </div>
+
+                <h2 id="bcnf">🔥 Boyce-Codd Normal Form (BCNF)</h2>
+                <p>BCNF adalah versi lebih ketat dari 3NF. Tabel dalam BCNF jika:</p>
+                <ul>
+                    <li>Sudah dalam 3NF</li>
+                    <li>Untuk setiap functional dependency X → Y, X harus superkey</li>
+                </ul>
+
+                <h3>Contoh Pelanggaran BCNF</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- SALAH: Professor menentukan Subject
+-- Primary Key: (StudentID, Subject)
+Teaching
++------------+----------+-----------+
+| StudentID  | Subject  | Professor |
++------------+----------+-----------+
+| 1          | Math     | Dr. Smith |
+| 2          | Math     | Dr. Smith |
+| 1          | Physics  | Dr. Jones |
++------------+----------+-----------+
+-- Professor → Subject (tapi Professor bukan superkey)</code></pre>
+                </div>
+
+                <h3>Solusi BCNF</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code>-- BENAR: Pisahkan dependency
+ProfessorSubject
++-----------+----------+
+| Professor | Subject  |
++-----------+----------+
+| Dr. Smith | Math     |
+| Dr. Jones | Physics  |
++-----------+----------+
+
+StudentProfessor
++------------+-----------+
+| StudentID  | Professor |
++------------+-----------+
+| 1          | Dr. Smith |
+| 2          | Dr. Smith |
+| 1          | Dr. Jones |
++------------+-----------+</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Kapan Berhenti Normalisasi?</strong><br>
+                    Biasanya 3NF sudah cukup untuk kebanyakan aplikasi. BCNF dan bentuk normal lebih tinggi (4NF, 5NF) jarang digunakan karena bisa membuat query menjadi kompleks. Kadang denormalisasi sedikit diperlukan untuk performa.
+                </div>
+
+                <h2>⚖️ Normalisasi vs Denormalisasi</h2>
+                
+                <h3>Kelebihan Normalisasi</h3>
+                <ul>
+                    <li>Mengurangi redundansi data</li>
+                    <li>Meningkatkan integritas data</li>
+                    <li>Lebih mudah maintain</li>
+                    <li>Menghemat storage</li>
+                </ul>
+
+                <h3>Kekurangan Normalisasi</h3>
+                <ul>
+                    <li>Query bisa lebih kompleks (banyak JOIN)</li>
+                    <li>Performa read bisa lebih lambat</li>
+                </ul>
+
+                <h3>Kapan Denormalisasi?</h3>
+                <ul>
+                    <li>Untuk meningkatkan performa read-heavy applications</li>
+                    <li>Data warehouse / reporting systems</li>
+                    <li>Caching layers</li>
+                </ul>
+
+                <h2 id="kesimpulan">✨ Kesimpulan</h2>
+                <p>Normalisasi adalah teknik penting dalam database design untuk mengurangi redundansi dan meningkatkan integritas data. Pahami bentuk-bentuk normal (1NF, 2NF, 3NF, BCNF) dan terapkan sesuai kebutuhan aplikasi. Ingat, tujuan normalisasi adalah membuat database yang efisien dan maintainable, bukan mencapai bentuk normal tertinggi dengan mengorbankan performa.</p>
+            </div>
+
+            <div class="article-navigation">
+                <a href="css-flexbox-grid.html" class="nav-article">
+                    <div class="nav-label">← Sebelumnya</div>
+                    <div class="nav-title">CSS Flexbox & Grid</div>
+                </a>
+                <a href="nosql-vs-sql.html" class="nav-article" style="text-align:right">
+                    <div class="nav-label">Selanjutnya →</div>
+                    <div class="nav-title">NoSQL vs SQL</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WikiRPL</h3>
+                    <p>Platform edukasi untuk mahasiswa dan praktisi Rekayasa Perangkat Lunak. Belajar dari pemula hingga ahli.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="../../index.html">Beranda</a></li>
+                        <li><a href="../roadmap/index.html">Roadmap</a></li>
+                        <li><a href="index.html">Artikel</a></li>
+                        <li><a href="../kuis/index.html">Kuis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="https://github.com/letmeburn" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arsavinbintang@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WikiRPL. Dibuat dengan ❤️ oleh Arshavin Bintang Wibowo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>function copyCode(button){const code=button.nextElementSibling.textContent;navigator.clipboard.writeText(code).then(()=>{button.textContent='Copied!';setTimeout(()=>{button.textContent='Copy'},2000)})}</script>
+</body>
+</html>
