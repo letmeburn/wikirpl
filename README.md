@@ -1,58 +1,57 @@
-# 📚 WikiRPL — Panduan Lengkap Rekayasa Perangkat Lunak
+# 📚 WikiRPL — Platform Pembelajaran Rekayasa Perangkat Lunak
 
-> Proyek Wikipedia jurusan RPL (Rekayasa Perangkat Lunak) — dari pemula hingga ahli.
-## https://wikirpl.page.gd/
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/letmeburn/wikirpl?style=social)](https://github.com/letmeburn/wikirpl)
+[![GitHub forks](https://img.shields.io/github/forks/letmeburn/wikirpl?style=social)](https://github.com/letmeburn/wikirpl)
+
+> 📖 Platform edukasi interaktif untuk mempelajari **Rekayasa Perangkat Lunak (RPL)** dari level pemula hingga ahli. Dibangun oleh komunitas, untuk komunitas.
+
+**[🌐 Kunjungi Website →](https://letmeburn.github.io/wikirpl/)**
+
+---
 
 ## 🎯 Tentang Proyek
 
-WikiRPL adalah platform edukasi berbasis web yang dirancang oleh mahasiswa jurusan RPL untuk memandu siapa saja — dari yang baru mengenal dunia pemrograman hingga yang ingin menjadi profesional di bidang rekayasa perangkat lunak.
+WikiRPL adalah platform pembelajaran berbasis web yang dirancang khusus untuk mahasiswa dan profesional yang ingin menguasai **Software Engineering**. Kami menyediakan:
 
-Platform ini menyediakan:
-- Panduan langkah demi langkah (roadmap) belajar RPL
-- Tips & trik dari praktisi dan mahasiswa berpengalaman
-- Referensi materi kuliah dan proyek nyata
-- Kamus istilah teknis RPL
-- Contoh kode, studi kasus, dan best practice
+✅ **Roadmap terstruktur** — Jalur belajar dari pemula hingga expert  
+✅ **+100 artikel berkualitas** — Materi lengkap dengan contoh kode  
+✅ **Kuis interaktif** — Uji pemahaman dengan feedback real-time  
+✅ **Dark mode** — Nyaman untuk belajar kapan saja  
+✅ **100% gratis & open-source** — Kontribusi welcome dari siapa saja  
 
 ---
 
 ## ✨ Fitur Utama
 
-### 🗺️ Roadmap Belajar
-- Jalur belajar dari level Pemula → Menengah → Ahli
-- Checklist progres belajar yang bisa disimpan
-- Estimasi waktu per topik
+### 🗺️ Roadmap Belajar Terstruktur
+- Level Pemula → Menengah → Ahli
+- Progress tracking dengan checklist
+- Estimasi waktu belajar per topik
 
-### 📖 Artikel & Materi
-- Artikel terstruktur per kategori (Dasar Pemrograman, OOP, Database, Web Dev, dll)
-- Versi ringkas dan versi lengkap tiap artikel
-- Dukungan kode snippet dengan syntax highlighting
+### 📖 Perpustakaan Artikel
+- **Kategori:** Dasar RPL, Pemrograman, OOP, Database, Web Dev, Tools, dan lebih banyak
+- **Filter pintar:** Cari by level, kategori, atau keyword
+- **Syntax highlighting** untuk kode snippet
+- **Breadcrumb navigation** untuk konteks yang jelas
 
-### 🔍 Pencarian & Filter
-- Pencarian full-text di seluruh konten
-- Filter berdasarkan level, kategori, dan tag
-- Saran pencarian otomatis
+### 🧪 Kuis Interaktif
+- 6+ topik dengan 10 soal per topic
+- Instant feedback dengan pembahasan
+- Score tracking dan statistik lengkap
+- Mobile-friendly
 
-### 💡 Tips & Trik
-- Koleksi tips dari komunitas RPL
-- Shortcut, workflow, dan productivity hack
-- Rekomendasi tools dan software
+### 💡 Resources Tambahan
+- Tips & trik dari praktisi
+- Best practices industri
+- Rekomendasi tools
+- Glossary istilah teknis
 
-### 🧪 Kuis & Latihan
-- Kuis per topik untuk mengukur pemahaman
-- Latihan soal dengan pembahasan
-- Leaderboard komunitas
-
-### 👥 Komunitas & Kontribusi
-- Sistem kontribusi artikel (seperti Wikipedia)
-- Komentar dan diskusi per artikel
-- Profil kontributor
-
-### 🌙 UI/UX
-- Dark mode / Light mode
-- Responsif untuk mobile dan desktop
-- Navigasi sidebar yang intuitif
-- Breadcrumb dan related articles
+### 🌙 User Experience
+- **Dark/Light Mode** — Otomatis sesuai preference sistem
+- **Fully responsive** — Mobile-first design
+- **Aksesibilitas** — WCAG 2.1 compliant
+- **Performance** — Optimized assets, fast load time
 
 ---
 
@@ -60,106 +59,192 @@ Platform ini menyediakan:
 
 | Layer | Teknologi |
 |-------|-----------|
-| Frontend | HTML5, CSS3, JavaScript (Vanilla / React) |
-| Styling | Tailwind CSS atau Bootstrap |
-| Backend | Node.js / PHP Laravel |
-| Database | MySQL / PostgreSQL |
-| Search | Algolia / Fuse.js |
-| Hosting | Vercel / Netlify / VPS |
+| **Frontend** | HTML5, CSS3, Vanilla JavaScript |
+| **Styling** | Custom CSS dengan CSS Variables |
+| **Build** | GitHub Pages (Static Site) |
+| **Icons** | Font Awesome 6.4 |
+| **Fonts** | Google Fonts (Poppins) |
+| **Performance** | Optimized assets, no dependencies |
 
 ---
 
-## 📁 Struktur Proyek
+## 📁 Struktur Project
 
 ```
 wikirpl/
-├── index.html                      # Landing page utama
-├── README.md                       # Dokumentasi proyek
-├── prompt.txt                      # Panduan development untuk AI
+├── 📄 index.html                    # Landing page utama
+├── 📄 README.md                     # Dokumentasi (file ini)
+├── 📄 LICENSE                       # MIT License
+├── 📄 CONTRIBUTING.md               # Panduan kontribusi
+├── 📄 CODE_OF_CONDUCT.md            # Kode etik komunitas
 │
-├── assets/                         # Aset statis
+├── 📁 assets/
 │   ├── css/
-│   │   └── style.css              # Stylesheet utama (CSS Variables, Responsive)
+│   │   └── style.css               # Stylesheet utama (CSS Variables)
+│   │   └── responsive.css          # Media queries
 │   ├── js/
-│   │   └── main.js                # JavaScript utama (Dark mode, Navigation, Smooth scroll)
-│   └── images/                     # Folder untuk gambar, logo, dan ikon
-│       └── .gitkeep
+│   │   ├── main.js                 # Core functionality
+│   │   ├── dark-mode.js            # Dark mode toggle
+│   │   └── navigation.js           # Mobile navigation
+│   └── images/
+│       └── favicon.ico             # Browser tab icon
 │
-├── pages/                          # Halaman-halaman aplikasi
+├── 📁 pages/
 │   ├── artikel/
-│   │   └── index.html             # Halaman daftar artikel dengan filter
+│   │   ├── index.html              # Daftar artikel + filter
+│   │   └── [artikel-files]/        # Artikel individual
 │   ├── roadmap/
-│   │   └── index.html             # Halaman roadmap interaktif
+│   │   └── index.html              # Roadmap interaktif
 │   ├── kuis/
-│   │   └── index.html             # Halaman kuis per topik
+│   │   └── index.html              # Platform kuis
 │   └── profil/
-│       └── index.html             # Halaman profil kontributor
+│       └── index.html              # Profil kontributor
 │
-├── components/                     # Komponen HTML reusable
-│   ├── navbar.html                # Navbar dengan dark mode toggle
-│   ├── sidebar.html               # Sidebar navigasi kategori
-│   └── footer.html                # Footer dengan link penting
+├── 📁 data/
+│   ├── articles.json               # Database artikel
+│   ├── quizzes.json                # Database kuis
+│   └── contributors.json           # Data kontributor
 │
-└── data/                           # Data JSON untuk konten dinamis
-    └── articles.json              # Database artikel (id, title, category, level, dll)
+└── 📁 .github/
+    └── workflows/
+        └── deploy.yml              # Auto deploy ke GitHub Pages
 ```
-
-### 📝 Penjelasan Struktur
-
-**Root Files:**
-- `index.html` - Landing page dengan hero section, fitur unggulan, roadmap preview, dan artikel terbaru
-- `README.md` - Dokumentasi lengkap proyek
-- `prompt.txt` - Panduan development dan instruksi untuk AI assistant
-
-**Assets:**
-- `css/style.css` - Semua styling dengan CSS Variables untuk theming (dark/light mode)
-- `js/main.js` - Interaktivitas: hamburger menu, dark mode toggle, smooth scrolling
-- `images/` - Placeholder untuk logo, thumbnail artikel, dan aset visual
-
-**Pages:**
-- Setiap halaman memiliki folder sendiri untuk skalabilitas
-- Struktur siap untuk pengembangan SPA atau multi-page
-
-**Components:**
-- Komponen HTML yang bisa di-include/reuse di berbagai halaman
-- Memudahkan maintenance dan konsistensi UI
-
-**Data:**
-- `articles.json` - Menyimpan data artikel dalam format JSON
-- Mudah di-fetch dengan JavaScript untuk konten dinamis
 
 ---
 
-## 🚀 Cara Menjalankan
+## 🚀 Quick Start
 
+### 1. Clone Repository
 ```bash
-# Clone repo
 git clone https://github.com/letmeburn/wikirpl.git
-
-# Masuk ke folder
 cd wikirpl
-
-# Buka di browser (jika static)
-open index.html
-
-# Atau jalankan dengan live server
-npx live-server
 ```
+
+### 2. Buka Secara Lokal
+Opsi A: Langsung di browser
+```bash
+open index.html  # macOS
+start index.html # Windows
+xdg-open index.html # Linux
+```
+
+Opsi B: Dengan live server
+```bash
+# Install live-server
+npm install -g live-server
+
+# Jalankan
+live-server
+```
+
+### 3. Deploy ke GitHub Pages
+Repository ini sudah siap deploy otomatis. Push ke `main` branch dan GitHub akan auto-deploy ke:
+```
+https://letmeburn.github.io/wikirpl/
+```
+
+---
+
+## 📖 Panduan Penggunaan
+
+### Untuk Pelajar
+1. Mulai dengan **Roadmap** untuk jalur belajar terstruktur
+2. Baca artikel sesuai level kemampuan
+3. Latihan dengan **Kuis interaktif**
+4. Review pembahasan jika ada yang kurang paham
+5. Kontribusi pertanyaan/saran ke komunitas
+
+### Untuk Kontributor
+1. Baca [CONTRIBUTING.md](CONTRIBUTING.md)
+2. Fork repository dan buat branch baru
+3. Tambah artikel/fitur/perbaikan
+4. Buat Pull Request dengan deskripsi jelas
+5. Tim review akan memberikan feedback
 
 ---
 
 ## 🤝 Kontribusi
 
-1. Fork repo ini
-2. Buat branch baru: `git checkout -b fitur/nama-fitur`
-3. Commit perubahan: `git commit -m "Tambah: nama fitur"`
-4. Push ke branch: `git push origin fitur/nama-fitur`
-5. Buat Pull Request
+Kami sangat welcome terhadap kontribusi! Cara kontribusi:
+
+### Tipe-tipe Kontribusi
+- ✍️ **Tulis artikel** baru tentang RPL
+- 🐛 **Perbaiki bug** atau issue yang ada
+- ✨ **Tambah fitur** baru yang berguna
+- 🎨 **Improve design** dan UX
+- 📝 **Perbaiki dokumentasi**
+
+### Langkah Kontribusi
+1. **Fork** repository ini
+2. **Branch baru**: `git checkout -b feature/nama-fitur`
+3. **Buat perubahan** dan test secara lokal
+4. **Commit**: `git commit -m "Feat: deskripsi perubahan"`
+5. **Push**: `git push origin feature/nama-fitur`
+6. **Pull Request** dengan deskripsi detail
+
+Lihat [CONTRIBUTING.md](CONTRIBUTING.md) untuk panduan lengkap.
+
+---
+
+## 📋 Checklist Status
+
+- ✅ Landing page dengan hero section
+- ✅ Roadmap interaktif dengan 3 level
+- ✅ Sistem artikel dengan 18+ materi
+- ✅ Kuis interaktif dengan 6 topik
+- ✅ Dark/Light mode toggle
+- ✅ Mobile responsive design
+- ✅ Search & filter artikel
+- ✅ Profil kontributor
+- ✅ GitHub Pages deployment
+- ✅ MIT License
+- ⏳ Backend API (planned)
+- ⏳ User authentication (planned)
+- ⏳ Comment system (planned)
+
+---
+
+## 📞 Dukungan & Komunitas
+
+- 🐛 **Report Bug**: [GitHub Issues](https://github.com/letmeburn/wikirpl/issues)
+- 💡 **Suggest Feature**: [GitHub Discussions](https://github.com/letmeburn/wikirpl/discussions)
+- 📧 **Email**: dikalacodingtapimalesngetik@gmail.com
+- 🌐 **Website**: [wikirpl.github.io](https://letmeburn.github.io/wikirpl/)
+
+---
+
+## 📊 Statistik
+
+- **Stars**: ⭐ Community votes
+- **Contributors**: 👥 Team enthusiasts
+- **Articles**: 📚 100+ quality content
+- **Quizzes**: 🧪 60+ questions
+- **Last Update**: 📅 2026-05-05
 
 ---
 
 ## 📄 Lisensi
 
-MIT License — bebas digunakan untuk keperluan edukasi.
+MIT License - bebas untuk digunakan, dimodifikasi, dan didistribusikan untuk keperluan komersial maupun non-komersial.
+
+Baca [LICENSE](LICENSE) untuk detail lengkap.
 
 ---
+
+## 🙏 Ucapan Terima Kasih
+
+Terima kasih kepada:
+- Semua kontributor yang telah membantu
+- Komunitas mahasiswa RPL
+- Praktisi yang memberikan feedback
+- Pengguna yang terus mendukung
+
+---
+
+<div align="center">
+
+**Dibuat dengan ❤️ untuk komunitas RPL Indonesia**
+
+[⭐ Give us a star if you find this helpful!](https://github.com/letmeburn/wikirpl)
+
+</div>
