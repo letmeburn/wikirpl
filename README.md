@@ -6,7 +6,7 @@
 
 > 📖 Platform edukasi interaktif untuk mempelajari **Rekayasa Perangkat Lunak (RPL)** dari level pemula hingga ahli. Dibangun oleh komunitas, untuk komunitas.
 
-**[🌐 Kunjungi Website →](https://letmeburn.github.io/wikirpl/)**
+**[🌐 Kunjungi Website →](https://wikirpl.page.gd)**
 
 ---
 
